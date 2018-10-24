@@ -1,18 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
+<!--<![endif]-->
 <head>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-  <meta charset="utf-8">
-  <title>I1820</title>
+	<meta charset="utf-8" />
+	<title>I1820</title>
   <base href="/">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="An IoT Platform with everything you need" name="description" />
+  <meta content="Parham Alvani" name="author" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
-<body>
+<body detect-scroll (onScroll)="handleScroll($event)">
   <app-root>
-    <h2>18.20 is leaving us...</h2>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade show"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
   </app-root>
 </body>
 </html>
