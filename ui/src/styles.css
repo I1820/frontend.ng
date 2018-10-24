@@ -2,9 +2,9 @@
 @import 'http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700';
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
 @import 'https://use.fontawesome.com/releases/v5.0.6/css/all.css';
-@import 'assets/css/default/style.min.css';
-@import 'assets/css/default/style-responsive.min.css';
-@import 'assets/css/default/theme/default.css';
+@import 'assets/css/style.min.css';
+@import 'assets/css/style-responsive.min.css';
+@import 'assets/css/theme/default.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css';
 
 .angular5 .sidebar .sub-menu {
