@@ -1,28 +1,50 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+// Core Module
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { I1820DashboardComponent } from './i1820-dashboard/i1820-dashboard.component';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
-import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserModule, Title }    from '@angular/platform-browser';
+import { AppRoutingModule }        from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule }    from '@angular/core';
+import * as global from './globals';
+
+// Main Component
+import { AppComponent }          from './app.component';
+import { HeaderComponent }       from './header/header.component';
+import { SidebarComponent }      from './sidebar/sidebar.component';
+import { TopMenuComponent }      from './top-menu/top-menu.component';
+import { FooterComponent }       from './footer/footer.component';
+
+import { LoginPage } from './pages/login/login';
+import { RegisterPage } from './pages/register/register';
 
 @NgModule({
   declarations: [
     AppComponent,
-    I1820DashboardComponent
+    HeaderComponent,
+    SidebarComponent,
+    TopMenuComponent,
+    FooterComponent,
+
+    LoginPage,
+    RegisterPage,
   ],
   imports: [
-    BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule
+    BrowserModule,
+    FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ Title ],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor(private router: Router, private titleService: Title, private route: ActivatedRoute) {
+    router.events.subscribe((e) => {
+      if (e instanceof NavigationEnd) { // set page tite based on `title` data of current route
+        var title = 'I1820 | ' + this.route.snapshot.firstChild.data['title'];
+        this.titleService.setTitle(title);
+      }
+    });
+  }
+}
