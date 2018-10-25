@@ -5,6 +5,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import * as global from './globals';
 
 // Main Component
@@ -33,6 +34,7 @@ import { RegisterPage } from './pages/register/register';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [ Title ],
   bootstrap: [ AppComponent ]
