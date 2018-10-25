@@ -17,7 +17,7 @@ export class LoginPage {
   }
 
   formSubmit(f: NgForm) {
-    console.log(f.value)
+    console.log(f.value);
     // this.router.navigate(['dashboard']);
   }
 }
