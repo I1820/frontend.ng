@@ -7,10 +7,21 @@ import { LoginPage } from './pages/login/login';
 import { RegisterPage } from './pages/register/register';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // by default client is redirected to login page.
-
-  { path: 'login', component: LoginPage, data: { title: 'Login' } },
-  { path: 'register', component: RegisterPage, data: { title: 'Register' } },
+  { // by default client is redirected to login page.
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginPage,
+    data: { title: 'Login' }
+  },
+  {
+    path: 'register',
+    component: RegisterPage,
+    data: { title: 'Register' }
+  },
 ];
 
 @NgModule({
