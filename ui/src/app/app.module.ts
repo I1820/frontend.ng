@@ -3,6 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationModule } from './shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,6 +36,7 @@ import { RegisterPage } from './pages/register/register';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AuthenticationModule,
   ],
   providers: [ Title ],
   bootstrap: [ AppComponent ]
