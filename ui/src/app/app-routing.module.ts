@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 // User Login / Register
 import { LoginPage } from './pages/login/login';
-import { RegisterPage } from './pages/register/register';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   { // by default client is redirected to login page.
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterPage,
+    component: RegisterComponent,
     data: { title: 'Register' }
   },
 ];

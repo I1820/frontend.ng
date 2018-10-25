@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AppComponent } from '../../app.component';
+import { AuthenticationService } from '../../shared';
 
 @Component({
     selector: 'register',
-    templateUrl: './register.html'
+    templateUrl: './register.component.html'
 })
 
-export class RegisterPage {
-  constructor(private app: AppComponent, private router: Router) {
+export class RegisterComponent {
+  constructor(private app: AppComponent, private router: Router, private authService: AuthenticationService) {
       app.setPageSettings({
         pageEmpty: true,
         pageBodyWhite: true
@@ -17,6 +18,7 @@ export class RegisterPage {
   }
 
   formSubmit(f: NgForm) {
-    this.router.navigate(['dashboard']);
+    this.authService.signup(f.value.username)
+    // this.router.navigate(['dashboard']);
   }
 }

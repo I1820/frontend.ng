@@ -17,7 +17,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { LoginPage } from './pages/login/login';
-import { RegisterPage } from './pages/register/register';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +27,9 @@ import { RegisterPage } from './pages/register/register';
     TopMenuComponent,
     FooterComponent,
 
+    // pages
     LoginPage,
-    RegisterPage,
+    RegisterComponent,
   ],
   imports: [
     AppRoutingModule,
