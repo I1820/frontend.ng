@@ -18,7 +18,7 @@
 
   <top-menu *ngIf="pageSettings.pageTopMenu && !pageSettings.pageEmpty"></top-menu>
 
-  <header (toggleSidebarRightCollapsed)="onToggleSidebarRight($event)" (toggleMobileSidebar)="onToggleMobileSidebar($event)" (toggleMobileRightSidebar)="onToggleMobileRightSidebar($event)" [pageSidebarTwo]="pageSettings.pageSidebarTwo" *ngIf="!pageSettings.pageEmpty"></header>
+  <header-component (toggleSidebarRightCollapsed)="onToggleSidebarRight($event)" (toggleMobileSidebar)="onToggleMobileSidebar($event)" (toggleMobileRightSidebar)="onToggleMobileRightSidebar($event)" [pageSidebarTwo]="pageSettings.pageSidebarTwo" *ngIf="!pageSettings.pageEmpty"></header>
 
   <sidebar (toggleSidebarMinified)="onToggleSidebarMinified($event)" (hideMobileSidebar)="onHideMobileSidebar($event)" *ngIf="!pageSettings.pageWithoutSidebar && !pageSettings.pageEmpty" [pageSidebarTransparent]="pageSettings.pageSidebarTransparent"></sidebar>
 
