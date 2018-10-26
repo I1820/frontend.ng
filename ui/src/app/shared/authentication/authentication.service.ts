@@ -11,6 +11,13 @@ interface AccessData {
   refreshToken: string;
 }
 
+interface RegisterData {
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+}
+
 @Injectable()
 export class AuthenticationService implements AuthService {
 
@@ -99,8 +106,9 @@ export class AuthenticationService implements AuthService {
   /**
    * Register user with given infromation
    */
-  public signup(username: string): Observable<any> {
-    return this.http.post(`/api/v1/auth/register`, { username })
+  public signup(data: RegisterData): Observable<any> {
+    console.log(data);
+    return this.http.post(`/api/v1/auth/register`, data);
   }
 
   /**
