@@ -25,28 +25,50 @@
         <label class="control-label">Name <span class="text-danger">*</span></label>
         <div class="row row-space-10">
           <div class="col-md-6 m-b-15">
-            <input name="firstName" ngModel type="text" class="form-control" placeholder="First name" required />
+            <input name="firstName" #firstName="ngModel" ngModel type="text" [ngClass]="modelValidationStatusClass(firstName)" class="form-control" placeholder="First name" required />
+            <div *ngIf="firstName.errors?.required" class="invalid-feedback">
+              First name is required.
+            </div>
           </div>
           <div class="col-md-6 m-b-15">
-            <input name="lastName" ngModel type="text" class="form-control" placeholder="Last name" required />
+            <input name="lastName" #lastName="ngModel" ngModel type="text" [ngClass]="modelValidationStatusClass(lastName)" class="form-control" placeholder="Last name" required />
+            <div *ngIf="lastName.errors?.required" class="invalid-feedback">
+              Last name is required.
+            </div>
           </div>
         </div>
         <label class="control-label">Username <span class="text-danger">*</span></label>
         <div class="row m-b-15">
           <div class="col-md-12">
-            <input name="username" ngModel type="text" class="form-control" placeholder="Username" required />
+            <input name="username" #username="ngModel" ngModel type="text" [ngClass]="modelValidationStatusClass(username)" class="form-control" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
+            <div *ngIf="username.errors?.required" class="invalid-feedback">
+              Username is required.
+            </div>
+            <div *ngIf="username.errors?.pattern" class="invalid-feedback">
+              Username must contains only alphanumeric characters.
+            </div>
           </div>
         </div>
         <label class="control-label">Email <span class="text-danger">*</span></label>
         <div class="row m-b-15">
           <div class="col-md-12">
-            <input name="email" ngMpdel type="text" class="form-control" placeholder="Email address" required />
+            <input name="email" #email="ngModel" ngModel type="text" [ngClass]="modelValidationStatusClass(email)" class="form-control" placeholder="Email address" required email/>
+            <div *ngIf="email.errors?.required" class="invalid-feedback">
+              Email is required.
+            </div>
+            <div *ngIf="email.errors?.email" class="invalid-feedback">
+              Please enter valid email address.
+            </div>
+
           </div>
         </div>
         <label class="control-label">Password <span class="text-danger">*</span></label>
         <div class="row m-b-15">
           <div class="col-md-12">
-            <input type="password" class="form-control" placeholder="Password" required />
+            <input name="password" #password="ngModel" ngModel type="password" [ngClass]="modelValidationStatusClass(password)" class="form-control" placeholder="Password" required/>
+            <div *ngIf="password.errors?.required" class="invalid-feedback">
+              Password is required.
+            </div>
           </div>
         </div>
         <div class="checkbox checkbox-css m-b-30">
@@ -58,7 +80,7 @@
           </div>
         </div>
         <div class="register-buttons">
-          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading" [innerHTML]="submitButtonText"></button>
         </div>
         <div class="m-t-20 m-b-40 p-b-40 text-inverse">
           Already a member? Click <a routerLink="/login">here</a> to login.
