@@ -62,7 +62,7 @@ export class SidebarComponent {
     {
       'icon': 'fa fa-th-large',
       'title': 'Dashboard',
-      'caret': 'false',
+      'caret': false,
       'url': 'dashboard',
     }
   ];
