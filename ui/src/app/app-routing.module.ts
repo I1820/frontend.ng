@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // User Login / Register
@@ -24,8 +24,12 @@ const routes: Routes = [
   },
 ];
 
+const config: ExtraOptions = {
+  useHash: true,
+};
+
 @NgModule({
-  imports: [ CommonModule, RouterModule.forRoot(routes) ],
+  imports: [ CommonModule, RouterModule.forRoot(routes, config) ],
   exports: [ RouterModule ],
   declarations: []
 })
