@@ -147,5 +147,10 @@ export class AppComponent implements OnInit {
   }
 
   constructor(private titleService: Title, private router: Router, private renderer: Renderer2) {
+    router.events.subscribe((e) => {
+			if (e instanceof NavigationStart) {
+				this.clearSettings();
+			}
+    });
   }
 }
