@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   pageHasScroll;
 
   ngOnInit() {
-    // page settings
+    // page settings initiation. Each page can configure its page setting by its own.
     this.pageSettings = {
       pageSidebarMinified: false,
       pageContentFullHeight: false,
