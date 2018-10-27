@@ -10,6 +10,9 @@ import { AuthenticationService } from '../../shared';
 })
 
 export class RegisterComponent {
+  /**
+   * loading is true when client tries to communicate with server in registration process otherwise false
+   */
   private loading: boolean;
 
   constructor(private app: AppComponent, private router: Router, private authService: AuthenticationService) {
@@ -33,22 +36,29 @@ export class RegisterComponent {
     }
   }
 
+  /**
+   * When input is invalid in the input box, input box must truns to red this function
+   * returns invalid class when input is invalid. use this with [ngClass].
+   */
   public modelValidationStatusClass(m: NgModel): string {
     if (m.invalid && (m.dirty || m.touched)) {
       return 'is-invalid';
     }
-    return ''
+    return '';
   }
 
+  /**
+   * formSubmits calls when user submit the registration form.
+   */
   public formSubmit(f: NgForm) {
     this.loading = true;
     this.authService.signup(f.value).subscribe(() => {
       this.loading = false;
-      console.log('register')
+      console.log('register');
+      this.router.navigate(['dashboard']);
     }, (err) => {
       this.loading = false;
-      console.log(err)
+      console.log(err);
     })
-    // this.router.navigate(['dashboard']);
   }
 }
