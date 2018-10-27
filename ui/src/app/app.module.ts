@@ -16,8 +16,8 @@ import * as global from './globals';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { TopMenuComponent } from './top-menu/top-menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 // Page Components
 import { LoginPage } from './pages/login/login';
@@ -29,8 +29,8 @@ import { DashboardPage } from './pages/dashboard/dashboard';
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    TopMenuComponent,
     FooterComponent,
+    BreadcrumbComponent,
 
     // pages
     LoginPage,
