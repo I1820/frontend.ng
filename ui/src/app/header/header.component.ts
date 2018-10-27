@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'header',
+  selector: 'header-component',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
@@ -21,6 +21,5 @@ export class HeaderComponent {
 	}
 
   constructor(private renderer: Renderer2) {
-
   }
 }
