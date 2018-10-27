@@ -5,7 +5,7 @@ import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
 
 @Component({
-  selector: 'register',
+  selector: 'register-component',
   templateUrl: './register.component.html'
 })
 
@@ -20,19 +20,24 @@ export class RegisterComponent {
     });
   }
 
+  /**
+   * submitButtonText specifies submit button inner html.
+   * when someone click on submit button form status changes to loading
+   * and submit button will shows a spinner.
+   */
   public get submitButtonText(): string {
     if (this.loading) {
-      return `<i class="fas fa-spinner fa-spin"></i>`
+      return `<i class="fas fa-spinner fa-spin"></i>`;
     } else {
-      return "Sign Up"
+      return 'Sign Up';
     }
   }
 
   public modelValidationStatusClass(m: NgModel): string {
     if (m.invalid && (m.dirty || m.touched)) {
-      return "is-invalid"
+      return 'is-invalid';
     }
-    return ""
+    return ''
   }
 
   public formSubmit(f: NgForm) {
