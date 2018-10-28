@@ -3,7 +3,7 @@ import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // User Login / Register
-import { LoginPage } from './pages/login/login';
+import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardPage } from './pages/dashboard/dashboard';
 
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginPage,
+    component: LoginComponent,
     data: { title: 'Login' }
   },
   {

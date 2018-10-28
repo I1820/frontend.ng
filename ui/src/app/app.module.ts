@@ -20,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 // Page Components
-import { LoginPage } from './pages/login/login';
+import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardPage } from './pages/dashboard/dashboard';
 
@@ -33,7 +33,7 @@ import { DashboardPage } from './pages/dashboard/dashboard';
     BreadcrumbComponent,
 
     // pages
-    LoginPage,
+    LoginComponent,
     DashboardPage,
     RegisterComponent,
   ],
