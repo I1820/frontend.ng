@@ -5,7 +5,7 @@ import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
 
 @Component({
-  selector: 'register-component',
+  selector: 'app-register-page',
   templateUrl: './register.component.html'
 })
 
