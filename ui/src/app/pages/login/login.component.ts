@@ -4,11 +4,11 @@ import { NgForm } from '@angular/forms';
 import { AppComponent } from '../../app.component';
 
 @Component({
-    selector: 'login',
-    templateUrl: './login.html'
+    selector: 'app-login-page',
+    templateUrl: './login.component.html'
 })
 
-export class LoginPage {
+export class LoginComponent {
   constructor(private app: AppComponent, private router: Router) {
       app.setPageSettings({
         pageEmpty: true,
