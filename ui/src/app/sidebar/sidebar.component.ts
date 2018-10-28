@@ -1,9 +1,8 @@
 import { group, animate, query, style, trigger, transition, state } from '@angular/animations';
 import { Component, Input, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
-import * as global from '../globals';
 
 @Component({
-  selector: 'sidebar-component',
+  selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   animations: [
     trigger('expandCollapse', [
@@ -18,13 +17,21 @@ import * as global from '../globals';
 
 export class SidebarComponent {
   navProfileState = 'collapse';
-  slimScrollOptions = global.whiteSlimScrollOptions;
   @Output() toggleSidebarMinified = new EventEmitter<boolean>();
   @Output() hideMobileSidebar = new EventEmitter<boolean>();
   @Input() pageSidebarTransparent;
 
+  menus = [
+    {
+      'icon': 'fa fa-th-large',
+      'title': 'Dashboard',
+      'caret': false,
+      'url': 'dashboard',
+    }
+  ];
+
   toggleNavProfile() {
-    if (this.navProfileState == 'collapse') {
+    if (this.navProfileState === 'collapse') {
       this.navProfileState = 'expand';
     } else {
       this.navProfileState = 'collapse';
@@ -36,12 +43,12 @@ export class SidebarComponent {
   }
 
   expandCollapseSubmenu(currentMenu, allMenu, active) {
-    for (let menu of allMenu) {
-      if (menu != currentMenu) {
+    for (const menu of allMenu) {
+      if (menu !== currentMenu) {
         menu.state = 'collapse';
       }
     }
-    if (currentMenu.state == 'expand' || (active.isActive && !currentMenu.state)) {
+    if (currentMenu.state === 'expand' || (active.isActive && !currentMenu.state)) {
       currentMenu.state = 'collapse';
     } else {
       currentMenu.state = 'expand';
@@ -50,20 +57,11 @@ export class SidebarComponent {
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if(!this.eRef.nativeElement.contains(event.target)) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
       this.hideMobileSidebar.emit(true);
     }
   }
 
   constructor(private eRef: ElementRef) {
   }
-
-  menus = [
-    {
-      'icon': 'fa fa-th-large',
-      'title': 'Dashboard',
-      'caret': false,
-      'url': 'dashboard',
-    }
-  ];
 }
