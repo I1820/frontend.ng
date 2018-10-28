@@ -10,7 +10,7 @@ interface IBreadcrumb {
 }
 
 @Component({
-  selector: 'breadcrumb-component',
+  selector: 'app-breadcrumb',
   template: `
     <ol class="breadcrumb pull-right">
       <li class="breadcrumb-item"><a routerLink="">Home</a></li>
