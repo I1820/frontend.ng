@@ -16,9 +16,9 @@
     'p-0': pageSettings.pageEmpty
   }">
 
-  <header-component (toggleSidebarRightCollapsed)="onToggleSidebarRight($event)" (toggleMobileSidebar)="onToggleMobileSidebar($event)" (toggleMobileRightSidebar)="onToggleMobileRightSidebar($event)" [pageSidebarTwo]="pageSettings.pageSidebarTwo" *ngIf="!pageSettings.pageEmpty"></header-component>
+  <app-header (toggleSidebarRightCollapsed)="onToggleSidebarRight($event)" (toggleMobileSidebar)="onToggleMobileSidebar($event)" (toggleMobileRightSidebar)="onToggleMobileRightSidebar($event)" [pageSidebarTwo]="pageSettings.pageSidebarTwo" *ngIf="!pageSettings.pageEmpty"></app-header>
 
-  <sidebar-component (toggleSidebarMinified)="onToggleSidebarMinified($event)" (hideMobileSidebar)="onHideMobileSidebar($event)" *ngIf="!pageSettings.pageWithoutSidebar && !pageSettings.pageEmpty" [pageSidebarTransparent]="pageSettings.pageSidebarTransparent"></sidebar-component>
+  <app-sidebar (toggleSidebarMinified)="onToggleSidebarMinified($event)" (hideMobileSidebar)="onHideMobileSidebar($event)" *ngIf="!pageSettings.pageWithoutSidebar && !pageSettings.pageEmpty" [pageSidebarTransparent]="pageSettings.pageSidebarTransparent"></app-sidebar>
 
   <div id="content" class="content" [ngClass]="{
     'content-full-width': pageSettings.pageContentFullWidth,
@@ -28,6 +28,6 @@
     <router-outlet></router-outlet>
   </div>
 
-  <footer-component *ngIf="pageSettings.pageWithFooter"></footer-component>
+  <app-footer *ngIf="pageSettings.pageWithFooter"></app-footer>
 </div>
 <!-- end #page-container -->
