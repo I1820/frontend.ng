@@ -6,19 +6,21 @@ import { Component, Input, Output, EventEmitter, Renderer2 } from '@angular/core
 })
 export class HeaderComponent {
   @Input() pageSidebarTwo;
-	@Output() toggleSidebarRightCollapsed = new EventEmitter<boolean>();
-	@Output() toggleMobileSidebar = new EventEmitter<boolean>();
-	@Output() toggleMobileRightSidebar = new EventEmitter<boolean>();
+  @Output() toggleSidebarRightCollapsed = new EventEmitter<boolean>();
+  @Output() toggleMobileSidebar = new EventEmitter<boolean>();
+  @Output() toggleMobileRightSidebar = new EventEmitter<boolean>();
 
-  mobileSidebarToggle() {
-		this.toggleMobileSidebar.emit(true);
+  private mobileSidebarToggle(): void {
+    this.toggleMobileSidebar.emit(true);
   }
-  mobileRightSidebarToggle() {
-		this.toggleMobileRightSidebar.emit(true);
+
+  private mobileRightSidebarToggle(): void {
+    this.toggleMobileRightSidebar.emit(true);
   }
-	toggleSidebarRight() {
-		this.toggleSidebarRightCollapsed.emit(true);
-	}
+
+  private toggleSidebarRight(): void {
+    this.toggleSidebarRightCollapsed.emit(true);
+  }
 
   constructor(private renderer: Renderer2) {
   }
