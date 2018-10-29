@@ -6,7 +6,6 @@ export class TokenStorage {
 
   /**
    * Get access token
-   * @returns {Observable<string>}
    */
   public getAccessToken(): Observable<string> {
     const token: string = <string>localStorage.getItem('accessToken');
@@ -15,7 +14,6 @@ export class TokenStorage {
 
   /**
    * Get refresh token
-   * @returns {Observable<string>}
    */
   public getRefreshToken(): Observable<string> {
     const token: string = <string>localStorage.getItem('refreshToken');
@@ -24,7 +22,6 @@ export class TokenStorage {
 
   /**
    * Set access token
-   * @returns {TokenStorage}
    */
   public setAccessToken(token: string): TokenStorage {
     localStorage.setItem('accessToken', token);
@@ -32,9 +29,8 @@ export class TokenStorage {
     return this;
   }
 
-   /**
+  /**
    * Set refresh token
-   * @returns {TokenStorage}
    */
   public setRefreshToken(token: string): TokenStorage {
     localStorage.setItem('refreshToken', token);
@@ -42,7 +38,7 @@ export class TokenStorage {
     return this;
   }
 
-   /**
+  /**
    * Remove tokens
    */
   public clear() {
