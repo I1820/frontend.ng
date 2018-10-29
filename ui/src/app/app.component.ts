@@ -3,6 +3,33 @@ import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
 import * as global from './globals';
 
+/**
+ * PageSettings contains page configuration.
+ * Based on this configuration each page can customize its components.
+ * Components are like header, footer, etc. has an option in page settings.
+ */
+interface PageSettings {
+  pageSidebarMinified: boolean;
+  pageContentFullHeight: boolean;
+  pageContentFullWidth: boolean;
+  pageContentInverseMode: boolean;
+  pageWithFooter: boolean;
+  pageWithoutSidebar: boolean;
+  pageSidebarRight: boolean;
+  pageSidebarRightCollapsed: boolean;
+  pageSidebarTwo: boolean;
+  pageSidebarWide: boolean;
+  pageSidebarTransparent: boolean;
+  pageSidebarLight: boolean;
+  pageTopMenu: boolean;
+  pageEmpty: boolean;
+  pageBodyWhite: boolean;
+  pageMobileSidebarToggled: boolean;
+  pageMobileSidebarFirstClicked: boolean;
+  pageMobileSidebarRightToggled: boolean;
+  pageMobileSidebarRightFirstClicked: boolean;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,11 +38,13 @@ import * as global from './globals';
 
 export class AppComponent implements OnInit {
 
-  pageSettings;
-  pageHasScroll;
+  /**
+   * Current page settings
+   */
+  private pageSettings: PageSettings;
+  private pageHasScroll: boolean;
 
   ngOnInit() {
-    // page settings initiation. Each page can configure its page setting by its own.
     this.pageSettings = {
       pageSidebarMinified: false,
       pageContentFullHeight: false,
@@ -39,7 +68,10 @@ export class AppComponent implements OnInit {
     };
   }
 
-  // window scroll
+  /**
+   * onWindowScroll listens on scroll event.
+   * The scroll event is fired when the document view or an element has been scrolled.
+   */
   @HostListener('window:scroll', ['$event'])
   onWindowScroll($event) {
     const doc = document.documentElement;
@@ -51,8 +83,11 @@ export class AppComponent implements OnInit {
     }
   }
 
-  // clear settings to default
-  clearSettings() {
+  /**
+   * clearSettings clears settings to default.
+   * This function is called when routing is happened to clear old page settings.
+   */
+  private clearSettings(): void {
     this.pageSettings.pageSidebarMinified = false;
     this.pageSettings.pageContentFullHeight = false;
     this.pageSettings.pageContentFullWidth = false;
@@ -70,14 +105,15 @@ export class AppComponent implements OnInit {
     this.pageSettings.pageContentInverseMode = false;
     this.pageSettings.pageMobileSidebarToggled = false;
     this.pageSettings.pageMobileSidebarFirstClicked = false;
-    this.pageSettings.pageMobileRightSidebarToggled = false;
-    this.pageSettings.pageMobileRightSidebarFirstClicked = false;
+
     this.renderer.removeClass(document.body, 'bg-white');
   }
 
-  // set page settings
-  setPageSettings(settings) {
-    for (const option in settings) {
+  /**
+   * setPageSettings sets given settings on current page settings.
+   */
+  public setPageSettings(settings): void {
+    for (const option of Object.keys(settings)) {
       this.pageSettings[option] = settings[option];
       if (option === 'pageBodyWhite' && settings[option] === true) {
         this.renderer.addClass(document.body, 'bg-white');
@@ -86,7 +122,7 @@ export class AppComponent implements OnInit {
   }
 
   // set page minified
-  onToggleSidebarMinified(val: boolean): void {
+  public onToggleSidebarMinified(val: boolean): void {
     if (this.pageSettings.pageSidebarMinified) {
       this.pageSettings.pageSidebarMinified = false;
     } else {
@@ -95,7 +131,7 @@ export class AppComponent implements OnInit {
   }
 
   // set page right collapse
-  onToggleSidebarRight(val: boolean): void {
+  public onToggleSidebarRight(val: boolean): void {
     if (this.pageSettings.pageSidebarRightCollapsed) {
       this.pageSettings.pageSidebarRightCollapsed = false;
     } else {
@@ -104,7 +140,7 @@ export class AppComponent implements OnInit {
   }
 
   // hide mobile sidebar
-  onHideMobileSidebar(val: boolean): void {
+  public onHideMobileSidebar(val: boolean): void {
     if (this.pageSettings.pageMobileSidebarToggled) {
       if (this.pageSettings.pageMobileSidebarFirstClicked) {
         this.pageSettings.pageMobileSidebarFirstClicked = false;
@@ -124,33 +160,12 @@ export class AppComponent implements OnInit {
     }
   }
 
-
-  // hide right mobile sidebar
-  onHideMobileRightSidebar(val: boolean): void {
-    if (this.pageSettings.pageMobileRightSidebarToggled) {
-      if (this.pageSettings.pageMobileRightSidebarFirstClicked) {
-        this.pageSettings.pageMobileRightSidebarFirstClicked = false;
-      } else {
-        this.pageSettings.pageMobileRightSidebarToggled = false;
-      }
-    }
-  }
-
-  // toggle right mobile sidebar
-  onToggleMobileRightSidebar(val: boolean): void {
-    if (this.pageSettings.pageMobileRightSidebarToggled) {
-      this.pageSettings.pageMobileRightSidebarToggled = false;
-    } else {
-      this.pageSettings.pageMobileRightSidebarToggled = true;
-      this.pageSettings.pageMobileRightSidebarFirstClicked = true;
-    }
-  }
-
   constructor(private titleService: Title, private router: Router, private renderer: Renderer2) {
+    // clear settings when routing is happend.
     router.events.subscribe((e) => {
-			if (e instanceof NavigationStart) {
-				this.clearSettings();
-			}
+      if (e instanceof NavigationStart) {
+        this.clearSettings();
+      }
     });
   }
 }
