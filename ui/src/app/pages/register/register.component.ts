@@ -28,7 +28,7 @@ export class RegisterComponent {
    * when someone click on submit button form status changes to loading
    * and submit button will shows a spinner.
    */
-  public get submitButtonText(): string {
+  private get submitButtonText(): string {
     if (this.loading) {
       return `<i class="fas fa-spinner fa-spin"></i>`;
     } else {
@@ -40,7 +40,7 @@ export class RegisterComponent {
    * When input is invalid in the input box, input box must truns to red this function
    * returns invalid class when input is invalid. use this with [ngClass].
    */
-  public modelValidationStatusClass(m: NgModel): string {
+  private modelValidationStatusClass(m: NgModel): string {
     if (m.invalid && (m.dirty || m.touched)) {
       return 'is-invalid';
     }
@@ -50,7 +50,7 @@ export class RegisterComponent {
   /**
    * formSubmits calls when user submit the registration form.
    */
-  public formSubmit(f: NgForm) {
+  private formSubmit(f: NgForm): void {
     this.loading = true;
     this.authService.signup(f.value).subscribe(() => {
       this.loading = false;
