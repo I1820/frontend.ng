@@ -22,7 +22,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 // Page Components
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { DashboardPage } from './pages/dashboard/dashboard';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { DashboardPage } from './pages/dashboard/dashboard';
 
     // pages
     LoginComponent,
-    DashboardPage,
+    DashboardComponent,
     RegisterComponent,
   ],
   imports: [
