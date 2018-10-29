@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
     "ngx-auth": "^4.1.0",
+    "ngx-gravatar": "^3.0.5",
     "ngx-trend": "^3.4.1",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
