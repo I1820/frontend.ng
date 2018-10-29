@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 
+import { AuthenticationService } from '../shared';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html'
@@ -22,6 +24,9 @@ export class HeaderComponent {
     this.toggleSidebarRightCollapsed.emit(true);
   }
 
-  constructor(private renderer: Renderer2) {
+  constructor(
+    private renderer: Renderer2,
+    private authService: AuthenticationService,
+  ) {
   }
 }

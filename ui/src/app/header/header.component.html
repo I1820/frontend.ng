@@ -24,11 +24,11 @@
   <!-- end navbar-header -->
 
   <!-- begin header-nav -->
-  <ul class="navbar-nav navbar-right">
+  <ul class="navbar-nav navbar-right" *ngIf="authService.isAuthorized() | async">
     <li class="dropdown navbar-user" ngbDropdown>
       <a href="javascript:;" class="dropdown-toggle" ngbDropdownToggle>
-        <img src="/assets/img/user/user-13.jpg" alt="" />
-        <span class="d-none d-md-inline">Adam Schwartz</span> <b class="caret"></b>
+        <img src="" alt="" />
+        <span class="d-none d-md-inline">{{(authService.getUser() | async).firstname}} {{(authService.getUser() | async).lastname}}</span> <b class="caret"></b>
       </a>
       <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
         <a href="javascript:;" class="dropdown-item">Edit Profile</a>
