@@ -90,7 +90,7 @@ export const COLOR_YELLOW_TRANSPARENT_8 = 'rgba(255, 217, 0, 0.8)';
 export const COLOR_YELLOW_TRANSPARENT_9 = 'rgba(255, 217, 0, 0.9)';
 
 export const COLOR_ORANGE	= '#f59c1a';
-export const COLOR_ORANGE_LIGHTER= '#f7b048';
+export const COLOR_ORANGE_LIGHTER = '#f7b048';
 export const COLOR_ORANGE_DARKER = '#c47d15';
 export const COLOR_ORANGE_TRANSPARENT_1 = 'rgba(245, 156, 26, 0.1)';
 export const COLOR_ORANGE_TRANSPARENT_2 = 'rgba(245, 156, 26, 0.2)';
