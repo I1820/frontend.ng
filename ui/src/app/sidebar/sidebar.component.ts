@@ -16,7 +16,6 @@ import { Component, Input, Output, EventEmitter, ElementRef, HostListener } from
 })
 
 export class SidebarComponent {
-  navProfileState = 'collapse';
   @Output() toggleSidebarMinified = new EventEmitter<boolean>();
   @Output() hideMobileSidebar = new EventEmitter<boolean>();
   @Input() pageSidebarTransparent;
@@ -29,14 +28,6 @@ export class SidebarComponent {
       'url': 'dashboard',
     }
   ];
-
-  toggleNavProfile() {
-    if (this.navProfileState === 'collapse') {
-      this.navProfileState = 'expand';
-    } else {
-      this.navProfileState = 'collapse';
-    }
-  }
 
   toggleMinified() {
     this.toggleSidebarMinified.emit(true);

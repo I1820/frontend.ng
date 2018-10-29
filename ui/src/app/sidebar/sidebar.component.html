@@ -2,33 +2,9 @@
 <div id="sidebar" class="sidebar" [ngClass]="{ 'sidebar-transparent': this.pageSidebarTransparent}">
   <!-- begin sidebar scrollbar -->
   <div slimScroll class="height-full">
-    <!-- begin sidebar user -->
-    <ul class="nav">
-      <li class="nav-profile" [ngClass]="{ 'active' : (navProfileState == 'expand') }">
-        <a href="javascript:;" (click)="toggleNavProfile()">
-          <div class="cover with-shadow"></div>
-          <div class="image">
-            <img src="/assets/img/user/user-13.jpg" alt="" />
-          </div>
-          <div class="info">
-            <b class="caret pull-right"></b>
-            Sean Ngu
-            <small>Front end developer</small>
-          </div>
-        </a>
-      </li>
-      <li [@expandCollapse]="navProfileState">
-        <ul class="nav nav-profile d-block">
-          <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
-          <li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
-          <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
-        </ul>
-      </li>
-    </ul>
-    <!-- end sidebar user -->
     <!-- begin sidebar nav -->
     <ul class="nav">
-      <li class="nav-header">Navigation</li>
+      <li class="nav-header">Menus</li>
 
       <!-- render menu item -->
       <ng-template #sidebarMenu let-menu="menu">
