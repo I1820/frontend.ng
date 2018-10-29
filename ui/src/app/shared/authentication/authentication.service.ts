@@ -5,6 +5,7 @@ import { tap, map, switchMap, catchError } from 'rxjs/operators';
 import { AuthService } from 'ngx-auth';
 
 import { TokenStorage } from './token-storage.service';
+import User from './user.model';
 
 interface AccessData {
   accessToken: string;
@@ -15,6 +16,7 @@ interface RegisterData {
   firstName: string;
   lastName: string;
   username: string;
+  password: string;
   email: string;
 }
 
@@ -30,7 +32,7 @@ export class AuthenticationService implements AuthService {
    * Check, if user already authorized.
    * @description Should return Observable with true or false values
    */
-  public isAuthorized(): Observable < boolean > {
+  public isAuthorized(): Observable <boolean> {
     return this.tokenStorage
     .getAccessToken()
     .pipe(map(token => !!token));
@@ -41,7 +43,7 @@ export class AuthenticationService implements AuthService {
    * @description Should return access token in Observable from e.g.
    * localStorage
    */
-  public getAccessToken(): Observable < string > {
+  public getAccessToken(): Observable <string> {
     return this.tokenStorage.getAccessToken();
   }
 
@@ -50,14 +52,14 @@ export class AuthenticationService implements AuthService {
    * @description Should be successfully completed so interceptor
    * can execute pending requests or retry original one
    */
-  public refreshToken(): Observable <AccessData> {
+  public refreshToken(): Observable <User> {
     return this.tokenStorage
     .getRefreshToken()
     .pipe(
       switchMap((refreshToken: string) =>
         this.http.post(`/api/v1/auth/refresh`, { refreshToken })
       ),
-      tap((tokens: AccessData) => this.saveAccessData(tokens)),
+      tap((user: User) => this.saveAccessData(user)),
       catchError((err) => {
         this.logout();
 
@@ -92,7 +94,7 @@ export class AuthenticationService implements AuthService {
    */
   public login(username: string, password: string): Observable<any> {
     return this.http.post(`/api/v1/auth/login`, { username, password })
-    .pipe(tap((tokens: AccessData) => this.saveAccessData(tokens)));
+    .pipe(tap((user: User) => this.saveAccessData(user)));
   }
 
   /**
@@ -112,12 +114,19 @@ export class AuthenticationService implements AuthService {
   }
 
   /**
-   * Save access data in the storage
+   * Get current user data
    */
-  private saveAccessData({ accessToken, refreshToken }: AccessData) {
+  public getUser(): User {
+    return this.tokenStorage.getUser();
+  }
+
+  /**
+   * Save user data and token in the storage
+   */
+  private saveAccessData(user: User) {
     this.tokenStorage
-      .setAccessToken(accessToken)
-      .setRefreshToken(refreshToken);
+      .setAccessToken(user.token)
+      .setUser(user);
   }
 
 }
