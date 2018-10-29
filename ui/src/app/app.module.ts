@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GravatarModule } from 'ngx-gravatar';
 
 // Global Configurations
 import * as global from './globals';
@@ -45,6 +46,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     HttpClientModule,
     AuthenticationModule,
     NgbModule,
+    GravatarModule,
   ],
   providers: [ Title ],
   bootstrap: [ AppComponent ]
