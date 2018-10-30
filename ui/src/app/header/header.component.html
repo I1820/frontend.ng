@@ -27,7 +27,7 @@
   <ul class="navbar-nav navbar-right" *ngIf="authService.isAuthorized() | async">
     <li class="dropdown navbar-user" ngbDropdown>
       <a href="javascript:;" class="dropdown-toggle" ngbDropdownToggle>
-        <img ngxGravatar [email]="this.authService.getUser().email" />
+        <img ngxGravatar [email]="this.authService.getUser().email" [fallback]="mm" />
         <span class="d-none d-md-inline">{{authService.getUser().firstname}} {{authService.getUser().lastname}}</span> <b class="caret"></b>
       </a>
       <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
