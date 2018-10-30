@@ -107,6 +107,7 @@ export class AuthenticationService implements AuthService {
 
   /**
    * Logout
+   * There is no logout API for I1820, just remove the token and you are logged out
    */
   public logout(): void {
     this.tokenStorage.clear();
