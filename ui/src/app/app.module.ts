@@ -3,7 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationModule } from './shared';
+import { AuthenticationModule, BackendService } from './shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,6 +24,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     LoginComponent,
     DashboardComponent,
     RegisterComponent,
+    ProjectsComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -48,7 +50,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     NgbModule,
     GravatarModule,
   ],
-  providers: [ Title ],
+  providers: [ Title, BackendService ],
   bootstrap: [ AppComponent ]
 })
 
