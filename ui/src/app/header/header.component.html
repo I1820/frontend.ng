@@ -32,11 +32,8 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
         <a href="javascript:;" class="dropdown-item">Edit Profile</a>
-        <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
-        <a href="javascript:;" class="dropdown-item">Calendar</a>
-        <a href="javascript:;" class="dropdown-item">Setting</a>
         <div class="dropdown-divider"></div>
-        <a href="javascript:;" class="dropdown-item">Log Out</a>
+        <a (click)="this.authService.logout()" class="dropdown-item">Log Out</a>
       </div>
     </li>
     <li class="divider d-none d-md-block" *ngIf="this.pageSidebarTwo"></li>
