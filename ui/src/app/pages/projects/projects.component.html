@@ -1,0 +1,43 @@
+<style type="text/css">
+.gm-style-cc { display:none; }
+</style>
+<!-- begin breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Projects <small>Where the magic happens</small></h1>
+<!-- end page-header -->
+<!-- begin projects table -->
+<div class="panel panel-inverse">
+  <div class="panel-heading">
+    <div class="panel-heading-btn">
+      <a class="btn btn-xs btn-icon btn-circle btn-success" (click)="refresh()"><i class="fa fa-redo"></i></a>
+    </div>
+    <h4 class="panel-title">Project List</h4>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects$ | async; let idx = index">
+            <td>{{idx + 1}}</td>
+            <td>{{project.name}}</td>
+            <td>{{project.id}}</td>
+            <td class="with-btn">
+              <a class="btn btn-sm btn-icon btn-circle"><i class="fa fa-trash"></i></a>
+              <a [routerLink]="['/projects', project.id]" class="btn btn-sm btn-icon btn-circle"><i class="fa fa-info"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- end projects table -->
