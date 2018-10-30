@@ -5,7 +5,7 @@ import { map, tap } from 'rxjs/operators';
 import { NGXLogger } from 'ngx-logger';
 
 import { AuthenticationService } from './authentication/authentication.service';
-import { Project } from './project.model'
+import { Project } from './project.model';
 
 /**
  * BackendError represents errors from backend
