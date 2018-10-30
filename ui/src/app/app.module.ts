@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GravatarModule } from 'ngx-gravatar';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 // Global Configurations
 import * as global from './globals';
@@ -49,6 +50,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
     AuthenticationModule,
     NgbModule,
     GravatarModule,
+    LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
   ],
   providers: [ Title, BackendService ],
   bootstrap: [ AppComponent ]
