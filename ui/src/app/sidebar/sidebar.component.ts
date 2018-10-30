@@ -26,6 +26,11 @@ export class SidebarComponent {
       'title': 'Dashboard',
       'caret': false,
       'url': 'dashboard',
+    }, {
+      'icon': 'far fa-smile',
+      'title': 'Projects',
+      'caret': false,
+      'url': 'projects',
     }
   ];
 
