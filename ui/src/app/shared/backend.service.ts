@@ -33,21 +33,24 @@ export class BackendService {
   ) {}
 
   // errorLogger logs every error on backend communication
-  private errorLogger(error: HttpErrorResponse): void {
+  private errorLogger(error: HttpErrorResponse, apiName: string): void {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred.
       this.logger.error('An error occurred:', error.error.message);
     } else {
       // The backend returned an unsuccessful response code.
       const err = <BackendError> error.error;
-      this.logger.error('Backend Service:', 'Project List', `${err.code}: ${err.error}`);
+      this.logger.error('Backend Service:', apiName, `${err.code}: ${err.error}`);
     }
   }
 
   // projectList lists projects of authentication user.
   // This function converts projects to Project Model
   public projectsList(): Observable<Project[]> {
-    this.logger.debug('Backend Service:', 'Projects List API is called');
+    const apiName = 'Projects List';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
     return this.http.get('/api/v1/projects').pipe(map(
       (ps: any[]) => {
         const projects: Project[] = [];
@@ -57,8 +60,28 @@ export class BackendService {
         return projects;
       }), tap(
         (ps: Project[]) => {
-          this.logger.info('Backend Service:', 'Projects List', ps);
-        }, (error) => this.errorLogger(error))
+          this.logger.info('Backend Service:', apiName, ps);
+        }, (error) => this.errorLogger(error, apiName))
     );
+  }
+
+  // projectsShow shows detail about given project identification.
+  public projectsShow(id: string): Observable<Project> {
+    const apiName = 'Projects Show';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+    return this.http.get(`/api/v1/projects/${id}`).pipe(map(
+      (p: any) => {
+        const project: Project = new Project(p.name, p.id);
+        return project;
+      }), tap(
+        (p: Project) => {
+          this.logger.info('Backend Service:', apiName, p);
+        }, (error) => this.errorLogger(error, apiName))
+    );
+  }
+
+  public projectsThings(id: string) {
   }
 }
