@@ -1,0 +1,50 @@
+<style type="text/css">
+.gm-style-cc { display:none; }
+</style>
+<!-- begin breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Project <small>{{(project$ | async)?.name}}</small></h1>
+<!-- end page-header -->
+<!-- begin things table -->
+<div class="panel panel-inverse">
+  <div class="panel-heading">
+    <div class="panel-heading-btn">
+      <a class="btn btn-xs btn-icon btn-circle btn-success" (click)="refresh()"><i class="fa fa-redo"></i></a>
+    </div>
+    <h4 class="panel-title">Things List</h4>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let thing of things$ | async; let idx = index">
+            <td>{{idx + 1}}</td>
+            <td>{{thing.name}}</td>
+            <td>{{thing.id}}</td>
+            <td>{{thing.model}}</td>
+            <td class="with-btn">
+              <a class="btn btn-sm btn-icon btn-circle"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- end things table -->
+<!-- begin new thing button -->
+<button type="button" class="btn btn-primary">
+  <i class="fas fa-plus"></i>
+  New Thing
+</button>
+<!-- end new thing button -->
