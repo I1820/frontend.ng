@@ -27,6 +27,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
+import { ThingNewComponent } from './pages/thing-new/thing-new.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ProjectDetailComponent } from './pages/project-detail/project-detail.co
     RegisterComponent,
     ProjectsComponent,
     ProjectDetailComponent,
+    ThingNewComponent,
   ],
   imports: [
     AppRoutingModule,
