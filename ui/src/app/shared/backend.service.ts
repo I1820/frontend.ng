@@ -6,6 +6,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { AuthenticationService } from './authentication/authentication.service';
 import { Project } from './project.model';
+import { Thing } from './thing.model';
 
 /**
  * BackendError represents errors from backend
@@ -82,6 +83,23 @@ export class BackendService {
     );
   }
 
-  public projectsThings(id: string) {
+  public projectsThings(id: string): Observable<Thing[]> {
+    const apiName = 'Projects Things';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+    return this.http.get(`/api/v1/projects/${id}/things`).pipe(map(
+      (ts: any[]) => {
+        const things: Thing[] = []
+        for (const t of ts) {
+          ts.push(new Thing(t.name, t.id, t.model));
+        }
+        return things;
+      }), tap(
+        (ts: Thing[]) => {
+          this.logger.info('Backend Service:', apiName, ts);
+        }, (error) => this.errorLogger(error, apiName))
+    );
+
   }
 }
