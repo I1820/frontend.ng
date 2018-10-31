@@ -56,7 +56,7 @@ import { ThingNewComponent } from './pages/thing-new/thing-new.component';
     NgbModule,
     GravatarModule,
     LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
-    AgmCoreModule.forRoot({ apiKey: 'YOUR_KEY' }),
+    AgmCoreModule.forRoot({ apiKey: '' }),
   ],
   providers: [ Title, BackendService ],
   bootstrap: [ AppComponent ]
