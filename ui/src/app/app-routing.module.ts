@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
+import { ThingNewComponent } from './pages/thing-new/thing-new.component';
 
 const routes: Routes = [
   { // by default client is redirected to login page.
@@ -44,12 +45,29 @@ const routes: Routes = [
       {
         path: '',
         component: ProjectsComponent,
-        data: { title: '' },
+        data: { title: '' }, // override parent title
       },
       {
         path: ':id',
-        component: ProjectDetailComponent,
         data: { title: 'Project Detail' },
+        children: [
+          {
+            path: '',
+            component: ProjectDetailComponent,
+            data: { title: '' }, // override parent title
+          },
+          {
+            path: 'things',
+            data: { title: '' }, // override parent title
+            children: [
+              {
+                path: 'new',
+                component: ThingNewComponent,
+                data: { title: 'Thing Creation' },
+              }
+            ],
+          },
+        ],
       }
     ],
   },
