@@ -26,6 +26,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
     DashboardComponent,
     RegisterComponent,
     ProjectsComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     AppRoutingModule,
