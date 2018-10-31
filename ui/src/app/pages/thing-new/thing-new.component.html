@@ -1,0 +1,61 @@
+<style type="text/css">
+.gm-style-cc { display:none; }
+</style>
+<!-- begin breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Thing Creation <small>Build your thing</small></h1>
+<!-- end page-header -->
+<div class="row">
+  <!-- begin thing-creation-form -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Thing Information</h4>
+      </div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+          <label class="control-label">Name <span class="text-danger">*</span></label>
+          <div class="row m-b-15">
+            <div class="col-md-12">
+              <input name="name" #name="ngModel" ngModel type="text" [ngClass]="modelValidationStatusClass(name)" class="form-control" placeholder="Name" required />
+              <div *ngIf="name.errors?.required" class="invalid-feedback">
+                Name is required.
+              </div>
+            </div>
+          </div>
+          <label class="control-label">GeoLocation <span class="text-danger">*</span></label>
+          <div class="row row-space-10">
+            <div class="col-md-6 m-b-15">
+              <input name="latt" #latt="ngModel" ngModel type="text" [ngClass]="modelValidationStatusClass(latt)" class="form-control" placeholder="Latitude" required
+                                                                                                                                       pattern="[-+]?[0-9]{1,7}(\.[0-9]+)"
+              />
+              <div *ngIf="latt.errors?.required" class="invalid-feedback">
+                Latitude is required.
+              </div>
+              <div *ngIf="long.errors?.pattern" class="invalid-feedback">
+                Please enter a valid latitude.
+              </div>
+            </div>
+            <div class="col-md-6 m-b-15">
+              <input name="long" #long="ngModel" ngModel type="text" [ngClass]="modelValidationStatusClass(long)" class="form-control" placeholder="Longitude" required
+                                                                                                                                       pattern="[-+]?[0-9]{1,7}(\.[0-9]+)"
+              />
+              <div *ngIf="long.errors?.required" class="invalid-feedback">
+                Longitude is required.
+              </div>
+              <div *ngIf="long.errors?.pattern" class="invalid-feedback">
+                Please enter a valid longitude.
+              </div>
+            </div>
+          </div>
+          <div class="register-buttons">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Build</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- end thing-creation-form -->
+</div>
