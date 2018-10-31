@@ -90,7 +90,7 @@ export class BackendService {
 
     return this.http.get(`/api/v1/projects/${id}/things`).pipe(map(
       (ts: any[]) => {
-        const things: Thing[] = []
+        const things: Thing[] = [];
         for (const t of ts) {
           ts.push(new Thing(t.name, t.id, t.model));
         }
