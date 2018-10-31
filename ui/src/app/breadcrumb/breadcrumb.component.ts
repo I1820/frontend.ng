@@ -41,11 +41,6 @@ export class BreadcrumbComponent implements OnInit {
         // set breadcrumbs based on activated route
         const root: ActivatedRoute = this.activatedRoute.root;
         this.breadcrumbs = this.getBreadcrumbs(root);
-        for (let i = 0; i < this.breadcrumbs.length; i++) {
-          if (this.breadcrumbs[i].label === root.firstChild.snapshot.data[this.routeDataBreadcrumb]) {
-            this.breadcrumbs[i].active = true;
-          }
-        }
       }
     });
   }
@@ -62,6 +57,7 @@ export class BreadcrumbComponent implements OnInit {
 
     // return if there are no more children
     if (children.length === 0) {
+      breadcrumbs[breadcrumbs.length - 1].active = true;
       return breadcrumbs;
     }
 
@@ -73,7 +69,7 @@ export class BreadcrumbComponent implements OnInit {
       }
 
       // verify the custom data property "title" is specified on the route
-      if (!child.snapshot.data.hasOwnProperty(this.routeDataBreadcrumb)) {
+      if (!child.snapshot.data.hasOwnProperty(this.routeDataBreadcrumb) || child.snapshot.data[this.routeDataBreadcrumb] === '') {
         return this.getBreadcrumbs(child, url, breadcrumbs);
       }
 
