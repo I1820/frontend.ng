@@ -4,6 +4,7 @@ import * as global from '../../globals';
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 
