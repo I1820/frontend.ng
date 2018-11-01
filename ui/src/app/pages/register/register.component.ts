@@ -38,13 +38,10 @@ export class RegisterComponent {
 
   /**
    * When input is invalid in the input box, input box must truns to red this function
-   * returns invalid class when input is invalid. use this with [ngClass].
+   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
    */
-  private modelValidationStatusClass(m: NgModel): string {
-    if (m.invalid && (m.dirty || m.touched)) {
-      return 'is-invalid';
-    }
-    return '';
+  private isValid(m: NgModel): boolean {
+    return m.invalid && (m.dirty || m.touched);
   }
 
   /**
