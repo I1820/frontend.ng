@@ -2,9 +2,6 @@
 @import 'http://fonts.googleapis.com/css?family=Roboto:300,400,600,700';
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
-@import 'assets/css/style.css';
-@import 'assets/css/style-responsive.min.css';
-@import 'assets/css/theme/default.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css';
 
 .angular5 .sidebar .sub-menu {
