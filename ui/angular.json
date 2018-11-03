@@ -23,8 +23,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/styles.less"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/less"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
