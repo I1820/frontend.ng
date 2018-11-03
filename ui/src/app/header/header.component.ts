@@ -4,7 +4,8 @@ import { AuthenticationService } from '../shared';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.less']
 })
 export class HeaderComponent {
   @Input() pageSidebarTwo;

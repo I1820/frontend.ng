@@ -4,6 +4,7 @@ import { Component, Input, Output, EventEmitter, ElementRef, HostListener } from
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.less'],
   animations: [
     trigger('expandCollapse', [
       state('expand', style({ height: '*', overflow: 'hidden', display: 'block' })),

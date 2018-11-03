@@ -6,7 +6,8 @@ import { AuthenticationService } from '../../shared';
 
 @Component({
   selector: 'app-login-page',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.less']
 })
 
 export class LoginComponent {

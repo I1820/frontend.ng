@@ -6,7 +6,8 @@ import { AuthenticationService } from '../../shared';
 
 @Component({
   selector: 'app-register-page',
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.less']
 })
 
 export class RegisterComponent {
