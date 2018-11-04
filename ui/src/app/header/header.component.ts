@@ -8,21 +8,10 @@ import { AuthenticationService } from '../shared';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent {
-  @Input() pageSidebarTwo;
-  @Output() toggleSidebarRightCollapsed = new EventEmitter<boolean>();
   @Output() toggleMobileSidebar = new EventEmitter<boolean>();
-  @Output() toggleMobileRightSidebar = new EventEmitter<boolean>();
 
   private mobileSidebarToggle(): void {
     this.toggleMobileSidebar.emit(true);
-  }
-
-  private mobileRightSidebarToggle(): void {
-    this.toggleMobileRightSidebar.emit(true);
-  }
-
-  private toggleSidebarRight(): void {
-    this.toggleSidebarRightCollapsed.emit(true);
   }
 
   constructor(
