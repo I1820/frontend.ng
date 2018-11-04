@@ -17,7 +17,6 @@ interface PageSettings {
   pageWithoutSidebar: boolean;
   pageSidebarRight: boolean;
   pageSidebarRightCollapsed: boolean;
-  pageSidebarTwo: boolean;
   pageSidebarWide: boolean;
   pageSidebarTransparent: boolean;
   pageSidebarLight: boolean;
@@ -33,7 +32,7 @@ interface PageSettings {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.less']
 })
 
 export class AppComponent implements OnInit {
@@ -55,7 +54,6 @@ export class AppComponent implements OnInit {
       pageWithoutSidebar: false,
       pageSidebarRight: false,
       pageSidebarRightCollapsed: false,
-      pageSidebarTwo: false,
       pageSidebarWide: false,
       pageSidebarTransparent: false,
       pageSidebarLight: false,
@@ -96,7 +94,6 @@ export class AppComponent implements OnInit {
     this.pageSettings.pageWithoutSidebar = false;
     this.pageSettings.pageSidebarRight = false;
     this.pageSettings.pageSidebarRightCollapsed = false;
-    this.pageSettings.pageSidebarTwo = false;
     this.pageSettings.pageSidebarWide = false;
     this.pageSettings.pageSidebarTransparent = false;
     this.pageSettings.pageSidebarLight = false;
@@ -128,15 +125,6 @@ export class AppComponent implements OnInit {
       this.pageSettings.pageSidebarMinified = false;
     } else {
       this.pageSettings.pageSidebarMinified = true;
-    }
-  }
-
-  // set page right collapse
-  public onToggleSidebarRight(val: boolean): void {
-    if (this.pageSettings.pageSidebarRightCollapsed) {
-      this.pageSettings.pageSidebarRightCollapsed = false;
-    } else {
-      this.pageSettings.pageSidebarRightCollapsed = true;
     }
   }
 
