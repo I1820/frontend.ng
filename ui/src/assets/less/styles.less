@@ -1,11 +1,8 @@
-@import '_variable';
+@import '_variables';
 @import '_mixins';
-
 @import '_page_structure_list';
 @import '_component_list';
 @import '_widget_list';
-@import '_plugin_list';
-
 @import '_helper';
 @import '_responsive';
 @import 'theme/_default';
@@ -15,23 +12,26 @@
 
 body,
 html {
-    height: 100%;
+  height: 100%;
 }
+
 body {
-    background: @bg_body;
-    font-size: @body_font_size;
-    font-family: @body_font_family;
-    color: @body_text_color;
-    text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  background: @bg_body;
+  font-size: @body_font_size;
+  font-family: @body_font_family;
+  color: @body_text_color;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 .ie8 body {
-    font-family: Arial,sans-serif;
+  font-family: Arial, sans-serif;
 }
-h1, h2, h3, h4, h5, h6{
-    font-weight: 500;
-    color: @heading_text_color;
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  color: @heading_text_color;
 }
 .h1, h1 { font-size: 36px; }
 .h2, h2 { font-size: 30px; }
@@ -39,34 +39,41 @@ h1, h2, h3, h4, h5, h6{
 .h4, h4 { font-size: 18px; }
 .h5, h5 { font-size: 14px; }
 .h6, h6 { font-size: 12px; }
+
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-    font-size: 60%;
-    font-weight: normal;
-    color: @heading_small_text_color;
+  font-size: 60%;
+  font-weight: normal;
+  color: @heading_small_text_color;
 }
+
 a {
-    color: #2196F3;
-    transition: color 100ms ease-in-out;
+  color: #2196f3;
+  transition: color 100ms ease-in-out;
 }
+
 a:focus {
-    outline: none;
+  outline: none;
 }
+
 b, strong {
-	font-weight: bold;
+  font-weight: bold;
 }
-a:hover, 
+
+a:hover,
 a:focus,
- a:active {
-    color: #0D47A1;
+a:active {
+  color: #0d47a1;
 }
+
 label {
-    color: @black;
-    font-weight: 600;
+  color: @black;
+  font-weight: 600;
 }
+
 hr {
-	border: none;
-	height: 1px;
-	background: #f1f3f5;
+  border: none;
+  height: 1px;
+  background: #f1f3f5;
 }
 
 
@@ -81,29 +88,29 @@ hr {
 .editable-buttons .glyphicon,
 .input-append .icon-eye-open,
 .input-prepend .icon-eye-open,
-.tagit .ui-icon-close:before,
-.sidebar li > a .caret:before,
-.attached-document > li:before,
-.float-sub-menu li > a .caret:before,
+.tagit .ui-icon-close::before,
+.sidebar li > a .caret::before,
+.attached-document > li::before,
+.float-sub-menu li > a .caret::before,
 .combobox-container .glyphicon-remove,
-.combobox-container .icon-remove:before,
-table.dataTable thead .sorting:after, 
-table.dataTable thead .sorting_asc:after, 
-table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_asc_disabled:after, 
-table.dataTable thead .sorting_desc_disabled:after,
+.combobox-container .icon-remove::before,
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting_desc::after,
+table.dataTable thead .sorting_asc_disabled::after,
+table.dataTable thead .sorting_desc_disabled::after,
 .bootstrap-datetimepicker-widget .glyphicon,
 .bootstrap-calendar .calendar .icon-arrow-right,
 .bootstrap-calendar .calendar .icon-arrow-left,
-.theme-panel .theme-list > li.active > a:before,
-.sw-main > ul.step-anchor.nav-tabs > li.done > a .number:before,
-.simplecolorpicker.glyphicons span.color[data-selected]:after,
-.simplecolorpicker.fontawesome span.color[data-selected]:after,
-.jstree-default .jstree-checked > .jstree-checkbox:after,
-.jstree-default.jstree-checkbox-selection .jstree-clicked > .jstree-checkbox:after {
-	font-family: Font Awesome\ 5 Free !important;
-	font-weight: 900;
-	font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
+.theme-panel .theme-list > li.active > a::before,
+.sw-main > ul.step-anchor.nav-tabs > li.done > a .number::before,
+.simplecolorpicker.glyphicons span.color[data-selected]::after,
+.simplecolorpicker.fontawesome span.color[data-selected]::after,
+.jstree-default .jstree-checked > .jstree-checkbox::after,
+.jstree-default.jstree-checkbox-selection .jstree-clicked > .jstree-checkbox::after {
+  font-family: Font Awesome\ 5 Free !important;
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
 }
