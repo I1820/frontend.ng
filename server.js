@@ -11,6 +11,8 @@
  * +===============================================
  */
 const Hapi = require("hapi");
+const Wreck = require("wreck");
+const Boom = require("boom");
 
 const server = Hapi.server({
   port: 1820,
@@ -40,11 +42,16 @@ const init = async () => {
         },
 
         // processes the response of upstream service before sending to the client.
-        onResponse: (err, res, request, h, settings, ttl) => {
-          if (res.statusCode === 404) {
-            // TODO: handles 404 with our theme page
+        onResponse: async (err, res, request, h, settings, ttl) => {
+          if (err) { // there is a connection error to I1820 backend
+            throw err;
           }
-          return res
+
+          if (res.statusCode !== 200) {
+            payload  = await Wreck.read(res, { json: true });
+            throw new Boom(payload.error, { statusCode: payload.code });
+          }
+          return res;
         }
       }
     }
