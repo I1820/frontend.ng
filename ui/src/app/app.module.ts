@@ -29,6 +29,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { ThingNewComponent } from './pages/thing-new/thing-new.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ThingNewComponent } from './pages/thing-new/thing-new.component';
     ProjectsComponent,
     ProjectDetailComponent,
     ThingNewComponent,
+    ProfileComponent,
   ],
   imports: [
     AppRoutingModule,
