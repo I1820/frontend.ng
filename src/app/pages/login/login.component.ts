@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
+import { NotificationsService} from 'angular2-notifications';
+
 
 @Component({
   selector: 'app-login-page',
@@ -21,6 +23,7 @@ export class LoginComponent {
     private app: AppComponent,
     private router: Router,
     private authService: AuthenticationService,
+    private notifService: NotificationsService,
   ) {
     this.loading = false;
     app.setPageSettings({
@@ -52,7 +55,7 @@ export class LoginComponent {
       this.router.navigate(['dashboard']);
     }, (err) => {
       this.loading = false;
-      console.log(err);
+      this.notifService.error('Login Failed', `${err.error.statusCode}: ${err.error.message}`);
     });
   }
 }
