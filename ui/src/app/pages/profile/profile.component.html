@@ -1,0 +1,168 @@
+<!-- begin profile -->
+<div class="profile">
+  <div class="profile-header">
+    <!-- BEGIN profile-header-cover -->
+    <div class="profile-header-cover"></div>
+    <!-- END profile-header-cover -->
+    <!-- BEGIN profile-header-content -->
+    <div class="profile-header-content">
+      <!-- BEGIN profile-header-img -->
+      <div class="profile-header-img">
+        <img ngxGravatar [email]="user.email" [fallback]="mm" [round]="false" [size]="120" />
+      </div>
+      <!-- END profile-header-img -->
+      <!-- BEGIN profile-header-info -->
+      <div class="profile-header-info">
+        <h4 class="m-t-10 m-b-5">{{user.firstname}} {{user.lastname}}</h4>
+        <p class="m-b-10">UXUI + Frontend Developer</p>
+        <a href="#" class="btn btn-xs btn-yellow">Edit Profile</a>
+      </div>
+      <!-- END profile-header-info -->
+    </div>
+    <!-- END profile-header-content -->
+    <!-- BEGIN profile-header-tab -->
+    <ul class="profile-header-tab nav nav-tabs">
+      <li class="nav-item" *ngFor="let tab of tabs; let i = index">
+        <a href="javascript:;" (click)="showTab(i)" [ngClass]="{ 'active': tab.isSelected }" class="nav-link">{{ tab.name | uppercase }}</a>
+      </li>
+    </ul>
+    <!-- END profile-header-tab -->
+  </div>
+</div>
+<!-- end profile -->
+<!-- begin profile-content -->
+<div class="profile-content">
+  <!-- begin tab-content -->
+  <div class="tab-content p-0">
+    <!-- begin #profile-about tab (index = 0) -->
+    <div class="tab-pane fade" [ngClass]="{ 'active show': tabs[0].isSelected }">
+      <!-- begin table -->
+      <div class="table-responsive">
+        <table class="table table-profile">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                <h4>About Me <small>Details we know about you.</small></h4>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="divider">
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="field">First Name</td>
+              <td> {{user.firstname}} <a href="javascript:;" class="m-l-5">Edit</a></td>
+            </tr>
+            <tr>
+              <td class="field">Last Name</td>
+              <td> {{user.lastname}} <a href="javascript:;" class="m-l-5">Edit</a></td>
+            </tr>
+            <tr class="divider">
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="field">Mobile</td>
+              <td><i class="fa fa-mobile fa-lg m-r-5"></i> +1-(847)- 367-8924 <a href="javascript:;" class="m-l-5">Edit</a></td>
+            </tr>
+            <tr>
+              <td class="field">Home</td>
+              <td><a href="javascript:;">Add Number</a></td>
+            </tr>
+            <tr>
+              <td class="field">Office</td>
+              <td><a href="javascript:;">Add Number</a></td>
+            </tr>
+            <tr class="divider">
+              <td colspan="2"></td>
+            </tr>
+            <tr class="highlight">
+              <td class="field">About Me</td>
+              <td><a href="javascript:;">Add Description</a></td>
+            </tr>
+            <tr class="divider">
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td class="field">Country/Region</td>
+              <td>
+                <select class="form-control input-inline input-xs" name="region">
+                  <option value="US" selected>United State</option>
+                  <option value="AF">Afghanistan</option>
+                  <option value="AL">Albania</option>
+                  <option value="DZ">Algeria</option>
+                  <option value="AS">American Samoa</option>
+                  <option value="AD">Andorra</option>
+                  <option value="AO">Angola</option>
+                  <option value="AI">Anguilla</option>
+                  <option value="AQ">Antarctica</option>
+                  <option value="AG">Antigua and Barbuda</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="field">City</td>
+              <td>Los Angeles</td>
+            </tr>
+            <tr>
+              <td class="field">State</td>
+              <td><a href="javascript:;">Add State</a></td>
+            </tr>
+            <tr>
+              <td class="field">Website</td>
+              <td><a href="javascript:;">Add Webpage</a></td>
+            </tr>
+            <tr>
+              <td class="field">Gender</td>
+              <td>
+                <select class="form-control input-inline input-xs" name="gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Birthdate</td>
+              <td>
+                <select class="form-control input-inline input-xs" name="day">
+                  <option value="04" selected>04</option>
+                </select>
+                -
+                <select class="form-control input-inline input-xs" name="month">
+                  <option value="11" selected>11</option>
+                </select>
+                -
+                <select class="form-control input-inline input-xs" name="year">
+                  <option value="1989" selected>1989</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Language</td>
+              <td>
+                <select class="form-control input-inline input-xs" name="language">
+                  <option value="" selected>English</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="divider">
+              <td colspan="2"></td>
+            </tr>
+            <tr class="highlight">
+              <td class="field">&nbsp;</td>
+              <td class="p-t-10 p-b-10">
+                <button type="submit" class="btn btn-primary width-150">Update</button>
+                <button type="submit" class="btn btn-white btn-white-without-border width-150 m-l-5">Cancel</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end table -->
+    </div>
+    <!-- end #profile-about tab -->
+  </div>
+  <!-- end tab-content -->
+</div>
+<!-- end profile-content -->
