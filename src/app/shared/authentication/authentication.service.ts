@@ -59,12 +59,12 @@ export class AuthenticationService implements AuthService {
       switchMap((refreshToken: string) =>
         this.http.post(`/api/v1/auth/refresh`, { refreshToken })
       ),
-      tap((user: User) => this.saveAccessData(user)),
       catchError((err) => {
         this.logout();
 
         return throwError(err);
-      })
+      }),
+      tap((user: User) => this.saveAccessData(user))
     );
   }
 
@@ -74,7 +74,9 @@ export class AuthenticationService implements AuthService {
    * @description Essentialy checks status
    */
   public refreshShouldHappen(response: HttpErrorResponse): boolean {
-    return response.status === 401;
+    // If a user is logged in then its getUser does not return null so we refresh his token.
+    // but when its getUser returns null this mean he tries to login.
+    return this.getUser() && response.status === 401;
   }
 
   /**
