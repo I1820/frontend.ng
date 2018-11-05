@@ -22,7 +22,7 @@
         <span class="d-none d-md-inline">{{authService.getUser().firstname}} {{authService.getUser().lastname}}</span> <b class="caret"></b>
       </a>
       <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
-        <a href="javascript:;" class="dropdown-item">Edit Profile</a>
+        <a routerLink="profile" class="dropdown-item">Edit Profile</a>
         <div class="dropdown-divider"></div>
         <a (click)="this.authService.logout()" class="dropdown-item">Log Out</a>
       </div>
