@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GravatarModule } from 'ngx-gravatar';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { AgmCoreModule } from '@agm/core';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 // Global Configurations
 import * as global from './globals';
@@ -53,12 +54,16 @@ import { ProfileComponent } from './pages/profile/profile.component';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AuthenticationModule,
     NgbModule,
     GravatarModule,
     LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
     AgmCoreModule.forRoot({ apiKey: '' }),
+    SimpleNotificationsModule.forRoot({
+      timeOut: 3000,
+    }),
   ],
   providers: [ Title, BackendService ],
   bootstrap: [ AppComponent ]
