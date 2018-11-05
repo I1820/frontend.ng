@@ -11,6 +11,8 @@
  * +===============================================
  */
 /* eslint-env node */
+/* eslint-disable no-console */
+
 const Hapi = require("hapi");
 const Wreck = require("wreck");
 const Boom = require("boom");
@@ -70,7 +72,7 @@ const init = async () => {
 
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
-}
+};
 
 process.on("unhandledRejection", (err) => {
   console.log(err);
