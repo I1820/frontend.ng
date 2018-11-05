@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppComponent }  from '../../app.component';
+import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
 
 interface Tab {
@@ -27,13 +27,13 @@ export class ProfileComponent {
    */
   private showTab(key: number): void {
     for (let i = 0; i < this.tabs.length; i++) {
-      if (i == key) {
+      if (i === key) {
         this.tabs[i].isSelected = true;
       } else {
         this.tabs[i].isSelected = false;
       }
     }
-  };
+  }
 
   constructor(
     private app: AppComponent,
