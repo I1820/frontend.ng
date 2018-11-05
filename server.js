@@ -10,6 +10,7 @@
  * | File Name:     server.js
  * +===============================================
  */
+/* eslint-env node */
 const Hapi = require("hapi");
 const Wreck = require("wreck");
 const Boom = require("boom");
@@ -38,7 +39,7 @@ const init = async () => {
               "Content-Type": "application/json",
               "Accept": "application/json",
             }
-          }
+          };
         },
 
         // processes the response of upstream service before sending to the client.
@@ -48,7 +49,7 @@ const init = async () => {
           }
 
           if (res.statusCode !== 200) {
-            payload  = await Wreck.read(res, { json: true });
+            const payload  = await Wreck.read(res, { json: true });
             throw new Boom(payload.error, { statusCode: payload.code });
           }
           return res;
@@ -71,9 +72,9 @@ const init = async () => {
   console.log(`Server running at: ${server.info.uri}`);
 }
 
-process.on('unhandledRejection', (err) => {
+process.on("unhandledRejection", (err) => {
   console.log(err);
   process.exit(1);
-})
+});
 
 init();
