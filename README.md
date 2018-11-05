@@ -1,5 +1,7 @@
 # Frontend
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/da903f24315147ef831f9dea1a70cbb4)](https://www.codacy.com/app/i1820/frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=I1820/frontend&amp;utm_campaign=Badge_Grade)
+[![Travis branch](https://img.shields.io/travis/com/I1820/frontend/master.svg?style=flat-square)](https://travis-ci.com/I1820/frontend)
+
 
 ## Introduction
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
