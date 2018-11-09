@@ -40,6 +40,7 @@ const init = async () => {
             headers: { // everything in APIs is based on JSON so forcibly change headers.
               "Content-Type": "application/json",
               "Accept": "application/json",
+              ...req.headers
             }
           };
         },
