@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
 import { NotificationsService} from 'angular2-notifications';
@@ -43,6 +43,14 @@ export class LoginComponent {
     } else {
       return 'Sign me in';
     }
+  }
+
+  /**
+   * When input is invalid in the input box, input box must truns to red this function
+   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
+   */
+  private isValid(m: NgModel): boolean {
+    return m.invalid && (m.dirty || m.touched);
   }
 
   /**

@@ -32,10 +32,19 @@
     <div class="login-content">
       <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
         <div class="form-group m-b-15">
-          <input name="username" ngModel type="text" class="form-control form-control-lg" placeholder="Username" required />
+          <input name="username" #username="ngModel" ngModel type="text" [class.is-invalid]="isValid(username)"  class="form-control form-control-lg" placeholder="Username" required />
+          <div *ngIf="username.errors?.required" class="invalid-feedback">
+            Username is required.
+          </div>
+          <div *ngIf="username.errors?.pattern" class="invalid-feedback">
+            Username must contains only alphanumeric characters.
+          </div>
         </div>
         <div class="form-group m-b-15">
-          <input name="password" ngModel type="password" class="form-control form-control-lg" placeholder="Password" required />
+          <input name="password" #password="ngModel" ngModel type="password" [class.is-invalid]="isValid(password)" class="form-control form-control-lg" placeholder="Password" required />
+          <div *ngIf="password.errors?.required" class="invalid-feedback">
+            Password is required.
+          </div>
         </div>
         <div class="checkbox checkbox-css m-b-30">
           <input name="rememberMe" ngModel type="checkbox" id="remember_me_checkbox" value="" />
@@ -44,7 +53,7 @@
           </label>
         </div>
         <div class="login-buttons">
-          <button type="submit" class="btn btn-success btn-block btn-lg" [innerHTML]="submitButtonText"></button>
+          <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
         </div>
         <div class="m-t-20 m-b-40 p-b-40 text-inverse">
           Not a member yet? Click <a routerLink="/register" class="text-success">here</a> to register.
