@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModel, NgForm } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MouseEvent } from '@agm/core';
 
 @Component({
@@ -48,14 +48,14 @@ export class ThingNewComponent implements OnInit {
    * When input is invalid in the input box, input box must truns to red this function
    * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
    */
-  private isValid(m: NgModel): boolean {
+  private isValid(m: FormControl): boolean {
     return m.invalid && (m.dirty || m.touched);
   }
 
   /**
-   * formSubmits calls when user submit the thing creation form.
+   * formSubmits calls when user submits the thing creation form.
    */
-  private formSubmit(f: NgForm): void {
+  private formSubmit(f: FormGroup): void {
   }
 
 
