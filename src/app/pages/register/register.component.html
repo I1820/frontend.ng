@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="register-buttons">
-          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading" [innerHTML]="submitButtonText"></button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
         </div>
         <div class="m-t-20 m-b-40 p-b-40 text-inverse">
           Already a member? Click <a routerLink="/login">here</a> to login.
