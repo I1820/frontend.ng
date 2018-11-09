@@ -3,8 +3,8 @@
 [![Travis branch](https://img.shields.io/travis/com/I1820/frontend/master.svg?style=flat-square)](https://travis-ci.com/I1820/frontend)
 
 
-## IntroductionT
-his project was generated with the [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2 and acts as
+## Introduction
+This project was generated with the [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2 and acts as
 a frontend for the giant I1820 Platform.
 
 ## Site Structure
