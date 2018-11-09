@@ -32,7 +32,7 @@
     <div class="login-content">
       <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
         <div class="form-group m-b-15">
-          <input name="username" #username="ngModel" ngModel type="text" [class.is-invalid]="isValid(username)" class="form-control" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
+          <input name="username" #username="ngModel" ngModel type="text" [class.is-invalid]="isValid(username)" class="form-control form-control-lg" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
           <div *ngIf="username.errors?.required" class="invalid-feedback">
             Username is required.
           </div>
