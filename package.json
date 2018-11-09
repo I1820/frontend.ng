@@ -34,6 +34,7 @@
     "ngx-auth": "^4.1.0",
     "ngx-gravatar": "^3.0.5",
     "ngx-logger": "^3.3.4",
+    "ngx-timeago": "^1.0.0",
     "ngx-trend": "^3.4.1",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
