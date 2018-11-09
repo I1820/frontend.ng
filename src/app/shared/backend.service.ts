@@ -3,18 +3,19 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { NGXLogger } from 'ngx-logger';
+import { NotificationsService} from 'angular2-notifications';
 
 import { AuthenticationService } from './authentication/authentication.service';
 import { Project } from './project.model';
 import { Thing } from './thing.model';
 
 /**
- * BackendError represents errors from backend
+ * BackendError represents errors from backend proxy that is based on hapi.js.
  */
 interface BackendError {
-  trace: string;
   error: string;
-  code: number;
+  message: string;
+  statusCode: number;
 }
 
 @Injectable()
@@ -31,6 +32,7 @@ export class BackendService {
     private http: HttpClient,
     private authService: AuthenticationService,
     private logger: NGXLogger,
+    private notifService: NotificationsService,
   ) {}
 
   // errorLogger logs every error on backend communication
@@ -38,10 +40,12 @@ export class BackendService {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred.
       this.logger.error('An error occurred:', error.error.message);
+      this.notifService.error('An error occurred:', error.error.message)
     } else {
       // The backend returned an unsuccessful response code.
       const err = <BackendError> error.error;
-      this.logger.error('Backend Service:', apiName, `${err.code}: ${err.error}`);
+      this.logger.error('Backend Service:', apiName, `${err.statusCode}: ${err.message}`);
+      this.notifService.error(apiName, `${err.statusCode}: ${err.message}`);
     }
   }
 
