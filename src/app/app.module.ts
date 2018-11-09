@@ -2,7 +2,7 @@
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -54,7 +54,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     AuthenticationModule,
     NgbModule,
