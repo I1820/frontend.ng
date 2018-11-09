@@ -19,6 +19,8 @@
     'p-0': pageSettings.pageEmpty
   }">
 
+  <app-side-panel></app-side-panel>
+
   <app-header (toggleMobileSidebar)="onToggleMobileSidebar($event)" *ngIf="!pageSettings.pageEmpty"></app-header>
 
   <app-sidebar (toggleSidebarMinified)="onToggleSidebarMinified($event)" (hideMobileSidebar)="onHideMobileSidebar($event)" *ngIf="!pageSettings.pageWithoutSidebar && !pageSettings.pageEmpty" [pageSidebarTransparent]="pageSettings.pageSidebarTransparent"></app-sidebar>
