@@ -29,13 +29,13 @@
         <div class="row row-space-10">
           <div class="col-md-6 m-b-15">
             <input name="firstName" #firstName="ngModel" ngModel type="text" [class.is-invalid]="isValid(firstName)" class="form-control" placeholder="First name" required />
-            <div *ngIf="firstName.errors?.required" class="invalid-feedback">
+            <div *ngIf="firstName.hasError('required')" class="invalid-feedback">
               First name is required.
             </div>
           </div>
           <div class="col-md-6 m-b-15">
             <input name="lastName" #lastName="ngModel" ngModel type="text" [class.is-invalid]="isValid(lastName)" class="form-control" placeholder="Last name" required />
-            <div *ngIf="lastName.errors?.required" class="invalid-feedback">
+            <div *ngIf="lastName.hasError('required')" class="invalid-feedback">
               Last name is required.
             </div>
           </div>
@@ -44,10 +44,10 @@
         <div class="row m-b-15">
           <div class="col-md-12">
             <input name="username" #username="ngModel" ngModel type="text" [class.is-invalid]="isValid(username)" class="form-control" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
-            <div *ngIf="username.errors?.required" class="invalid-feedback">
+            <div *ngIf="username.hasError('required')" class="invalid-feedback">
               Username is required.
             </div>
-            <div *ngIf="username.errors?.pattern" class="invalid-feedback">
+            <div *ngIf="username.hasError('pattern')" class="invalid-feedback">
               Username must contains only alphanumeric characters.
             </div>
           </div>
@@ -56,10 +56,10 @@
         <div class="row m-b-15">
           <div class="col-md-12">
             <input name="email" #email="ngModel" ngModel type="text" [class.is-invalid]="isValid(email)" class="form-control" placeholder="Email address" required email/>
-            <div *ngIf="email.errors?.required" class="invalid-feedback">
+            <div *ngIf="email.hasError('required')" class="invalid-feedback">
               Email is required.
             </div>
-            <div *ngIf="email.errors?.email" class="invalid-feedback">
+            <div *ngIf="email.hasError('email')" class="invalid-feedback">
               Please enter valid email address.
             </div>
 
@@ -69,7 +69,7 @@
         <div class="row m-b-15">
           <div class="col-md-12">
             <input name="password" #password="ngModel" ngModel type="password" [class.is-invalid]="isValid(password)" class="form-control" placeholder="Password" required/>
-            <div *ngIf="password.errors?.required" class="invalid-feedback">
+            <div *ngIf="password.hasError('required')" class="invalid-feedback">
               Password is required.
             </div>
           </div>

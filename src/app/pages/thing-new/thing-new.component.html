@@ -17,7 +17,7 @@
           <div class="row m-b-15">
             <div class="col-md-12">
               <input name="name" #name="ngModel" ngModel type="text" [class.is-invalid]="isValid(name)" class="form-control" placeholder="Name" required />
-              <div *ngIf="name.errors?.required" class="invalid-feedback">
+              <div *ngIf="name.hasError('required')" class="invalid-feedback">
                 Name is required.
               </div>
             </div>
@@ -27,20 +27,20 @@
             <div class="col-md-6 m-b-15">
               <input name="latt" #latt="ngModel" [(ngModel)]="centerLat" ngModel type="number" [class.is-invalid]="isValid(latt)" class="form-control" placeholder="Latitude" required
                                                                                                                                                        max="90" min="-90" />
-              <div *ngIf="latt.errors?.required" class="invalid-feedback">
+              <div *ngIf="latt.hasError('required')" class="invalid-feedback">
                 Latitude is required.
               </div>
-              <div *ngIf="latt.errors?.min || latt.errors?.max" class="invalid-feedback">
+              <div *ngIf="latt.hasError('min') || latt.hasError('max')" class="invalid-feedback">
                 Please enter a valid latitude.
               </div>
             </div>
             <div class="col-md-6 m-b-15">
               <input name="long" #long="ngModel" [(ngModel)]="centerLng" ngModel type="number" [class.is-invalid]="isValid(long)" class="form-control" placeholder="Longitude" required
                                                                                                                                                        max="180" min="-180" />
-              <div *ngIf="long.errors?.required" class="invalid-feedback">
+              <div *ngIf="long.hasError('required')" class="invalid-feedback">
                 Longitude is required.
               </div>
-              <div *ngIf="long.errors?.min || long.errors?.max" class="invalid-feedback">
+              <div *ngIf="long.hasError('min') || long.hasError('max')" class="invalid-feedback">
                 Please enter a valid longitude.
               </div>
             </div>

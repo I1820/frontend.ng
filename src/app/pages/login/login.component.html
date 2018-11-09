@@ -33,7 +33,7 @@
       <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
         <div class="form-group m-b-15">
           <input name="username" #username="ngModel" ngModel type="text" [class.is-invalid]="isValid(username)" class="form-control form-control-lg" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
-          <div *ngIf="username.errors?.required" class="invalid-feedback">
+          <div *ngIf="username.hasError('required')" class="invalid-feedback">
             Username is required.
           </div>
           <div *ngIf="username.errors?.pattern" class="invalid-feedback">
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group m-b-15">
           <input name="password" #password="ngModel" ngModel type="password" [class.is-invalid]="isValid(password)" class="form-control form-control-lg" placeholder="Password" required />
-          <div *ngIf="password.errors?.required" class="invalid-feedback">
+          <div *ngIf="password.hasError('required')" class="invalid-feedback">
             Password is required.
           </div>
         </div>
