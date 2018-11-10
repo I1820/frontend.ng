@@ -18,15 +18,12 @@ interface BackendError {
   statusCode: number;
 }
 
+/**
+ * BackendService sends and receives requests with I1820 backend component.
+ * Authentication handles by ngx-auth module and content type header is added by I1820 frontend proxy.
+ */
 @Injectable()
 export class BackendService {
-
-  // authentication header is inserted by ngx-auth.
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-    })
-  };
 
   constructor(
     private http: HttpClient,
