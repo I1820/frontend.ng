@@ -5,7 +5,7 @@ import { tap, map, switchMap, catchError } from 'rxjs/operators';
 import { AuthService } from 'ngx-auth';
 
 import { TokenStorage } from './token-storage.service';
-import User from './user.model';
+import { User } from './user.model';
 
 interface AccessData {
   accessToken: string;
@@ -56,13 +56,24 @@ export class AuthenticationService implements AuthService {
     return this.tokenStorage
     .getRefreshToken()
     .pipe(
-      switchMap((refreshToken: string) =>
-        this.http.post(`/api/v1/auth/refresh`, { refreshToken })
+      switchMap((token: string) =>
+        this.http.post(`/api/v1/auth/refresh`, { token })
       ),
       catchError((err) => {
         this.logout();
 
         return throwError(err);
+      }),
+      map((u: any) => {
+        const user = new User(
+          u.firstname,
+          u.lastname,
+          u.username,
+          u.email,
+          u.access_token,
+          u.refresh_token,
+        );
+        return user;
       }),
       tap((user: User) => this.saveAccessData(user))
     );
@@ -94,9 +105,22 @@ export class AuthenticationService implements AuthService {
   /**
    * Login with username and password
    */
-  public login(username: string, password: string): Observable<any> {
-    return this.http.post(`/api/v1/auth/login`, { username, password })
-    .pipe(tap((user: User) => this.saveAccessData(user)));
+  public login(username: string, password: string, remember: boolean = false): Observable<any> {
+    return this.http.post(`/api/v1/auth/login`, { username, password, remember })
+    .pipe(
+      map((u: any) => {
+        const user = new User(
+          u.firstname,
+          u.lastname,
+          u.username,
+          u.email,
+          u.access_token,
+          u.refresh_token,
+        );
+        return user;
+      }),
+      tap((user: User) => this.saveAccessData(user))
+    );
   }
 
   /**
@@ -128,7 +152,8 @@ export class AuthenticationService implements AuthService {
    */
   private saveAccessData(user: User) {
     this.tokenStorage
-      .setAccessToken(user.token)
+      .setAccessToken(user.accessToken)
+      .setRefreshToken(user.refreshToken)
       .setUser(user);
   }
 

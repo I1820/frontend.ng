@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import User from './user.model';
+import { User } from './user.model';
 
 @Injectable()
 export class TokenStorage {

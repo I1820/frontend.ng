@@ -1,7 +1,12 @@
-export default interface User {
-  firstName: string;
-  lastName: string;
-  userName: string;
-  email: string;
-  token: string;
+export class User {
+  constructor(
+    public firstname: string,
+    public lastname: string,
+    public username: string,
+    public email: string,
+    public accessToken: string,
+    public refreshToken: string,
+  ) {
+  }
+
 }
