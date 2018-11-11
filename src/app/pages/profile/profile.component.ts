@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
+import { User } from '../../shared';
 
 interface Tab {
   name: string;
@@ -20,7 +21,13 @@ export class ProfileComponent {
     }
   ];
 
-  private user;
+  private user: User;
+
+  /**
+   * controls input element visibility status for profile fields.
+   * by making them visibe user can change his/her profile fields.
+   */
+  private editFirstname: boolean;
 
   /**
    * showTab changes given tab status to true and other tabs to false.

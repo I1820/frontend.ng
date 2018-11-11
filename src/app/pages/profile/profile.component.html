@@ -48,12 +48,20 @@
             </tr>
           </thead>
           <tbody>
+            <tr class="highlight">
+              <td class="field">Username</td>
+              <td> {{user.username}} </td>
+            </tr>
             <tr class="divider">
               <td colspan="2"></td>
             </tr>
             <tr>
               <td class="field">First Name</td>
-              <td> {{user.firstname}} <a href="javascript:;" class="m-l-5">Edit</a></td>
+              <td *ngIf="!editFirstname"> {{user.firstname}} <a href="javascript:;" (click)="editFirstname = !editFirstname" class="m-l-5">Edit</a></td>
+              <td *ngIf="editFirstname">
+                <input class="form-control input-inline input-xs" name="firstname" [value]="this.user.firstname">
+                <a href="javascript:;" (click)="editFirstname = !editFirstname" class="m-l-5">Ignore</a>
+              </td>
             </tr>
             <tr>
               <td class="field">Last Name</td>
@@ -135,14 +143,6 @@
                 -
                 <select class="form-control input-inline input-xs" name="year">
                   <option value="1989" selected>1989</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="field">Language</td>
-              <td>
-                <select class="form-control input-inline input-xs" name="language">
-                  <option value="" selected>English</option>
                 </select>
               </td>
             </tr>
