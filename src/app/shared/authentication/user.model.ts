@@ -1,3 +1,6 @@
+/**
+ * User represents I1820 users.
+ */
 export class User {
   constructor(
     public firstname: string,
