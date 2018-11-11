@@ -21,6 +21,8 @@ interface BackendError {
 /**
  * BackendService sends and receives requests with I1820 backend component.
  * Authentication handles by ngx-auth module and content type header is added by I1820 frontend proxy.
+ * Each function in this service handles errors to show them in logs and with toasts but it throw them too so
+ * caller can handle them again.
  */
 @Injectable()
 export class BackendService {
@@ -84,6 +86,7 @@ export class BackendService {
     );
   }
 
+  // projectsThings lists things of given project identification.
   public projectsThings(id: string): Observable<Thing[]> {
     const apiName = 'Projects Things';
 
