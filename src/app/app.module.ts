@@ -11,6 +11,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TimeagoModule } from 'ngx-timeago';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 // Global Configurations
 import * as global from './globals';
@@ -65,6 +66,7 @@ import { ProjectNewComponent } from './pages/project-new/project-new.component';
     AuthenticationModule,
     NgbModule,
     GravatarModule,
+    LeafletModule.forRoot(),
     TimeagoModule.forRoot(),
     LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
     SimpleNotificationsModule.forRoot({
