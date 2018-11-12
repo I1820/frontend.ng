@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { BackendService } from '../../shared/backend.service';
 
 @Component({
   selector: 'app-project-new-page',
@@ -8,9 +11,29 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ProjectNewComponent implements OnInit {
 
-  constructor() { }
+  private loading: boolean;
+
+  constructor(
+    private bService: BackendService,
+    private router: Router,
+  ) {
+    this.loading = false;
+  }
 
   ngOnInit() {
+  }
+
+  /**
+   * submitButtonText specifies submit button inner html.
+   * when someone click on submit button form status changes to loading
+   * and submit button will shows a spinner.
+   */
+  private get submitButtonText(): string {
+    if (this.loading) {
+      return `<i class="fas fa-spinner fa-spin"></i>`;
+    } else {
+      return 'Sign me in';
+    }
   }
 
   /**
