@@ -60,7 +60,6 @@ export class LoginComponent {
     this.loading = true;
     this.authService.login(f.value.username, f.value.password, f.value.remember === true ? true : false).subscribe(() => {
       this.loading = false;
-      console.log('login');
       this.router.navigate(['dashboard']);
     }, (err) => {
       this.loading = false;
