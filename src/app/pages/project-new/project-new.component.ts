@@ -32,7 +32,7 @@ export class ProjectNewComponent implements OnInit {
     if (this.loading) {
       return `<i class="fas fa-spinner fa-spin"></i>`;
     } else {
-      return 'Sign me in';
+      return 'Build';
     }
   }
 
@@ -48,6 +48,14 @@ export class ProjectNewComponent implements OnInit {
    * formSubmits calls when user submits the project creation form.
    */
   private formSubmit(f: FormGroup): void {
+    this.loading = true;
+    this.bService.projectsNew(f.value.name).subscribe(() => {
+      this.loading = false;
+      this.router.navigate(['/projects']);
+    }, (err) => {
+      this.loading = false;
+    });
+
   }
 
 
