@@ -1,3 +1,46 @@
-<p>
-  project-new works!
-</p>
+<!-- begin breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Project Creation <small>Build your project</small></h1>
+<!-- end page-header -->
+<div class="row">
+  <!-- begin thing-project-form -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Project Information</h4>
+      </div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+          <label class="control-label">Name <span class="text-danger">*</span></label>
+          <div class="row m-b-15">
+            <div class="col-md-12">
+              <input name="name" #name="ngModel" ngModel type="text" [class.is-invalid]="isValid(name)" class="form-control" placeholder="Name" required />
+              <div *ngIf="name.hasError('required')" class="invalid-feedback">
+                Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="register-buttons">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Build</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- end projecct-creation-form -->
+  <!-- begin project-docker-image -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Project runs in their Docker</h4>
+      </div>
+      <div class="panel-body">
+        <img src="../../../../assets/img/funny/docker-project.png" alt="docker-project" style="width: 100%" />
+      </div>
+    </div>
+  </div>
+
+  <!-- end project-docker-image -->
+</div>
