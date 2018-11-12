@@ -34,6 +34,7 @@ import { ThingNewComponent } from './pages/thing-new/thing-new.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
 import { WeatherComponent } from './pages/weather/weather.component';
+import { ProjectNewComponent } from './pages/project-new/project-new.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { WeatherComponent } from './pages/weather/weather.component';
     ProfileComponent,
     SidePanelComponent,
     WeatherComponent,
+    ProjectNewComponent,
   ],
   imports: [
     AppRoutingModule,
