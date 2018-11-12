@@ -13,6 +13,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { ThingNewComponent } from './pages/thing-new/thing-new.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { WeatherComponent } from './pages/weather/weather.component';
 
 const routes: Routes = [
   { // by default client is redirected to login page.
@@ -37,6 +38,12 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [ ProtectedGuard ],
     data: { title: 'Dashboard' }
+  },
+  {
+    path: 'weather',
+    component: WeatherComponent,
+    canActivate: [ ProtectedGuard ],
+    data: { title: 'Weather' }
   },
   {
     path: 'profile',
