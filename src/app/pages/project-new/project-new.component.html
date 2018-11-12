@@ -41,6 +41,12 @@
       </div>
     </div>
   </div>
-
   <!-- end project-docker-image -->
 </div>
+<swal
+  #completeSwal
+  title="Project is created successfully"
+  text="Projects are resource consuming, use them with caution."
+  type="success"
+  (confirm)="router.navigate(['/projects'])">
+</swal>

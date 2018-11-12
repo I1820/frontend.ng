@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
 import { BackendService } from '../../shared/backend.service';
 
@@ -12,6 +13,7 @@ import { BackendService } from '../../shared/backend.service';
 export class ProjectNewComponent implements OnInit {
 
   private loading: boolean;
+  @ViewChild('completeSwal') private completeSwal: SwalComponent;
 
   constructor(
     private bService: BackendService,
@@ -51,12 +53,9 @@ export class ProjectNewComponent implements OnInit {
     this.loading = true;
     this.bService.projectsNew(f.value.name).subscribe(() => {
       this.loading = false;
-      this.router.navigate(['/projects']);
+      this.completeSwal.show();
     }, (err) => {
       this.loading = false;
     });
-
   }
-
-
 }
