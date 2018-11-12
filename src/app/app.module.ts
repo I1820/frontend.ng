@@ -11,6 +11,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { AgmCoreModule } from '@agm/core';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TimeagoModule } from 'ngx-timeago';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 // Global Configurations
 import * as global from './globals';
@@ -70,6 +71,12 @@ import { ProjectNewComponent } from './pages/project-new/project-new.component';
     AgmCoreModule.forRoot({ apiKey: '' }),
     SimpleNotificationsModule.forRoot({
       timeOut: 3000,
+    }),
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
     }),
   ],
   providers: [ Title, BackendService ],
