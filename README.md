@@ -15,6 +15,7 @@ This section lists the essential components that must be reviewed in future deve
 - Register Page `src/app/pages/register`
 - Thing New Page `src/app/pages/thing-new`
 - Profile `src/app/pages/profile`
+- Project New Page `src/app/pages/project-new`
 
 ## Angluar :see_no_evil:
 
