@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { latLng, tileLayer } from 'leaflet';
+import { latLng, tileLayer, LeafletMouseEvent } from 'leaflet';
 
 @Component({
   selector: 'app-thing-new-page',
@@ -34,7 +34,6 @@ export class ThingNewComponent implements OnInit {
     if (navigator.geolocation) { // ask current location from the browser
       navigator.geolocation.getCurrentPosition(this.getLocationInfo);
     }
-    this.options.center = latLng(this.centerLat, this.centerLng); // updates map center
   }
 
   /**
@@ -43,6 +42,10 @@ export class ThingNewComponent implements OnInit {
   private getLocationInfo(position): void {
     this.centerLng = position.coords.longitude;
     this.centerLat = position.coords.latitude;
+  }
+
+  private onMapDoubleClick(e: LeafletMouseEvent): void {
+    console.log(e)
   }
 
   /**

@@ -60,8 +60,9 @@
         <h4 class="panel-title">Thing Location</h4>
       </div>
       <div class="panel-body">
-        <div leaflet class="map"
-             [leafletOptions]="options"
+        <div leaflet class="map" 
+                     [leafletOptions]="options"
+                     (leafletDoubleClick)="onMapDoubleClick($event)"
           >
         </div>
       </div>
