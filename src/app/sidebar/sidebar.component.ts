@@ -32,6 +32,11 @@ export class SidebarComponent {
       'title': 'Projects',
       'caret': false,
       'url': 'projects',
+    }, {
+      'icon': 'far fa-sun',
+      'title': 'Weather',
+      'caret': false,
+      'url': 'weather',
     }
   ];
 
