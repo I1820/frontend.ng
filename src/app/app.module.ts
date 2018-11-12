@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GravatarModule } from 'ngx-gravatar';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { AgmCoreModule } from '@agm/core';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TimeagoModule } from 'ngx-timeago';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
@@ -68,7 +67,6 @@ import { ProjectNewComponent } from './pages/project-new/project-new.component';
     GravatarModule,
     TimeagoModule.forRoot(),
     LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
-    AgmCoreModule.forRoot({ apiKey: '' }),
     SimpleNotificationsModule.forRoot({
       timeOut: 3000,
     }),
