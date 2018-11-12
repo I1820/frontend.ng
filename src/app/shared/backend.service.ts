@@ -104,6 +104,22 @@ export class BackendService {
           this.logger.info('Backend Service:', apiName, ts);
         }, (error) => this.errorLogger(error, apiName))
     );
+  }
+
+  // weatherDarksky get forecast data from wf component darksky service.
+  public weatherDarksky(lat: number, lng: number): Observable<any> {
+    const apiName = 'Weather Darksky';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+    return this.http.post(`/api/v1/wf/darksky`, { lat, lng }).pipe(map(
+      (ws: any[]) => {
+        return ws;
+      }), tap(
+        (ws: any[]) => {
+          this.logger.info('Backend Service:', apiName, ws);
+        }, (error) => this.errorLogger(error, apiName))
+    );
 
   }
 }
