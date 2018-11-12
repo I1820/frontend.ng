@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MouseEvent } from '@agm/core';
 
 @Component({
-  selector: 'app-thing-new',
+  selector: 'app-thing-new-page',
   templateUrl: './thing-new.component.html',
   styleUrls: ['./thing-new.component.css']
 })
