@@ -37,6 +37,7 @@
     "ngx-timeago": "^1.0.0",
     "ngx-trend": "^3.4.1",
     "rxjs": "~6.3.3",
+    "sweetalert2": "^7.29.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
