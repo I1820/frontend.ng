@@ -18,6 +18,10 @@ export class LoginComponent {
    */
   private loading: boolean;
 
+  /**
+   * Platform creation date
+   */
+  private creationDate: Date = new Date('2015')
 
   constructor(
     private app: AppComponent,
