@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MouseEvent } from '@agm/core';
+import { latLng, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-thing-new-page',
@@ -19,12 +19,22 @@ export class ThingNewComponent implements OnInit {
    */
   private centerLng = 51.398408;
 
+  private options = {
+    layers: [
+      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { attribution: '&copy; OpenStreetMap contributors' })
+    ],
+    zoom: 15,
+    center: latLng(this.centerLat, this.centerLng)
+  };
+
   constructor() { }
 
   ngOnInit() {
     if (navigator.geolocation) { // ask current location from the browser
       navigator.geolocation.getCurrentPosition(this.getLocationInfo);
     }
+    this.options.center = latLng(this.centerLat, this.centerLng); // updates map center
   }
 
   /**
@@ -33,15 +43,6 @@ export class ThingNewComponent implements OnInit {
   private getLocationInfo(position): void {
     this.centerLng = position.coords.longitude;
     this.centerLat = position.coords.latitude;
-  }
-
-  /**
-   * makerDrag is called when user map maker dragging ends.
-   * This function read the last location of the marker.
-   */
-  private markerDrag(e: MouseEvent): void {
-    this.centerLng = e.coords.lng;
-    this.centerLat = e.coords.lat;
   }
 
   /**
