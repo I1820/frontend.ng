@@ -48,6 +48,30 @@ export class BackendService {
     }
   }
 
+  // projectsNew creates new project with given name.
+  // As described in the backend documentation after project creation
+  // token refresh is required so this function does refresh token in middle of the process.
+  public projectsNew(name: string, env: Object = {}): Observable<Project> {
+    const apiName = 'Projects Creation';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+    return this.http.post('/api/v1/projects', { name, env }).pipe(map(
+      (p: any) => {
+        return new Project(p.name, p.id)
+      }), tap(
+        (p: Project) => {
+          this.logger.info('Backend Service:', apiName, p);
+        }, (error) => this.errorLogger(error, apiName)
+      ), tap(() => {}, () => {}, // token refreshing when observer completes
+        () => {
+          this.authService.refreshToken().subscribe((u) => {});
+        }
+      ),
+    );
+
+  }
+
   // projectList lists projects of authentication user.
   // This function converts projects to Project Model
   public projectsList(): Observable<Project[]> {
