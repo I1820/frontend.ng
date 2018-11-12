@@ -48,6 +48,7 @@ export class ProjectNewComponent implements OnInit {
 
   /**
    * formSubmits calls when user submits the project creation form.
+   * Please consider that after project creation there must be an waiting time to refresh the user token.
    */
   private formSubmit(f: FormGroup): void {
     this.loading = true;
