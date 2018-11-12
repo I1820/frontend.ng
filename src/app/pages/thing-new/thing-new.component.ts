@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { latLng, tileLayer, LeafletMouseEvent } from 'leaflet';
+import { icon, latLng, tileLayer, LeafletMouseEvent, marker, LatLng } from 'leaflet';
 
 @Component({
   selector: 'app-thing-new-page',
@@ -19,6 +19,9 @@ export class ThingNewComponent implements OnInit {
    */
   private centerLng = 51.398408;
 
+  /**
+   * leatlet map options
+   */
   private options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -28,12 +31,33 @@ export class ThingNewComponent implements OnInit {
     center: latLng(this.centerLat, this.centerLng)
   };
 
+  /**
+   * leaflet map layer that is used here just for marker management
+   */
+  private layer = marker([this.centerLat, this.centerLng], {
+    draggable: true,
+    icon: icon({
+      iconSize: [ 25, 41 ],
+      iconAnchor: [ 13, 41 ],
+      iconUrl: 'leaflet/marker-icon.png',
+      shadowUrl: 'leaflet/marker-shadow.png'
+    })
+  });
+
   constructor() { }
 
   ngOnInit() {
     if (navigator.geolocation) { // ask current location from the browser
       navigator.geolocation.getCurrentPosition(this.getLocationInfo);
     }
+
+    // handles marker dragging to update form latitude and lognitude, and
+    // change map center.
+    this.layer.on('dragend', () => {
+      let coords: LatLng = this.layer.getLatLng()
+      this.centerLat = coords.lat;
+      this.centerLng = coords.lng;
+    })
   }
 
   /**
@@ -44,8 +68,17 @@ export class ThingNewComponent implements OnInit {
     this.centerLat = position.coords.latitude;
   }
 
-  private onMapDoubleClick(e: LeafletMouseEvent): void {
-    console.log(e)
+  /**
+   * Callbacks for center latitude and logitude changing. These callbacks update marker and map center.
+   */
+  private onCenterLatChange(v: number): void {
+    this.centerLat = v;
+    this.layer.setLatLng(latLng(this.centerLat, this.centerLng));
+  }
+
+  private onCenterLngChange(v: number): void {
+    this.centerLng = v;
+    this.layer.setLatLng(latLng(this.centerLat, this.centerLng));
   }
 
   /**

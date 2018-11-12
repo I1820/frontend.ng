@@ -25,7 +25,7 @@
           <label class="control-label">GeoLocation <span class="text-danger">*</span></label>
           <div class="row row-space-10">
             <div class="col-md-6 m-b-15">
-              <input name="latt" #latt="ngModel" [(ngModel)]="centerLat" ngModel type="number" [class.is-invalid]="isValid(latt)" class="form-control" placeholder="Latitude" required
+              <input name="latt" #latt="ngModel" [ngModel]="centerLat" (ngModelChange)="onCenterLatChange($event)" ngModel type="number" [class.is-invalid]="isValid(latt)" class="form-control" placeholder="Latitude" required
                                                                                                                                                        max="90" min="-90" />
               <div *ngIf="latt.hasError('required')" class="invalid-feedback">
                 Latitude is required.
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="col-md-6 m-b-15">
-              <input name="long" #long="ngModel" [(ngModel)]="centerLng" ngModel type="number" [class.is-invalid]="isValid(long)" class="form-control" placeholder="Longitude" required
+              <input name="long" #long="ngModel" [ngModel]="centerLng" (ngModelChange)="onCenterLngChange($event)"  ngModel type="number" [class.is-invalid]="isValid(long)" class="form-control" placeholder="Longitude" required
                                                                                                                                                        max="180" min="-180" />
               <div *ngIf="long.hasError('required')" class="invalid-feedback">
                 Longitude is required.
@@ -60,9 +60,10 @@
         <h4 class="panel-title">Thing Location</h4>
       </div>
       <div class="panel-body">
-        <div leaflet class="map" 
+        <div leaflet class="map"
                      [leafletOptions]="options"
-                     (leafletDoubleClick)="onMapDoubleClick($event)"
+                     [leafletCenter]="{ lat: centerLat, lng: centerLng }"
+                     [leafletLayer]="layer"
           >
         </div>
       </div>
