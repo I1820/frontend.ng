@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
-import { icon, latLng, tileLayer, LeafletMouseEvent, marker, LatLng } from 'leaflet';
+import { icon, latLng, tileLayer, Map, LatLng } from 'leaflet';
+import 'leaflet-measure';
 
 import * as global from '../../globals';
 
@@ -41,7 +42,8 @@ export class DashboardComponent implements OnInit {
         })
     ],
     zoom: 15,
-    center: latLng(this.centerLat, this.centerLng)
+    center: latLng(this.centerLat, this.centerLng),
+    measureControl: true,
   };
 
   constructor(
@@ -50,5 +52,4 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
