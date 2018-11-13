@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { icon, latLng, tileLayer, LeafletMouseEvent, marker, LatLng } from 'leaflet';
+import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
 
 @Component({
   selector: 'app-thing-new-page',
