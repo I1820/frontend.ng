@@ -54,10 +54,10 @@ export class ThingNewComponent implements OnInit {
     // handles marker dragging to update form latitude and lognitude, and
     // change map center.
     this.layer.on('dragend', () => {
-      let coords: LatLng = this.layer.getLatLng()
+      const coords: LatLng = this.layer.getLatLng();
       this.centerLat = coords.lat;
       this.centerLng = coords.lng;
-    })
+    });
   }
 
   /**
