@@ -21,14 +21,14 @@
   <h5>{{ forecast.time | date:'EE' }} <small>{{ forecast.summary }}</small></h5>
   <div class="row">
     <div class="col-lg-3 col-md-6">
-      <div class="widget widget-stats bg-blue">
+      <div class="widget widget-stats bg-cyan">
         <div class="stats-icon"><i class="fas fa-temperature-low"></i></div>
         <div class="stats-info">
           <h4>Minimum Temperature</h4>
-          <p>{{ forecast.temperatureMin }}&deg;C</p>
+          <p>{{ forecast.temperatureLow }}&deg;C</p>
         </div>
         <div class="stats-link">
-          <a>{{ forecast.temperatureMinTime | date:'shortTime' }}</a>
+          <a>{{ forecast.temperatureLowTime | date:'shortTime' }}</a>
         </div>
       </div>
     </div>
@@ -37,10 +37,33 @@
         <div class="stats-icon"><i class="fas fa-temperature-high"></i></div>
         <div class="stats-info">
           <h4>Maximum Temperature</h4>
-          <p>{{ forecast.temperatureMax }}&deg;C</p>
+          <p>{{ forecast.temperatureHigh }}&deg;C</p>
         </div>
         <div class="stats-link">
-          <a>{{ forecast.temperatureMaxTime | date:'shortTime' }}</a>
+          <a>{{ forecast.temperatureHighTime | date:'shortTime' }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="widget widget-stats bg-green">
+        <div class="stats-icon"><i class="fas fa-wind"></i></div>
+        <div class="stats-info">
+          <h4>Wind</h4>
+          <p>{{ forecast.windSpeed }} m/s</p>
+          <p>{{ forecast.windBearing }}&deg;</p>
+        </div>
+        <div class="stats-link">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="widget widget-stats bg-blue">
+        <div class="stats-icon"><i class="fas fa-water"></i></div>
+        <div class="stats-info">
+          <h4>Humidity</h4>
+          <p>{{ forecast.humidity }}</p>
+        </div>
+        <div class="stats-link">
         </div>
       </div>
     </div>
