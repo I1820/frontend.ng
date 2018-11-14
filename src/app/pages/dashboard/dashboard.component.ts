@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   /**
    * Mapbox map
    */
-  private id = 'satellite-streets-v9'
+  private id = 'satellite-streets-v9';
 
   /**
    * leatlet map options
