@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BackendService } from '../../shared/backend.service';
+import { Darksky } from '../../shared/darksky.model';
 
 
 @Component({
@@ -10,14 +11,18 @@ import { BackendService } from '../../shared/backend.service';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-  private darksky$: Observable<any[]>;
+  private darksky: Darksky;
 
   constructor(
     private bService: BackendService,
   ) { }
 
   ngOnInit() {
-    this.darksky$ = this.bService.weatherDarksky(35.8064342, 51.3950481);
+    this.bService.weatherDarksky(35.8064342, 51.3950481).subscribe(
+      (w: Darksky) => {
+        this.darksky = w;
+      }
+    );
   }
 
 }
