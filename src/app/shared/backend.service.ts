@@ -48,6 +48,27 @@ export class BackendService {
     }
   }
 
+  // pmHealth checks the status of pm component
+  // This API does not log or show error to user
+  public pmHealth(): Observable<boolean> {
+    return this.http.get('/api/v1/health/pm').pipe(map(
+      (s: any) => {
+        return s === true
+      }
+    ));
+  }
+
+  // wfHealth checks the status of wf component
+  // This API does not log or show error to user
+  public wfHealth(): Observable<boolean> {
+    return this.http.get('/api/v1/health/wf').pipe(map(
+      (s: any) => {
+        return s === true
+      }
+    ));
+  }
+
+
   // projectsNew creates new project with given name.
   // As described in the backend documentation after project creation
   // token refresh is required so this function does refresh token in middle of the process.
