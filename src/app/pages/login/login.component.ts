@@ -21,7 +21,7 @@ export class LoginComponent {
   /**
    * Platform creation date
    */
-  private creationDate: Date = new Date('2015')
+  private creationDate: Date = new Date('2015');
 
   constructor(
     private app: AppComponent,
