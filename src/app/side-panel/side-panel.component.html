@@ -1,12 +1,18 @@
 <div class="theme-panel" [class.active]="active">
   <a href="javascript:;" (click)="active=!active" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
   <div class="theme-panel-content">
-    <h5 class="m-t-0">I1820 Information</h5>
-    <div class="divider"></div>
     <h5 class="m-t-0">Backend Health System</h5>
+    <div class="divider"></div>
+    <h5 class="m-t-0">PM</h5>
     <div class="row m-t-10">
       <div class="col-md-12">
-        <button (click)="check()" [ngClass]="state" class="btn btn-block btn-sm">{{lastCheck | timeago:live}}</button>
+        <button (click)="pmCheck()" [ngClass]="pmState" class="btn btn-block btn-sm">{{pmLastCheck | timeago:live}}</button>
+      </div>
+    </div>
+    <h5 class="m-t-10">WF</h5>
+    <div class="row m-t-10">
+      <div class="col-md-12">
+        <button (click)="wfCheck()" [ngClass]="wfState" class="btn btn-block btn-sm">{{wfLastCheck | timeago:live}}</button>
       </div>
     </div>
   </div>
