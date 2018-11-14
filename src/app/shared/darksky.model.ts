@@ -2,18 +2,26 @@ export class DarkskyForecast {
   public time: Date;
   public summary: string;
 
-  public temperatureMin: number;
-  public temperatureMinTime: Date;
-  public temperatureMax: number;
-  public temperatureMaxTime: Date;
+  public temperatureLow: number;
+  public temperatureLowTime: Date;
+  public temperatureHigh: number;
+  public temperatureHighTime: Date;
+
+  public humidity: number;
+
+  public windSpeed: number;
+  public windBearing: number;
 
   constructor (input: any) {
     this.time = new Date(input.time * 1000);
     this.summary = input.summary;
-    this.temperatureMin = input.temperatureMin;
-    this.temperatureMinTime = new Date(input.temperatureMinTime * 1000);
-    this.temperatureMax = input.temperatureMax;
-    this.temperatureMaxTime = new Date(input.temperatureMaxTime * 1000);
+    this.temperatureLow = input.temperatureLow;
+    this.temperatureLowTime = new Date(input.temperatureLowTime * 1000);
+    this.temperatureHigh = input.temperatureHigh;
+    this.temperatureHighTime = new Date(input.temperatureHighTime * 1000);
+    this.windSpeed = input.windSpeed;
+    this.windBearing = input.windBearing;
+    this.humidity = input.humidity;
   }
 }
 
