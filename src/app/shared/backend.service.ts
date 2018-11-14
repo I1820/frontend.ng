@@ -8,6 +8,7 @@ import { NotificationsService} from 'angular2-notifications';
 import { AuthenticationService } from './authentication/authentication.service';
 import { Project } from './project.model';
 import { Thing } from './thing.model';
+import { Darksky } from './darksky.model';
 
 /**
  * BackendError represents errors from backend proxy that is based on hapi.js.
@@ -39,7 +40,7 @@ export class BackendService {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred.
       this.logger.error('An error occurred:', error.error.message);
-      this.notifService.error('An error occurred:', error.error.message)
+      this.notifService.error('An error occurred:', error.error.message);
     } else {
       // The backend returned an unsuccessful response code.
       const err = <BackendError> error.error;
@@ -53,7 +54,7 @@ export class BackendService {
   public pmHealth(): Observable<boolean> {
     return this.http.get('/api/v1/health/pm').pipe(map(
       (s: any) => {
-        return s === true
+        return s === true;
       }
     ));
   }
@@ -63,7 +64,7 @@ export class BackendService {
   public wfHealth(): Observable<boolean> {
     return this.http.get('/api/v1/health/wf').pipe(map(
       (s: any) => {
-        return s === true
+        return s === true;
       }
     ));
   }
@@ -79,7 +80,7 @@ export class BackendService {
 
     return this.http.post('/api/v1/projects', { name, env }).pipe(map(
       (p: any) => {
-        return new Project(p.name, p.id)
+        return new Project(p.name, p.id);
       }), tap(
         (p: Project) => {
           this.logger.info('Backend Service:', apiName, p);
@@ -158,11 +159,11 @@ export class BackendService {
     this.logger.debug('Backend Service:', `${apiName} API is called`);
 
     return this.http.post(`/api/v1/wf/darksky`, { lat, lng }).pipe(map(
-      (ws: any[]) => {
-        return ws;
+      (w: any) => {
+        return new Darksky(w);
       }), tap(
-        (ws: any[]) => {
-          this.logger.info('Backend Service:', apiName, ws);
+        (w: Darksky) => {
+          this.logger.info('Backend Service:', apiName, w);
         }, (error) => this.errorLogger(error, apiName))
     );
 
