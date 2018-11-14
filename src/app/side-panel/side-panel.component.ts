@@ -8,13 +8,13 @@ import { BackendService } from '../shared/backend.service';
   styleUrls: ['./side-panel.component.css']
 })
 export class SidePanelComponent implements OnInit {
-  private active: boolean
+  private active: boolean;
 
-  private pmLastCheck: Date
-  private pmState
+  private pmLastCheck: Date;
+  private pmState;
 
-  private wfLastCheck: Date
-  private wfState
+  private wfLastCheck: Date;
+  private wfState;
 
   constructor(
     private bService: BackendService,
@@ -62,8 +62,7 @@ export class SidePanelComponent implements OnInit {
           'btn-success': false,
         };
       }
-    )
-
+    );
   }
 
   public pmCheck(): void {
@@ -90,7 +89,7 @@ export class SidePanelComponent implements OnInit {
           'btn-success': false,
         };
       }
-    )
+    );
   }
 
   ngOnInit() {
