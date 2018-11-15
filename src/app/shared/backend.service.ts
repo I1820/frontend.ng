@@ -35,7 +35,9 @@ export class BackendService {
     private notifService: NotificationsService,
   ) {}
 
-  // errorLogger logs every error on backend communication
+  /**
+   * errorLogger logs every error on backend communication
+   */
   private errorLogger(error: HttpErrorResponse, apiName: string): void {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred.
@@ -49,8 +51,10 @@ export class BackendService {
     }
   }
 
-  // pmHealth checks the status of pm component
-  // This API does not log or show error to user
+  /**
+   * pmHealth checks the status of pm component.
+   * This API does not log or show error to user
+   */
   public pmHealth(): Observable<boolean> {
     return this.http.get('/api/v1/health/pm').pipe(map(
       (s: any) => {
@@ -59,8 +63,10 @@ export class BackendService {
     ));
   }
 
-  // wfHealth checks the status of wf component
-  // This API does not log or show error to user
+  /**
+   * wfHealth checks the status of wf component.
+   * This API does not log or show error to user
+   */
   public wfHealth(): Observable<boolean> {
     return this.http.get('/api/v1/health/wf').pipe(map(
       (s: any) => {
@@ -70,9 +76,11 @@ export class BackendService {
   }
 
 
-  // projectsNew creates new project with given name.
-  // As described in the backend documentation after project creation
-  // token refresh is required so this function does refresh token in middle of the process.
+  /**
+   * projectsNew creates new project with given name.
+   * As described in the backend documentation after project creation
+   * token refreshing is required so this function does refresh token in middle of the process.
+   */
   public projectsNew(name: string, env: Object = {}): Observable<Project> {
     const apiName = 'Projects Creation';
 
@@ -94,8 +102,10 @@ export class BackendService {
 
   }
 
-  // projectList lists projects of authentication user.
-  // This function converts projects to Project Model
+  /**
+   * projectList lists projects of authentication user.
+   * This function converts projects to Project Model
+   */
   public projectsList(): Observable<Project[]> {
     const apiName = 'Projects List';
 
@@ -115,7 +125,9 @@ export class BackendService {
     );
   }
 
-  // projectsShow shows detail about given project identification.
+  /**
+   * projectsShow shows detail about given project identification.
+   */
   public projectsShow(id: string): Observable<Project> {
     const apiName = 'Projects Show';
 
@@ -132,7 +144,9 @@ export class BackendService {
     );
   }
 
-  // projectsThings lists things of given project identification.
+  /**
+   * projectsThings lists things of given project identification.
+   */
   public projectsThings(id: string): Observable<Thing[]> {
     const apiName = 'Projects Things';
 
@@ -142,12 +156,31 @@ export class BackendService {
       (ts: any[]) => {
         const things: Thing[] = [];
         for (const t of ts) {
-          ts.push(new Thing(t.name, t.id, t.model));
+          things.push(new Thing(t.name, t.id, t.model, t.location.coordinates[0], t.location.coordinates[1]));
         }
         return things;
       }), tap(
         (ts: Thing[]) => {
           this.logger.info('Backend Service:', apiName, ts);
+        }, (error) => this.errorLogger(error, apiName))
+    );
+  }
+
+  /**
+   * thingsNew creates new thing in given project.
+   */
+  public thingsNew(id: string, name: string, lat: number, lng: number): Observable<Thing> {
+    const apiName = 'Things Creation';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+
+    return this.http.post(`/api/v1/projects/${id}/things`, {name, location: {lat, lng}}).pipe(map(
+      (t: any) => {
+        return new Thing(t.name, t.id, t.model, t.location.coordinates[0], t.location.coordiantes[1]);
+      }), tap(
+        (t: Thing) => {
+          this.logger.info('Backend Service:', apiName, t);
         }, (error) => this.errorLogger(error, apiName))
     );
   }
