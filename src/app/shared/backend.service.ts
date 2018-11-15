@@ -156,7 +156,7 @@ export class BackendService {
       (ts: any[]) => {
         const things: Thing[] = [];
         for (const t of ts) {
-          things.push(new Thing(t.name, t.id, t.model, t.location.coordinates[0], t.location.coordinates[1]));
+          things.push(new Thing(t.name, t.id, t.model, t.location.coordinates[1], t.location.coordinates[0]));
         }
         return things;
       }), tap(
@@ -169,15 +169,14 @@ export class BackendService {
   /**
    * thingsNew creates new thing in given project.
    */
-  public thingsNew(id: string, name: string, lat: number, lng: number): Observable<Thing> {
+  public thingsNew(id: string, name: string, lat: number, long: number): Observable<Thing> {
     const apiName = 'Things Creation';
 
     this.logger.debug('Backend Service:', `${apiName} API is called`);
 
-
-    return this.http.post(`/api/v1/projects/${id}/things`, {name, location: {lat, lng}}).pipe(map(
+    return this.http.post(`/api/v1/projects/${id}/things`, {name, location: {lat, long}}).pipe(map(
       (t: any) => {
-        return new Thing(t.name, t.id, t.model, t.location.coordinates[0], t.location.coordiantes[1]);
+        return new Thing(t.name, t.id, t.model, t.location.coordinates[1], t.location.coordinates[0]);
       }), tap(
         (t: Thing) => {
           this.logger.info('Backend Service:', apiName, t);
@@ -185,7 +184,27 @@ export class BackendService {
     );
   }
 
-  // weatherDarksky get forecast data from wf component darksky service.
+  /**
+   * thingsShow shows detail about given thing identification
+   */
+  public thingsShow(id: string, tid: string): Observable<Thing> {
+    const apiName = 'Things Show';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+    return this.http.get(`/api/v1/projects/${id}/things/${tid}`).pipe(map(
+      (t: any) => {
+        return new Thing(t.name, t.id, t.model, t.location.coordinates[1], t.location.coordinates[0]);
+      }), tap(
+        (t: Thing) => {
+          this.logger.info('Backend Service:', apiName, t);
+        }, (error) => this.errorLogger(error, apiName))
+    );
+  }
+
+  /**
+   * weatherDarksky get forecast data from wf component darksky service.
+   */
   public weatherDarksky(lat: number, lng: number): Observable<any> {
     const apiName = 'Weather Darksky';
 
@@ -199,6 +218,5 @@ export class BackendService {
           this.logger.info('Backend Service:', apiName, w);
         }, (error) => this.errorLogger(error, apiName))
     );
-
   }
 }
