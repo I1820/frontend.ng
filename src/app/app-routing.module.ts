@@ -15,6 +15,7 @@ import { ThingNewComponent } from './pages/thing-new/thing-new.component';
 import { ProjectNewComponent } from './pages/project-new/project-new.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WeatherComponent } from './pages/weather/weather.component';
+import { ThingDetailComponent } from './pages/thing-detail/thing-detail.component';
 
 const routes: Routes = [
   { // by default client is redirected to login page.
@@ -84,6 +85,11 @@ const routes: Routes = [
                 path: 'new',
                 component: ThingNewComponent,
                 data: { title: 'Thing Creation' },
+              },
+              {
+                path: ':tid',
+                component: ThingDetailComponent,
+                data: { title: 'Thing Detail' },
               }
             ],
           },
