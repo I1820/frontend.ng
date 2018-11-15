@@ -1,0 +1,25 @@
+<!-- begin breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Thing <small>{{ thing?.name }}</small></h1>
+<!-- end page-header -->
+<div class="row">
+  <!-- begin thing-location-map -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Thing Location</h4>
+      </div>
+      <div class="panel-body">
+        <div leaflet class="map"
+                     [leafletOptions]="options"
+                     [leafletCenter]="{ lat: thing?.latitude, lng: thing?.longitude }"
+                     [leafletLayer]="layer"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end thing-location-map -->
+</div>
