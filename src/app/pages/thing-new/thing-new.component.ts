@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
+import { map } from 'rxjs/operators';
+
+import { BackendService } from '../../shared/backend.service';
 
 @Component({
   selector: 'app-thing-new-page',
@@ -8,6 +12,11 @@ import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
   styleUrls: ['./thing-new.component.css']
 })
 export class ThingNewComponent implements OnInit {
+
+  /**
+   * Parent project identification
+   */
+  private projectID: string;
 
   /**
    * Map center latitude. Map marker is also placed in this coordinates.
@@ -44,9 +53,20 @@ export class ThingNewComponent implements OnInit {
     })
   });
 
-  constructor() { }
+  constructor(
+    private bService: BackendService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+  }
 
   ngOnInit() {
+    this.route.paramMap.pipe(
+      map((params: ParamMap) => params.get('id'))
+    ).subscribe(
+      (id: string) => this.projectID = id
+    );
+
     if (navigator.geolocation) { // ask current location from the browser
       navigator.geolocation.getCurrentPosition(this.getLocationInfo);
     }
@@ -93,6 +113,10 @@ export class ThingNewComponent implements OnInit {
    * formSubmits calls when user submits the thing creation form.
    */
   private formSubmit(f: FormGroup): void {
+    this.bService.thingsNew(this.projectID, f.value.name, this.centerLat, this.centerLng).subscribe(() => {
+      this.router.navigate(['/projects', this.projectID]);
+    }, (err) => {
+    });
   }
 
 
