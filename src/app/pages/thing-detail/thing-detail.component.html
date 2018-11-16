@@ -9,17 +9,46 @@
   <div class="col-md-6">
     <div class="panel panel-inverse">
       <div class="panel-heading">
-        <h4 class="panel-title">Thing Location</h4>
+        <h4 class="panel-title">Location</h4>
       </div>
       <div class="panel-body">
         <div leaflet class="map"
                      [leafletOptions]="options"
                      [leafletCenter]="{ lat: thing?.latitude, lng: thing?.longitude }"
                      [leafletLayer]="layer"
-          >
+                     >
         </div>
       </div>
     </div>
   </div>
   <!-- end thing-location-map -->
-</div>
+  <!-- begin thing-tokens -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Tokens</h4>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Token</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let token of thing?.tokens; let idx = index">
+                <td>{{idx + 1}}</td>
+                <td>{{token}}</td>
+                <td class="with-btn">
+                  <a class="btn btn-sm btn-icon btn-circle"><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- end thing-tokens -->
+  </div>
