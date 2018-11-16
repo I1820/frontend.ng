@@ -156,7 +156,7 @@ export class BackendService {
       (ts: any[]) => {
         const things: Thing[] = [];
         for (const t of ts) {
-          things.push(new Thing(t.name, t.id, t.model, t.location.coordinates[1], t.location.coordinates[0]));
+          things.push(new Thing(t));
         }
         return things;
       }), tap(
@@ -176,7 +176,7 @@ export class BackendService {
 
     return this.http.post(`/api/v1/projects/${id}/things`, {name, location: {lat, long}}).pipe(map(
       (t: any) => {
-        return new Thing(t.name, t.id, t.model, t.location.coordinates[1], t.location.coordinates[0]);
+        return new Thing(t);
       }), tap(
         (t: Thing) => {
           this.logger.info('Backend Service:', apiName, t);
@@ -194,7 +194,7 @@ export class BackendService {
 
     return this.http.get(`/api/v1/projects/${id}/things/${tid}`).pipe(map(
       (t: any) => {
-        return new Thing(t.name, t.id, t.model, t.location.coordinates[1], t.location.coordinates[0]);
+        return new Thing(t);
       }), tap(
         (t: Thing) => {
           this.logger.info('Backend Service:', apiName, t);
