@@ -203,6 +203,43 @@ export class BackendService {
   }
 
   /**
+   * thingsTokensNew creates new token for given thing identification
+   */
+  public thingsTokensNew(id: string, tid: string): Observable<Thing> {
+    const apiName = 'Things Tokens Creation';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+    return this.http.get(`/api/v1/projects/${id}/things/${tid}/tokens`).pipe(map(
+      (t: any) => {
+        return new Thing(t);
+      }), tap(
+        (t: Thing) => {
+          this.logger.info('Backend Service:', apiName, t);
+        }, (error) => this.errorLogger(error, apiName))
+    );
+  }
+
+  /**
+   * thingsTokensNew removes given token from given thing identification
+   */
+  public thingsTokensDelete(id: string, tid: string, token: string): Observable<Thing> {
+    const apiName = 'Things Tokens Deletion';
+
+    this.logger.debug('Backend Service:', `${apiName} API is called`);
+
+    return this.http.delete(`/api/v1/projects/${id}/things/${tid}/tokens/${token}`).pipe(map(
+      (t: any) => {
+        return new Thing(t);
+      }), tap(
+        (t: Thing) => {
+          this.logger.info('Backend Service:', apiName, t);
+        }, (error) => this.errorLogger(error, apiName))
+    );
+  }
+
+
+  /**
    * weatherDarksky get forecast data from wf component darksky service.
    */
   public weatherDarksky(lat: number, lng: number): Observable<any> {
