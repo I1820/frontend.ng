@@ -16,6 +16,14 @@ export class ThingDetailComponent implements OnInit {
 
   private thing: Thing;
 
+  private bgToTypeMap = {
+    'boolean': 'bg-cyan',
+    'number': 'bg-orange',
+    'string': '',
+    'array': '',
+    'object': '',
+  }
+
   /**
    * leatlet map options
    */
@@ -54,5 +62,22 @@ export class ThingDetailComponent implements OnInit {
       }
     )
   }
+
+  public createToken(): void {
+    this.bService.thingsTokensNew(this.thing.project, this.thing.id).subscribe(
+      (thing: Thing) => {
+        this.thing = thing
+      }
+    )
+  }
+
+  public removeToken(token: string): void {
+    this.bService.thingsTokensDelete(this.thing.project, this.thing.id, token).subscribe(
+      (thing: Thing) => {
+        this.thing = thing
+      }
+    )
+  }
+
 
 }
