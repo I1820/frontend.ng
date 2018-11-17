@@ -81,6 +81,4 @@ export class ThingDetailComponent implements OnInit {
       }
     )
   }
-
-
 }
