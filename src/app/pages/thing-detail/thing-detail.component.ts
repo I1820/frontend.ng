@@ -16,6 +16,9 @@ export class ThingDetailComponent implements OnInit {
 
   private thing: Thing;
 
+  /**
+   * each asset has a type, this map set its widget background color with asset's type.
+   */
   private bgToTypeMap = {
     'boolean': 'bg-cyan',
     'number': 'bg-orange',
