@@ -17,6 +17,7 @@ export class Thing {
   public model: string;
   public latitude: number;
   public longitude: number;
+  public project: string;
   public assets: Array<Asset> = [];
   public tokens: Array<string> = [];
 
@@ -26,9 +27,11 @@ export class Thing {
     this.model = input.model;
     this.latitude = input.location.coordinates[1];
     this.longitude = input.location.coordinates[0];
+    this.project = input.project;
 
     for (let name in input.assets) {
-      this.assets.push();
+      const info = input.assets[name];
+      this.assets.push(new Asset(name, info.title, info.kind, info.type));
     }
 
     for (let token of input.tokens) {
