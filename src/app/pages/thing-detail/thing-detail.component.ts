@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
 
 import { Thing } from '../../shared/thing.model';
-import { BackendService } from '../../shared/backend.service';
+import { BackendService } from '../../shared/backend';
 
 @Component({
   selector: 'app-thing-detail',

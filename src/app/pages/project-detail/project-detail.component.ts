@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { Project } from '../../shared/project.model';
 import { Thing } from '../../shared/thing.model';
-import { BackendService } from '../../shared/backend.service';
+import { BackendService } from '../../shared/backend';
 
 @Component({
   selector: 'app-project-detail',

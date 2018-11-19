@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
-import { BackendService } from '../../shared/backend.service';
+import { BackendService } from '../../shared/backend';
 
 @Component({
   selector: 'app-project-new-page',

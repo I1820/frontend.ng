@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
 import { map } from 'rxjs/operators';
 
-import { BackendService } from '../../shared/backend.service';
+import { BackendService } from '../../shared/backend';
 
 @Component({
   selector: 'app-thing-new-page',
