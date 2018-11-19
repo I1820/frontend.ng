@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BackendService } from '../shared/backend.service';
+import { HealthService } from '../shared/backend';
 
 @Component({
   selector: 'app-side-panel',
@@ -17,7 +17,7 @@ export class SidePanelComponent implements OnInit {
   private wfState;
 
   constructor(
-    private bService: BackendService,
+    private hService: HealthService,
   ) {
     this.active = false;
 
@@ -40,7 +40,7 @@ export class SidePanelComponent implements OnInit {
 
   public wfCheck(): void {
     this.wfLastCheck = new Date();
-    this.bService.wfHealth().subscribe(
+    this.hService.wf().subscribe(
       (s: boolean) => {
         if (s === true) {
           this.wfState = {
@@ -67,7 +67,7 @@ export class SidePanelComponent implements OnInit {
 
   public pmCheck(): void {
     this.pmLastCheck = new Date();
-    this.bService.pmHealth().subscribe(
+    this.hService.pm().subscribe(
       (s: boolean) => {
         if (s === true) {
           this.pmState = {
