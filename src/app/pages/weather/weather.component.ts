@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BackendService } from '../../shared/backend.service';
-import { Darksky } from '../../shared/darksky.model';
+import { WeatherService } from '../../shared/backend';
+import { Darksky } from '../../shared/backend';
 
 
 @Component({
@@ -14,11 +14,11 @@ export class WeatherComponent implements OnInit {
   private darksky: Darksky;
 
   constructor(
-    private bService: BackendService,
+    private wService: WeatherService,
   ) { }
 
   ngOnInit() {
-    this.bService.weatherDarksky(35.8064342, 51.3950481).subscribe(
+    this.wService.darksky(35.8064342, 51.3950481).subscribe(
       (w: Darksky) => {
         this.darksky = w;
       }
