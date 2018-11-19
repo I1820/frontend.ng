@@ -4,10 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GravatarModule } from 'ngx-gravatar';
-import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TimeagoModule } from 'ngx-timeago';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
@@ -23,7 +21,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationModule, BackendService } from './shared';
+import { AuthenticationModule, BackendModule } from './shared';
 
 // Page Components
 import { LoginComponent } from './pages/login/login.component';
@@ -64,13 +62,12 @@ import { ThingDetailComponent } from './pages/thing-detail/thing-detail.componen
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     AuthenticationModule,
+    BackendModule,
     NgbModule,
     GravatarModule,
     LeafletModule.forRoot(),
     TimeagoModule.forRoot(),
-    LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
     SimpleNotificationsModule.forRoot({
       timeOut: 3000,
     }),
@@ -83,7 +80,6 @@ import { ThingDetailComponent } from './pages/thing-detail/thing-detail.componen
   ],
   providers: [
     Title,
-    BackendService,
     { provide: 'MAPBOX_KEY', useValue: 'pk.eyJ1IjoiMTk5NXBhcmhhbSIsImEiOiJjam55NWZlNTQwMDR3M3FscmpkdDBtaHBuIn0.V5NpoZd79sLCj2M_9Rccrg' },
   ],
   bootstrap: [ AppComponent ]
