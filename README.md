@@ -16,6 +16,7 @@ This section lists the essential components that must be reviewed in future deve
 - Thing New Page `src/app/pages/thing-new`
 - Profile `src/app/pages/profile`
 - Project New Page `src/app/pages/project-new`
+- Asset New Modal `src/app/modals/asset-new`
 
 ## Angluar :see_no_evil:
 
