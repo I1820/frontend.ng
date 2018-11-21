@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
 
-import { Thing } from '../../shared/thing.model';
-import { BackendService } from '../../shared/backend';
+import { ThingService, Thing } from '../../shared/backend';
 
 @Component({
   selector: 'app-thing-detail',
@@ -51,13 +50,13 @@ export class ThingDetailComponent implements OnInit {
   });
 
   constructor(
-    private bService: BackendService,
+    private tService: ThingService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.bService.thingsShow(params.get('id'), params.get('tid')))
+      switchMap((params: ParamMap) => this.tService.show(params.get('id'), params.get('tid')))
     ).subscribe(
       (thing: Thing) => {
         this.thing = thing
@@ -67,7 +66,7 @@ export class ThingDetailComponent implements OnInit {
   }
 
   public createToken(): void {
-    this.bService.thingsTokensNew(this.thing.project, this.thing.id).subscribe(
+    this.tService.tokenCreate(this.thing.project, this.thing.id).subscribe(
       (thing: Thing) => {
         this.thing = thing
       }
@@ -75,7 +74,7 @@ export class ThingDetailComponent implements OnInit {
   }
 
   public removeToken(token: string): void {
-    this.bService.thingsTokensDelete(this.thing.project, this.thing.id, token).subscribe(
+    this.tService.tokenRemove(this.thing.project, this.thing.id, token).subscribe(
       (thing: Thing) => {
         this.thing = thing
       }

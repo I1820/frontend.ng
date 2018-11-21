@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
 import { map } from 'rxjs/operators';
 
-import { BackendService } from '../../shared/backend';
+import { ThingService } from '../../shared/backend';
 
 @Component({
   selector: 'app-thing-new-page',
@@ -54,7 +54,7 @@ export class ThingNewComponent implements OnInit {
   });
 
   constructor(
-    private bService: BackendService,
+    private tService: ThingService,
     private route: ActivatedRoute,
     private router: Router,
   ) {
@@ -83,7 +83,7 @@ export class ThingNewComponent implements OnInit {
   /**
    * Callback function that is called when user provides its location
    */
-  private getLocationInfo(position): void {
+  public getLocationInfo(position): void {
     this.centerLng = position.coords.longitude;
     this.centerLat = position.coords.latitude;
   }
@@ -91,12 +91,12 @@ export class ThingNewComponent implements OnInit {
   /**
    * Callbacks for center latitude and logitude changing. These callbacks update marker and map center.
    */
-  private onCenterLatChange(v: number): void {
+  public onCenterLatChange(v: number): void {
     this.centerLat = v;
     this.layer.setLatLng(latLng(this.centerLat, this.centerLng));
   }
 
-  private onCenterLngChange(v: number): void {
+  public onCenterLngChange(v: number): void {
     this.centerLng = v;
     this.layer.setLatLng(latLng(this.centerLat, this.centerLng));
   }
@@ -105,15 +105,15 @@ export class ThingNewComponent implements OnInit {
    * When input is invalid in the input box, input box must truns to red this function
    * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
    */
-  private isValid(m: FormControl): boolean {
+  public isValid(m: FormControl): boolean {
     return m.invalid && (m.dirty || m.touched);
   }
 
   /**
    * formSubmits calls when user submits the thing creation form.
    */
-  private formSubmit(f: FormGroup): void {
-    this.bService.thingsNew(this.projectID, f.value.name, this.centerLat, this.centerLng).subscribe(() => {
+  public formSubmit(f: FormGroup): void {
+    this.tService.create(this.projectID, f.value.name, this.centerLat, this.centerLng).subscribe(() => {
       this.router.navigate(['/projects', this.projectID]);
     }, (err) => {
     });

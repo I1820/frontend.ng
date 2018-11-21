@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
-import { BackendService } from '../../shared/backend';
+import { ProjectService } from '../../shared/backend';
 
 @Component({
   selector: 'app-project-new-page',
@@ -16,7 +16,7 @@ export class ProjectNewComponent implements OnInit {
   @ViewChild('completeSwal') private completeSwal: SwalComponent;
 
   constructor(
-    private bService: BackendService,
+    private pService: ProjectService,
     private router: Router,
   ) {
     this.loading = false;
@@ -52,7 +52,7 @@ export class ProjectNewComponent implements OnInit {
    */
   private formSubmit(f: FormGroup): void {
     this.loading = true;
-    this.bService.projectsNew(f.value.name).subscribe(() => {
+    this.pService.create(f.value.name).subscribe(() => {
       this.loading = false;
       this.completeSwal.show();
     }, (err) => {

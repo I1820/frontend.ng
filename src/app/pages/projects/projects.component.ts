@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BackendService } from '../../shared/backend';
-import { Project } from '../../shared/project.model';
+import { ProjectService, Project } from '../../shared/backend';
 
 @Component({
   selector: 'app-projects-page',
@@ -14,14 +13,14 @@ export class ProjectsComponent implements OnInit {
   private projects$: Observable<Project[]>;
 
   constructor(
-    private bService: BackendService,
+    private pService: ProjectService,
   ) { }
 
   ngOnInit() {
-    this.projects$ = this.bService.projectsList();
+    this.refresh();
   }
 
-  private refresh(): void {
-    this.projects$ = this.bService.projectsList();
+  public refresh(): void {
+    this.projects$ = this.pService.list();
   }
 }

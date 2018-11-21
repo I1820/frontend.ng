@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { WeatherService } from '../../shared/backend';
-import { Darksky } from '../../shared/backend';
+import { WeatherService, Darksky } from '../../shared/backend';
 
 
 @Component({

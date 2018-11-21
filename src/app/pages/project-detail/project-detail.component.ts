@@ -3,9 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { Project } from '../../shared/project.model';
-import { Thing } from '../../shared/thing.model';
-import { BackendService } from '../../shared/backend';
+import { Project, Thing, ProjectService, ThingService } from '../../shared/backend';
 
 @Component({
   selector: 'app-project-detail',
@@ -18,16 +16,21 @@ export class ProjectDetailComponent implements OnInit {
   private things$: Observable<Thing[]>;
 
   constructor(
-    private bService: BackendService,
+    private pService: ProjectService,
+    private tService: ThingService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.project$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.bService.projectsShow(params.get('id')))
+      switchMap((params: ParamMap) => this.pService.show(params.get('id')))
     );
+    this.refresh();
+  }
+
+  public refresh(): void {
     this.things$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.bService.projectsThings(params.get('id')))
+      switchMap((params: ParamMap) => this.tService.list(params.get('id')))
     );
   }
 
