@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { BackendModule } from './backend.module'
+import { BackendModule } from './backend.module';
 import { Thing } from './thing.model';
 import { BackendAPI } from './backend';
 

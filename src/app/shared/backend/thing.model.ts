@@ -29,12 +29,12 @@ export class Thing {
     this.longitude = input.location.coordinates[0];
     this.project = input.project;
 
-    for (let name in input.assets) {
+    Object.keys(input.assets).forEach((name) => {
       const info = input.assets[name];
       this.assets.push(new Asset(name, info.title, info.kind, info.type));
-    }
+    });
 
-    for (let token of input.tokens) {
+    for (const token of input.tokens) {
       this.tokens.push(token);
     }
   }

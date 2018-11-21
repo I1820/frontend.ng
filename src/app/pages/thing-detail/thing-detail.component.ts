@@ -24,7 +24,7 @@ export class ThingDetailComponent implements OnInit {
     'string': '',
     'array': '',
     'object': '',
-  }
+  };
 
   /**
    * leatlet map options
@@ -59,25 +59,25 @@ export class ThingDetailComponent implements OnInit {
       switchMap((params: ParamMap) => this.tService.show(params.get('id'), params.get('tid')))
     ).subscribe(
       (thing: Thing) => {
-        this.thing = thing
+        this.thing = thing;
         this.layer.setLatLng(latLng(this.thing.latitude, this.thing.longitude));
       }
-    )
+    );
   }
 
   public createToken(): void {
     this.tService.tokenCreate(this.thing.project, this.thing.id).subscribe(
       (thing: Thing) => {
-        this.thing = thing
+        this.thing = thing;
       }
-    )
+    );
   }
 
   public removeToken(token: string): void {
     this.tService.tokenRemove(this.thing.project, this.thing.id, token).subscribe(
       (thing: Thing) => {
-        this.thing = thing
+        this.thing = thing;
       }
-    )
+    );
   }
 }

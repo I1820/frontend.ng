@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 import { NGXLogger } from 'ngx-logger';
 import { NotificationsService} from 'angular2-notifications';
 
-import { BackendModule } from './backend.module'
+import { BackendModule } from './backend.module';
 
 /**
  * BackendError represents errors from backend proxy that is based on hapi.js.
@@ -55,7 +55,7 @@ export class BackendAPI {
    */
   public static api(service: string, api: string) {
     return function (target: any, propertyName: string, descriptor: TypedPropertyDescriptor<(...any) => Observable<any>>) {
-      let method = descriptor.value;
+      const method = descriptor.value;
       descriptor.value = function () {
         BackendAPI.logger.debug(`${service} Service:`, `${api} API is being called`);
         return method.apply(this, arguments).pipe(
@@ -64,7 +64,7 @@ export class BackendAPI {
             (error) => BackendAPI.errorLogger(service, api, error),
           )
         );
-      }
-    }
+      };
+    };
   }
 }
