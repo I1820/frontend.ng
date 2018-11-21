@@ -7,8 +7,9 @@ import { BackendModule } from './backend.module'
 import { Thing } from './thing.model';
 import { BackendAPI } from './backend';
 
-
-
+/**
+ * ThingService handles thing related APIs.
+ */
 @Injectable({
   providedIn: BackendModule,
 })

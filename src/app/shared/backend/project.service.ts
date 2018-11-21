@@ -10,6 +10,9 @@ import { BackendAPI } from './backend';
 
 
 
+/**
+ * ProjectService handles project related APIs.
+ */
 @Injectable({
   providedIn: BackendModule,
 })
