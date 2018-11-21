@@ -93,6 +93,8 @@ export class SidePanelComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.wfCheck();
+    this.pmCheck();
   }
 
 }
