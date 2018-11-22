@@ -97,12 +97,5 @@ import { AssetNewComponent } from './modals/asset-new/asset-new.component';
 })
 
 export class AppModule {
-  constructor(private router: Router, private titleService: Title, private route: ActivatedRoute) {
-    router.events.subscribe((e) => {
-      if (e instanceof NavigationEnd) { // set page tite based on `title` data of current route
-        const title = 'I1820 | ' + this.route.snapshot.firstChild.data['title'];
-        this.titleService.setTitle(title);
-      }
-    });
-  }
+  constructor() {}
 }
