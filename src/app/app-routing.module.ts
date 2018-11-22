@@ -16,6 +16,7 @@ import { ProjectNewComponent } from './pages/project-new/project-new.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { ThingDetailComponent } from './pages/thing-detail/thing-detail.component';
+import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
 
 const routes: Routes = [
   { // by default client is redirected to login page.
@@ -88,8 +89,19 @@ const routes: Routes = [
               },
               {
                 path: ':tid',
-                component: ThingDetailComponent,
                 data: { title: 'Thing Detail' },
+                children: [
+                  {
+                    path: '',
+                    component: ThingDetailComponent,
+                    data: { title: '' }, // override parent title
+                  },
+                  {
+                    path: 'chart',
+                    component: ThingChartComponent,
+                    data: { title: 'Thing Chart' },
+                  }
+                ],
               }
             ],
           },
