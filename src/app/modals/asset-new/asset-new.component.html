@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h4 class="modal-title">Asset Creation</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+    <label class="control-label">Name <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <input name="name" #name="ngModel" ngModel type="text" [class.is-invalid]="isValid(name)" class="form-control" placeholder="Name e.g. 101" required />
+        <div *ngIf="name.hasError('required')" class="invalid-feedback">
+          Name is required.
+        </div>
+      </div>
+    </div>
+    <label class="control-label">Title <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <input name="title" #title="ngModel" ngModel type="text" [class.is-invalid]="isValid(title)" class="form-control" placeholder="Title e.g. Temperature" required />
+        <div *ngIf="title.hasError('required')" class="invalid-feedback">
+          Title is required.
+        </div>
+      </div>
+    </div>
+    <label class="control-label">Type <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <select class="form-control" name="type" ngModel>
+          <option value="number">Number</option>
+          <option value="string">String</option>
+          <option value="object">Object</option>
+          <option value="array">Array</option>
+          <option value="boolean">Boolean</option>
+        </select>
+      </div>
+    </div>
+    <label class="control-label">Kind <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <div class="radio radio-css">
+          <input type="radio" id="sensor" name="kind" value="sensor" ngModel/>
+          <label for="sensor">Sensor</label>
+        </div>
+        <div class="radio radio-css">
+          <input type="radio" id="actuator" name="kind" value="actuator" ngModel/>
+          <label for="actuator">Actuator</label>
+        </div>
+      </div>
+    </div>
+    <div class="register-buttons">
+      <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+</div>

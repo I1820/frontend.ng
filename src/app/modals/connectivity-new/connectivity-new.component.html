@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h4 class="modal-title">Connectivity Creation</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ng-select [items]="connectivities"
+    (change)="ctypeChange($event)"
+    [selectOnTab]="true"
+    placeholder="Select Connectivity Type">
+  </ng-select>
+  <hr>
+  <ng-container *ngIf="ctype === connectivityType.TTN">
+    <p>The Things Network connectivity setup, check <a href="http://thethingsnetwork.org">here</a> for more information</p>
+    <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+      <label class="control-label">Application ID <span class="text-danger">*</span></label>
+      <div class="row m-b-15">
+        <div class="col-md-12">
+          <input name="application_id" #application_id="ngModel" ngModel type="text" [class.is-invalid]="isValid(application_id)" class="form-control" placeholder="Application ID" required />
+          <div *ngIf="application_id.hasError('required')" class="invalid-feedback">
+            Application ID is required.
+          </div>
+        </div>
+      </div>
+      <label class="control-label">Device EUI <span class="text-danger">*</span></label>
+      <div class="row m-b-15">
+        <div class="col-md-12">
+          <input name="device_eui" #device_eui="ngModel" ngModel type="text" [class.is-invalid]="isValid(device_eui)" class="form-control" placeholder="Device EUI" required />
+          <div *ngIf="device_eui.hasError('required')" class="invalid-feedback">
+            Device EUI is required.
+          </div>
+        </div>
+      </div>
+      <div class="register-buttons">
+        <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
+      </div>
+    </form>
+  </ng-container>
+</div>
+<div class="modal-footer">
+  <p>Please note that due to the caching mechanism connectivities effect after few minutes</p>
+</div>
