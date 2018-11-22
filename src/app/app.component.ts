@@ -1,5 +1,4 @@
 import { Component, HostListener, Renderer2, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
 import * as global from './globals';
 
@@ -148,7 +147,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  constructor(private titleService: Title, private router: Router, private renderer: Renderer2) {
+  constructor(private router: Router, private renderer: Renderer2) {
     // clear settings when routing is happend.
     router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
