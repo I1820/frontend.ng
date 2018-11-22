@@ -80,7 +80,7 @@ const routes: Routes = [
           },
           {
             path: 'things',
-            data: { title: '' }, // override parent title
+            data: { title: '-' }, // override parent title, dash indicates that this route exists only in url.
             children: [
               {
                 path: 'new',
