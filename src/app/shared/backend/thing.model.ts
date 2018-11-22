@@ -8,7 +8,15 @@ export class Asset {
   }
 }
 
-export class Connectivity {
+export interface Connectivity {
+}
+
+export class TTNConnectivity implements Connectivity {
+  constructor(
+    public applicationID: string,
+    public deviceEUI: string,
+  ) {
+  }
 }
 
 export class Thing {
@@ -18,8 +26,10 @@ export class Thing {
   public latitude: number;
   public longitude: number;
   public project: string;
+
   public assets: Array<Asset> = [];
   public tokens: Array<string> = [];
+  public connectivities: Array<Connectivity> = [];
 
   constructor(input: any) {
     this.name = input.name;
@@ -32,6 +42,14 @@ export class Thing {
     Object.keys(input.assets).forEach((name) => {
       const info = input.assets[name];
       this.assets.push(new Asset(name, info.title, info.kind, info.type));
+    });
+
+    Object.keys(input.connectivities).forEach((name) => {
+      const info = input.connectivities[name];
+      switch (name) {
+        case "ttn":
+          this.connectivities.push(new TTNConnectivity(info.application_id, info.device_eui));
+      }
     });
 
     for (const token of input.tokens) {
