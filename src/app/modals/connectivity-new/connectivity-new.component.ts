@@ -21,7 +21,7 @@ export class ConnectivityNewComponent implements OnInit {
       value: ConnectivityType.TTN,
       label: 'The Things Network',
     }
-  ]
+  ];
 
   /**
    * ctypeChange is called when user changes connectivity type with provided select input
