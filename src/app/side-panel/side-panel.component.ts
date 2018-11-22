@@ -8,34 +8,33 @@ import { HealthService } from '../shared/backend';
   styleUrls: ['./side-panel.component.css']
 })
 export class SidePanelComponent implements OnInit {
-  private active: boolean;
+  /**
+   * indicates sidebar is open or close
+   */
+  public active: boolean;
 
-  private pmLastCheck: Date;
-  private pmState;
+  /**
+   * project manager
+   */
+  public pmLastCheck: Date;
+  public pmState;
 
-  private wfLastCheck: Date;
-  private wfState;
+  /**
+   * weather forecasting
+   */
+  public wfLastCheck: Date;
+  public wfState;
+
+  /**
+   * data manager
+   */
+  public dmLastCheck: Date;
+  public dmState;
 
   constructor(
     private hService: HealthService,
   ) {
     this.active = false;
-
-    // project manager
-    this.pmLastCheck = new Date();
-    this.pmState = {
-      'btn-inverse': true,
-      'btn-danger': false,
-      'btn-success': false,
-    };
-
-    // weather forecasting
-    this.wfLastCheck = new Date();
-    this.wfState = {
-      'btn-inverse': true,
-      'btn-danger': false,
-      'btn-success': false,
-    };
   }
 
   public wfCheck(): void {
@@ -92,9 +91,38 @@ export class SidePanelComponent implements OnInit {
     );
   }
 
+  public dmCheck(): void {
+    this.dmLastCheck = new Date();
+    this.hService.dm().subscribe(
+      (s: boolean) => {
+        if (s === true) {
+          this.dmState = {
+            'btn-inverse': false,
+            'btn-danger': false,
+            'btn-success': true,
+          };
+        } else {
+          this.dmState = {
+            'btn-inverse': false,
+            'btn-danger': true,
+            'btn-success': false,
+          };
+        }
+      }, () => {
+        this.dmState = {
+          'btn-inverse': true,
+          'btn-danger': false,
+          'btn-success': false,
+        };
+      }
+    );
+  }
+
+
   ngOnInit() {
     this.wfCheck();
     this.pmCheck();
+    this.dmCheck();
   }
 
 }

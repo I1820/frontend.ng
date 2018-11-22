@@ -15,5 +15,11 @@
         <button (click)="wfCheck()" [ngClass]="wfState" class="btn btn-block btn-sm">{{wfLastCheck | timeago:live}}</button>
       </div>
     </div>
+    <h5 class="m-t-10">DM</h5>
+    <div class="row m-t-10">
+      <div class="col-md-12">
+        <button (click)="dmCheck()" [ngClass]="dmState" class="btn btn-block btn-sm">{{dmLastCheck | timeago:live}}</button>
+      </div>
+    </div>
   </div>
 </div>
