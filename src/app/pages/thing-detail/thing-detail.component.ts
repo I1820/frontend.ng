@@ -16,12 +16,12 @@ import { ConnectivityNewComponent } from '../../modals/connectivity-new/connecti
 })
 export class ThingDetailComponent implements OnInit {
 
-  private thing: Thing;
+  public thing: Thing;
 
   /**
    * each asset has a type, this map set its widget background color with asset's type.
    */
-  private bgToTypeMap = {
+  public bgToTypeMap = {
     'boolean': 'bg-cyan',
     'number': 'bg-orange',
     'string': '',
@@ -43,7 +43,7 @@ export class ThingDetailComponent implements OnInit {
   /**
    * leaflet map layer that is used here just for marker management
    */
-  private layer = marker([0, 0], {
+  public layer = marker([0, 0], {
     icon: icon({
       iconSize: [ 25, 41 ],
       iconAnchor: [ 13, 41 ],
