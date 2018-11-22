@@ -3,11 +3,14 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ThingService, Thing } from '../../shared/backend';
+import { AssetNewComponent } from '../../modals/asset-new/asset-new.component';
+import { ConnectivityNewComponent } from '../../modals/connectivity-new/connectivity-new.component';
 
 @Component({
-  selector: 'app-thing-detail',
+  selector: 'app-thing-detail-page',
   templateUrl: './thing-detail.component.html',
   styleUrls: ['./thing-detail.component.css']
 })
@@ -52,6 +55,7 @@ export class ThingDetailComponent implements OnInit {
   constructor(
     private tService: ThingService,
     private route: ActivatedRoute,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -61,6 +65,26 @@ export class ThingDetailComponent implements OnInit {
       (thing: Thing) => {
         this.thing = thing;
         this.layer.setLatLng(latLng(this.thing.latitude, this.thing.longitude));
+      }
+    );
+  }
+
+  public createConnectivity(): void {
+    const modalRef = this.modalService.open(ConnectivityNewComponent);
+    modalRef.componentInstance.thing = this.thing;
+    modalRef.result.then((thing) => this.thing = thing, (reason) => reason);
+  }
+
+  public createAsset(): void {
+    const modalRef = this.modalService.open(AssetNewComponent);
+    modalRef.componentInstance.thing = this.thing;
+    modalRef.result.then((thing) => this.thing = thing, (reason) => reason);
+  }
+
+  public removeAsset(name: string): void {
+    this.tService.assetRemove(this.thing.project, this.thing.id, name).subscribe(
+      (thing: Thing) => {
+        this.thing = thing;
       }
     );
   }

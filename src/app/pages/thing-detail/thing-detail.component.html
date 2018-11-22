@@ -59,8 +59,8 @@
 <!-- begin thing-assets -->
 <h3>Assets</h3>
 <div class="row">
-  <div class="col-lg-3 col-md-6">
-    <div class="widget widget-stats" [ngClass]="bgToTypeMap[asset.type]" *ngFor="let asset of thing?.assets">
+  <div class="col-lg-3 col-md-6" *ngFor="let asset of thing?.assets">
+    <div class="widget widget-stats" [ngClass]="bgToTypeMap[asset.type]">
       <div class="stats-icon">
         <i *ngIf="asset.kind === 'sensor'" class="far fa-arrow-alt-circle-up"></i>
         <i *ngIf="asset.kind === 'actuator'" class="far fa-arrow-alt-circle-down"></i>
@@ -78,8 +78,23 @@
 </div>
 <!-- end thing-assets -->
 <!-- begin new-asset-button -->
-<button type="button" class="btn btn-primary btn-circle">
+<button (click)="createAsset()" type="button" class="btn btn-primary btn-circle">
   <i class="fas fa-plus"></i>
   New Asset
 </button>
 <!-- end new-asset-button -->
+<hr>
+<!-- begin thing-connectivities -->
+<h3>Connectivities</h3>
+<div class="row">
+  <div class="col-lg-3 col-md-6" *ngFor="let connectivity of thing?.connectivities">
+    {{ connectivity | json }}
+  </div>
+</div>
+<!-- end thing-connectivities -->
+<!-- begin new-connectivity-button -->
+<button (click)="createConnectivity()" type="button" class="btn btn-primary btn-circle">
+  <i class="fas fa-plus"></i>
+  New Connectivity
+</button>
+<!-- end new-connecivity-button -->
