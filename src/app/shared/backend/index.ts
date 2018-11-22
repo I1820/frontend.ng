@@ -5,4 +5,4 @@ export { HealthService } from './health.service';
 export { WeatherService } from './weather.service';
 export { Darksky } from './darksky.model';
 export { Project } from './project.model';
-export { Thing } from './thing.model';
+export { Thing, ConnectivityType } from './thing.model';
