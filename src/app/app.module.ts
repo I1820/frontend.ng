@@ -12,6 +12,7 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ChartModule } from 'angular-highcharts';
 
 // Global Configurations
 import * as global from './globals';
@@ -86,6 +87,7 @@ import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
     TimeagoModule.forRoot(),
     LoadingBarHttpClientModule,
     NgSelectModule,
+    ChartModule,
     SimpleNotificationsModule.forRoot({
       timeOut: 3000,
     }),
