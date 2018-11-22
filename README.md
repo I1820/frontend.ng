@@ -18,6 +18,9 @@ This section lists the essential components that must be reviewed in future deve
 - Project New Page `src/app/pages/project-new`
 - Asset New Modal `src/app/modals/asset-new`
 
+### Notes
+- Each page has `I1820` as its title but when it has breadcrumb component its title has a dynamic part that indicates route title.
+
 ## Angluar :see_no_evil:
 
 ### Development server
