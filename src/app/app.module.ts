@@ -39,6 +39,7 @@ import { ProjectNewComponent } from './pages/project-new/project-new.component';
 import { ThingDetailComponent } from './pages/thing-detail/thing-detail.component';
 import { AssetNewComponent } from './modals/asset-new/asset-new.component';
 import { ConnectivityNewComponent } from './modals/connectivity-new/connectivity-new.component';
+import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ConnectivityNewComponent } from './modals/connectivity-new/connectivity
     WeatherComponent,
     ProjectNewComponent,
     ThingDetailComponent,
+    ThingChartComponent,
   ],
   entryComponents: [
     // modals
