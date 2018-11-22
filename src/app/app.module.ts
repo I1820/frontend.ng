@@ -10,6 +10,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TimeagoModule } from 'ngx-timeago';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 // Global Configurations
 import * as global from './globals';
