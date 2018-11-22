@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BackendModule } from './backend.module';
-import { Thing } from './thing.model';
+import { Thing, Connectivity } from './thing.model';
 import { BackendAPI } from './backend';
 
 /**
@@ -78,6 +78,41 @@ export class ThingService {
   @BackendAPI.api('Thing:Token', 'Remove')
   public tokenRemove(id: string, tid: string, token: string): Observable<Thing> {
     return this.http.delete(`/api/v1/projects/${id}/things/${tid}/tokens/${token}`).pipe(map(
+      (t: any) => {
+        return new Thing(t);
+      })
+    );
+  }
+
+  /**
+   * assetCreate creates new asset for given thing identification
+   */
+  @BackendAPI.api('Thing:Asset', 'Create')
+  public assetCreate(id: string, tid: string, name: string, title: string, kind: string, type: string): Observable<Thing> {
+    return this.http.post(`/api/v1/projects/${id}/things/${tid}/assets`, {name, title, kind, type}).pipe(map(
+      (t: any) => {
+        return new Thing(t);
+      })
+    );
+  }
+
+  /**
+   * assetRemove removes given asset for given thing identification
+   */
+  @BackendAPI.api('Thing:Asset', 'Remove')
+  public assetRemove(id: string, tid: string, name: string): Observable<Thing> {
+    return this.http.delete(`/api/v1/projects/${id}/things/${tid}/assets/${name}`).pipe(map(
+      (t: any) => {
+        return new Thing(t);
+      })
+    );
+  }
+
+  /**
+   * connectivityCreate creates new connectivity of given type for given thing identification
+   */
+  public connectivityCreate(id: string, tid: string, name: string, info: Connectivity): Observable<Thing> {
+    return this.http.post(`/api/v1/projects/${id}/things/${tid}/connectivities`, {name, info}).pipe(map(
       (t: any) => {
         return new Thing(t);
       })
