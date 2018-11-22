@@ -1,0 +1,54 @@
+<!-- begin breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Thing Chart <small>Data is in your hand</small></h1>
+<!-- end page-header -->
+<div class="row">
+  <!-- begin period-information-form -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Period Information</h4>
+      </div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+          <label class="control-label">Since <span class="text-danger">*</span></label>
+          <div class="row row-space-10">
+            <div class="col-md-6 m-b-15">
+              <ngb-datepicker ngModel #sinceDate="ngModel" name="sinceDate" required></ngb-datepicker>
+              <div *ngIf="sinceDate.hasError('required')" class="small form-text text-danger">
+                Date of Since is required.
+              </div>
+            </div>
+            <div class="col-md-6 m-b-15">
+              <ngb-timepicker ngModel #sinceTime="ngModel" name="sinceTime" required></ngb-timepicker>
+              <div *ngIf="sinceTime.hasError('required')" class="small form-text text-danger">
+                Time of Since is required.
+              </div>
+            </div>
+          </div>
+          <label class="control-label">Until <span class="text-danger">*</span></label>
+          <div class="row row-space-10">
+            <div class="col-md-6 m-b-15">
+              <ngb-datepicker ngModel #untilDate="ngModel" name="untilDate" required></ngb-datepicker>
+              <div *ngIf="untilDate.hasError('required')" class="small form-text text-danger">
+                Date of Until is required.
+              </div>
+            </div>
+            <div class="col-md-6 m-b-15">
+              <ngb-timepicker ngModel #untilTime="ngModel" name="untilTime" required></ngb-timepicker>
+              <div *ngIf="untilTime.hasError('required')" class="small form-text text-danger">
+                Time of Until is required.
+              </div> 
+            </div>
+          </div>
+          <div class="register-buttons">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- end period-information-form -->
+</div>
