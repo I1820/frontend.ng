@@ -23,6 +23,8 @@ interface RegisterData {
 @Injectable()
 export class AuthenticationService implements AuthService {
 
+  private interruptedUrl: string;
+
   constructor(
     private http: HttpClient,
     private tokenStorage: TokenStorage
@@ -96,6 +98,20 @@ export class AuthenticationService implements AuthService {
    */
   public verifyTokenRequest(url: string): boolean {
     return url.endsWith('/refresh');
+  }
+
+  /**
+   * Gets user last visited url before token expiration.
+   */
+  public getInterruptedUrl(): string {
+    return this.interruptedUrl;
+  }
+
+  /**
+   * Saves user last visited url before token expiration and logging out.
+   */
+  public setInterruptedUrl(url: string): void {
+    this.interruptedUrl = url;
   }
 
   /**
