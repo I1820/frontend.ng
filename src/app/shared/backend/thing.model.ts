@@ -1,3 +1,8 @@
+export enum ConnectivityType {
+  TTN='ttn',
+  LoraServer='loraserver',
+}
+
 export class Asset {
   constructor(
     public name: string, // e.g. 100
