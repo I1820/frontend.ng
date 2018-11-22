@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
 
 // IBreadcrumb represents breadcrumb items
@@ -30,6 +31,7 @@ export class BreadcrumbComponent implements OnInit {
   private routeDataBreadcrumb = 'title'; // route label is finded based on "title" data
 
   constructor(
+    private titleService: Title,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -41,7 +43,7 @@ export class BreadcrumbComponent implements OnInit {
         // set breadcrumbs based on activated route
         const root: ActivatedRoute = this.activatedRoute.root;
         this.breadcrumbs = this.getBreadcrumbs(root);
-      }
+        }
     });
   }
 
@@ -57,7 +59,11 @@ export class BreadcrumbComponent implements OnInit {
 
     // return if there are no more children
     if (children.length === 0) {
+      // set active link
       breadcrumbs[breadcrumbs.length - 1].active = true;
+      // set page title
+      const title = 'I1820 | ' + breadcrumbs[breadcrumbs.length - 1].label;
+      this.titleService.setTitle(title);
       return breadcrumbs;
     }
 
