@@ -39,5 +39,16 @@ export class HealthService {
     ));
   }
 
+  /**
+   * dm checks the status of wf component.
+   */
+  public dm(): Observable<boolean> {
+    return this.http.get('/api/v1/health/dm').pipe(map(
+      (s: any) => {
+        return s === true;
+      }
+    ));
+  }
+
 
 }
