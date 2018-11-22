@@ -78,6 +78,7 @@ import { AssetNewComponent } from './modals/asset-new/asset-new.component';
     GravatarModule,
     LeafletModule.forRoot(),
     TimeagoModule.forRoot(),
+    LoadingBarHttpClientModule,
     SimpleNotificationsModule.forRoot({
       timeOut: 3000,
     }),
