@@ -37,6 +37,7 @@ import { WeatherComponent } from './pages/weather/weather.component';
 import { ProjectNewComponent } from './pages/project-new/project-new.component';
 import { ThingDetailComponent } from './pages/thing-detail/thing-detail.component';
 import { AssetNewComponent } from './modals/asset-new/asset-new.component';
+import { ConnectivityNewComponent } from './modals/connectivity-new/connectivity-new.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AssetNewComponent } from './modals/asset-new/asset-new.component';
 
     // modals
     AssetNewComponent,
+    ConnectivityNewComponent,
 
     // pages
     LoginComponent,
@@ -66,6 +68,7 @@ import { AssetNewComponent } from './modals/asset-new/asset-new.component';
   entryComponents: [
     // modals
     AssetNewComponent,
+    ConnectivityNewComponent,
   ],
   imports: [
     AppRoutingModule,
