@@ -1,6 +1,6 @@
 export enum ConnectivityType {
-  TTN='ttn',
-  LoraServer='loraserver',
+  TTN = 'ttn',
+  LoraServer = 'loraserver',
 }
 
 export class Asset {
@@ -13,10 +13,7 @@ export class Asset {
   }
 }
 
-export interface Connectivity {
-}
-
-export class TTNConnectivity implements Connectivity {
+export class TTNConnectivity {
   constructor(
     public applicationID: string,
     public deviceEUI: string,
@@ -34,7 +31,7 @@ export class Thing {
 
   public assets: Array<Asset> = [];
   public tokens: Array<string> = [];
-  public connectivities: Array<Connectivity> = [];
+  public connectivities: Array<any> = [];
 
   constructor(input: any) {
     this.name = input.name;
@@ -52,7 +49,7 @@ export class Thing {
     Object.keys(input.connectivities).forEach((name) => {
       const info = input.connectivities[name];
       switch (name) {
-        case "ttn":
+        case 'ttn':
           this.connectivities.push(new TTNConnectivity(info.application_id, info.device_eui));
       }
     });

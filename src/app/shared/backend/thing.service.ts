@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BackendModule } from './backend.module';
-import { Thing, Connectivity } from './thing.model';
+import { Thing } from './thing.model';
 import { BackendAPI } from './backend';
 
 /**
@@ -111,7 +111,7 @@ export class ThingService {
   /**
    * connectivityCreate creates new connectivity of given type for given thing identification
    */
-  public connectivityCreate(id: string, tid: string, name: string, info: Connectivity): Observable<Thing> {
+  public connectivityCreate(id: string, tid: string, name: string, info: any): Observable<Thing> {
     return this.http.post(`/api/v1/projects/${id}/things/${tid}/connectivities`, {name, info}).pipe(map(
       (t: any) => {
         return new Thing(t);
