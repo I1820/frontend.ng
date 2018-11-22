@@ -17,7 +17,7 @@ interface IBreadcrumb {
       <li class="breadcrumb-item"><a routerLink="">Home</a></li>
       <ng-container *ngFor="let breadcrumb of breadcrumbs">
         <li class="breadcrumb-item" [ngClass]="{'active': breadcrumb.active}">
-          <a *ngIf="!breadcrumb.active else label" [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
+          <a *ngIf="!breadcrumb.active else label" [routerLink]="[breadcrumb.url]">{{ breadcrumb.label }}</a>
           <ng-template #label>{{ breadcrumb.label }}</ng-template>
         </li>
       </ng-container>
@@ -43,7 +43,7 @@ export class BreadcrumbComponent implements OnInit {
         // set breadcrumbs based on activated route
         const root: ActivatedRoute = this.activatedRoute.root;
         this.breadcrumbs = this.getBreadcrumbs(root);
-        }
+      }
     });
   }
 
@@ -85,14 +85,17 @@ export class BreadcrumbComponent implements OnInit {
       // append route URL to URL
       url += `/${routeURL}`;
 
-      // add breadcrumb
-      const breadcrumb: IBreadcrumb = {
-        label: child.snapshot.data[this.routeDataBreadcrumb],
-        params: child.snapshot.params,
-        url: url,
-        active: false,
-      };
-      breadcrumbs.push(breadcrumb);
+      // only add route when it does not have dash as its title
+      if (child.snapshot.data[this.routeDataBreadcrumb] !== '-') {
+        // add breadcrumb
+        const breadcrumb: IBreadcrumb = {
+          label: child.snapshot.data[this.routeDataBreadcrumb],
+          params: child.snapshot.params,
+          url: url,
+          active: false,
+        };
+        breadcrumbs.push(breadcrumb);
+      }
 
       // recursive
       return this.getBreadcrumbs(child, url, breadcrumbs);
