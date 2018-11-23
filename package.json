@@ -44,6 +44,7 @@
     "ngx-logger": "^3.3.4",
     "ngx-timeago": "^1.0.0",
     "ngx-trend": "^3.4.1",
+    "randomcolor": "^0.5.3",
     "rxjs": "~6.3.3",
     "sweetalert2": "^7.29.0",
     "zone.js": "~0.8.26"
