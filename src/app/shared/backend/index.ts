@@ -3,6 +3,8 @@ export { ProjectService } from './project.service';
 export { ThingService } from './thing.service';
 export { HealthService } from './health.service';
 export { WeatherService } from './weather.service';
+export { QueryService } from './query.service';
 export { Darksky } from './darksky.model';
 export { Project } from './project.model';
 export { Thing, ConnectivityType } from './thing.model';
+export { State } from './query.model';
