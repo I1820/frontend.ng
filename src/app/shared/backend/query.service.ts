@@ -36,8 +36,8 @@ export class QueryService {
       }
     ).pipe(map(
       (ss: any[]) => {
-        let states: State[] = [];
-        for (let s of ss) {
+        const states: State[] = [];
+        for (const s of ss) {
           states.push(new State(s));
         }
         return states;
