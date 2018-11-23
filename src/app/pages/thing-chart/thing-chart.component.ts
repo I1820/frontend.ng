@@ -81,25 +81,25 @@ export class ThingChartComponent implements OnInit {
   public formSubmit(f: FormGroup): void {
     this.loading = true;
 
-    const sinceDate = f.value.sinceDate
-    const sinceTime = f.value.sinceTime
-    const since: Date = new Date(sinceDate.year, sinceDate.month-1, sinceDate.day, sinceTime.hour, sinceTime.minute);
+    const sinceDate = f.value.sinceDate;
+    const sinceTime = f.value.sinceTime;
+    const since: Date = new Date(sinceDate.year, sinceDate.month - 1, sinceDate.day, sinceTime.hour, sinceTime.minute);
 
-    const untilDate = f.value.untilDate
-    const untilTime = f.value.untilTime
-    const until: Date = new Date(untilDate.year, untilDate.month-1, untilDate.day, untilTime.hour, untilTime.minute);
+    const untilDate = f.value.untilDate;
+    const untilTime = f.value.untilTime;
+    const until: Date = new Date(untilDate.year, untilDate.month - 1, untilDate.day, untilTime.hour, untilTime.minute);
 
     this.initChart();
-    let obs: Observable<State[]>[] = [];
+    const obs: Observable<State[]>[] = [];
 
     for (const asset of f.value.assets) {
-      let ob = this.qService.fetch(this.thing.project, this.thing.id, 'number', asset, since, until).pipe(
+      const ob = this.qService.fetch(this.thing.project, this.thing.id, 'number', asset, since, until).pipe(
         map((states: State[]) => {
-          let points = [];
-          for (let state of states) {
+          const points = [];
+          for (const state of states) {
             points.push([state.at.getTime(), state.value]);
           }
-          return points
+          return points;
         })
       );
       obs.push(ob); // adds newly created observable to list of created observable
@@ -109,7 +109,7 @@ export class ThingChartComponent implements OnInit {
           description: '',
           data: points,
           color: randomColor({ hue: 'random', luminosity: 'light' }),
-        })
+        });
       });
     }
 
