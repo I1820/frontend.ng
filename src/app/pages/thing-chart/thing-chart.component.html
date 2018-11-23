@@ -13,6 +13,15 @@
       </div>
       <div class="panel-body">
         <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+          <ng-select [items]="thing?.assets"
+            bindValue="name"
+            bindLabel="title"
+            [multiple]="true"
+            ngModel
+            name="assets"
+            placeholder="Assets"
+            required>
+          </ng-select>
           <label class="control-label">Since <span class="text-danger">*</span></label>
           <div class="row row-space-10">
             <div class="col-md-6 m-b-15">
@@ -52,3 +61,16 @@
   </div>
   <!-- end period-information-form -->
 </div>
+<div class="row">
+  <!-- begin chart -->
+  <div class="col-md-12">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Chart</h4>
+      </div>
+      <div class="panel-body">
+        <div [chart]="chart"></div>
+      </div>
+    </div>
+    <!-- end chart -->
+  </div>
