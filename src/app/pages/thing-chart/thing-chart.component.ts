@@ -46,6 +46,9 @@ export class ThingChartComponent implements OnInit {
         type: this.chartType,
         zoomType: 'x',
       },
+      time: {
+        useUTC: false,
+      },
       title: {
         text: 'Chart with Love',
       },
