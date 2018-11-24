@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ThingService, Thing, TTNConnectivity } from '../../shared/backend';
 import { AssetNewComponent } from '../../modals/asset-new/asset-new.component';
 import { ConnectivityNewComponent } from '../../modals/connectivity-new/connectivity-new.component';
+import { AssetDataComponent } from '../../modals/asset-data/asset-data.component';
 
 @Component({
   selector: 'app-thing-detail-page',
@@ -67,6 +68,12 @@ export class ThingDetailComponent implements OnInit {
         this.layer.setLatLng(latLng(this.thing.latitude, this.thing.longitude));
       }
     );
+  }
+
+  public recentData(asset: string): void {
+    const modalRef = this.modalService.open(AssetDataComponent);
+    modalRef.componentInstance.thing = this.thing;
+    modalRef.componentInstance.asset = asset;
   }
 
   public createConnectivity(): void {

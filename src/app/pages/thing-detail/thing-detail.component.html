@@ -70,7 +70,7 @@
         <p>{{ asset.title }}</p>
       </div>
       <div class="stats-link">
-        <a>Recent Data</a>
+        <a (click)="recentData(asset.name)">Recent Data</a>
         <a (click)="removeAsset(asset.name)"><i class="fa fa-trash"></i></a>
       </div>
     </div>
