@@ -7,7 +7,7 @@ import { Observable, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { randomColor } from 'randomcolor';
 
-import { ThingService, Thing, QueryService, State } from '../../shared/backend';
+import { ThingService, Thing, QueryService, State, Partial } from '../../shared/backend';
 
 @Component({
   selector: 'app-thing-chart',
@@ -92,15 +92,65 @@ export class ThingChartComponent implements OnInit {
     const until: Date = new Date(untilDate.year, untilDate.month - 1, untilDate.day, untilTime.hour, untilTime.minute);
 
     this.initChart();
+
+    if (f.value.ws) {
+      this.pfetch(f.value.assets, since, until, f.value.ws);
+    } else {
+      this.fetch(f.value.assets, since, until);
+    }
+  }
+
+  /**
+   * fetch calls fetch API and updates the chart.
+   */
+  private fetch(assets: string[], since: Date, until: Date) {
     const obs: Observable<State[]>[] = [];
     const start = Date.now();
 
-    for (const asset of f.value.assets) {
+    for (const asset of assets) {
       const ob = this.qService.fetch(this.thing.project, this.thing.id, 'number', asset, since, until).pipe(
         map((states: State[]) => {
           const points = [];
           for (const state of states) {
             points.push([state.at.getTime(), state.value]);
+          }
+          return points;
+        })
+      );
+      obs.push(ob); // adds newly created observable to list of created observable
+      ob.subscribe((points: any[]) => { // adds new series to the chart
+        this.chart.addSeries({
+          name: asset,
+          description: '',
+          data: points,
+          color: randomColor({ hue: 'random', luminosity: 'light' }),
+        });
+      });
+    }
+
+    merge(...obs).subscribe(() => {
+      this.loading = false;
+      this.responseTime = `${Date.now() - start} ms`;
+    });
+  }
+
+  /**
+   * pfetch calls pfetch API and updates the chart.
+   */
+  private pfetch(assets: string[], since: Date, until: Date, ws: number) {
+    const obs: Observable<Partial[]>[] = [];
+    const start = Date.now();
+
+    for (const asset of assets) {
+      const ob = this.qService.pfetch(this.thing.project, this.thing.id, 'number', asset, since, until, ws).pipe(
+        map((partials: Partial[]) => {
+          const points = [];
+          for (const partial of partials) {
+            points.push({
+              name: `${partial.since} - ${partial.until} - count: ${partial.count}`,
+              x: (partial.since.getTime() + partial.until.getTime()) / 2,
+              y: partial.value,
+            });
           }
           return points;
         })
