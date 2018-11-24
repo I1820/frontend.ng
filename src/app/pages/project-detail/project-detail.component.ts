@@ -12,8 +12,13 @@ import { Project, Thing, ProjectService, ThingService } from '../../shared/backe
 })
 export class ProjectDetailComponent implements OnInit {
 
-  private project: Project;
-  private things$: Observable<Thing[]>;
+  public project: Project;
+  public things$: Observable<Thing[]>;
+  public editorOptions = {
+    lineNumbers: 'on',
+    theme: 'vs-dark',
+    language: 'python'
+  };
 
   constructor(
     private pService: ProjectService,
