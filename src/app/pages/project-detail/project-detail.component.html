@@ -96,11 +96,22 @@
 </div>
 <hr>
 <div class="row">
-  <!-- begin scenario-editor -->
-  <div class="col-12">
+  <!-- begin scenarios-table -->
+  <div class="col-4">
     <div class="panel panel-inverse">
       <div class="panel-heading">
         <h4 class="panel-title">Scenarios</h4>
+      </div>
+      <div class="panel-body">
+      </div>
+    </div>
+  </div>
+  <!-- end scenarios-table -->
+  <!-- begin scenario-editor -->
+  <div class="col-8">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Scenario Editor</h4>
       </div>
       <div class="panel-body">
         <ngx-monaco-editor [options]="editorOptions" ></ngx-monaco-editor>
