@@ -13,6 +13,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ChartModule } from 'angular-highcharts';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 // Global Configurations
 import * as global from './globals';
@@ -24,9 +25,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { AppRoutingModule } from './app-routing.module';
+
+// Modules
 import { AuthenticationModule, BackendModule } from './shared';
 
-// Page Components
+// Page and Modal Components
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -91,6 +94,7 @@ import { AssetDataComponent } from './modals/asset-data/asset-data.component';
     LoadingBarHttpClientModule,
     NgSelectModule,
     ChartModule,
+    MonacoEditorModule.forRoot(),
     SimpleNotificationsModule.forRoot({
       timeOut: 3000,
     }),
