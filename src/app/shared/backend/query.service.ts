@@ -73,8 +73,15 @@ export class QueryService {
     );
   }
 
+  /**
+   * recently fetches given number of given asset's recent's data.
+   */
+  @BackendAPI.api('Query', 'Recently')
   public recently(id: string, tid: string, asset: string, n: number): Observable<State[]> {
-    return this.http.get(`/api/v1/projects/${id}/things/${tid}/assets/${asset}?limit=${n}`).pipe(map(
+    return this.http.post(`/api/v1/projects/${id}/things/${tid}/queries/recently`, {
+      limit: n,
+      asset: asset,
+    }).pipe(map(
       (ss: any[]) => {
         const states: State[] = [];
         for (const s of ss) {
