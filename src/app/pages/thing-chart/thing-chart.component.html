@@ -49,7 +49,13 @@
               <ngb-timepicker ngModel #untilTime="ngModel" name="untilTime" required></ngb-timepicker>
               <div *ngIf="untilTime.hasError('required')" class="small form-text text-danger">
                 Time of Until is required.
-              </div> 
+              </div>
+            </div>
+          </div>
+          <label class="control-label">Window Size</label>
+          <div class="row m-b-15">
+            <div class="col-md-12">
+              <input name="ws" ngModel type="number" class="form-control" placeholder="Window Size"/>
             </div>
           </div>
           <div class="register-buttons">
