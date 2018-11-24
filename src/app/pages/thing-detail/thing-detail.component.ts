@@ -24,7 +24,7 @@ export class ThingDetailComponent implements OnInit {
   public bgToAssetTypeMap = {
     'boolean': 'bg-cyan',
     'number': 'bg-orange',
-    'string': '',
+    'string': 'bg-green',
     'array': '',
     'object': '',
   };
