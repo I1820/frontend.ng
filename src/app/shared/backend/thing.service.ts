@@ -61,6 +61,18 @@ export class ThingService {
   }
 
   /**
+   * remove removes detail about given thing identification
+   */
+  @BackendAPI.api('Thing', 'Remove')
+  public remove(id: string, tid: string): Observable<boolean> {
+    return this.http.delete(`/api/v1/projects/${id}/things/${tid}`).pipe(map(
+      (b: any) => {
+        return b === true;
+      })
+    );
+  }
+
+  /**
    * tokenCreate creates new token for given thing identification
    */
   @BackendAPI.api('Thing:Token', 'Create')
