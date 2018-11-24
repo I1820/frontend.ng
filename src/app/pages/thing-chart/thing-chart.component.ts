@@ -17,7 +17,7 @@ import { ThingService, Thing, QueryService, State } from '../../shared/backend';
 export class ThingChartComponent implements OnInit {
   public loading: boolean;
   public chart: Chart;
-  public chartType: string = 'area';
+  public chartType = 'area';
 
   public thing: Thing;
   public states: State[];
