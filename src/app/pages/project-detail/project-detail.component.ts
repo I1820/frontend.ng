@@ -34,4 +34,8 @@ export class ProjectDetailComponent implements OnInit {
     );
   }
 
+  public thingRemove(pid: string, tid: string): void {
+    this.tService.remove(pid, tid).subscribe(() => this.refresh());
+  }
+
 }
