@@ -41,6 +41,7 @@ import { ThingDetailComponent } from './pages/thing-detail/thing-detail.componen
 import { AssetNewComponent } from './modals/asset-new/asset-new.component';
 import { ConnectivityNewComponent } from './modals/connectivity-new/connectivity-new.component';
 import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
+import { AssetDataComponent } from './modals/asset-data/asset-data.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
     // modals
     AssetNewComponent,
     ConnectivityNewComponent,
+    AssetDataComponent,
 
     // pages
     LoginComponent,
@@ -73,6 +75,7 @@ import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
     // modals
     AssetNewComponent,
     ConnectivityNewComponent,
+    AssetDataComponent,
   ],
   imports: [
     AppRoutingModule,
