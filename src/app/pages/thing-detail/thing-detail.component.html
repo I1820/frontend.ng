@@ -60,7 +60,7 @@
 <h3>Assets</h3>
 <div class="row">
   <div class="col-lg-3 col-md-6" *ngFor="let asset of thing?.assets">
-    <div class="widget widget-stats" [ngClass]="bgToTypeMap[asset.type]">
+    <div class="widget widget-stats" [ngClass]="bgToAssetTypeMap[asset.type]">
       <div class="stats-icon">
         <i *ngIf="asset.kind === 'sensor'" class="far fa-arrow-alt-circle-up"></i>
         <i *ngIf="asset.kind === 'actuator'" class="far fa-arrow-alt-circle-down"></i>
@@ -88,7 +88,18 @@
 <h3>Connectivities</h3>
 <div class="row">
   <div class="col-lg-3 col-md-6" *ngFor="let connectivity of thing?.connectivities">
-    {{ connectivity | json }}
+    <div class="widget widget-stats" [ngClass]="bgToConnectivityType(connectivity)">
+      <div class="stats-icon">
+      </div>
+      <div class="stats-info">
+        <ng-container *ngFor="let option of connectivity | keyvalue">
+          <h4>{{ option.key }}</h4>
+          <p>{{ option.value }}</p>
+        </ng-container>
+      </div>
+      <div class="stats-link">
+      </div>
+    </div>
   </div>
 </div>
 <!-- end thing-connectivities -->

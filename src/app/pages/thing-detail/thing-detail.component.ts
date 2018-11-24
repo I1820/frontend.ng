@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ThingService, Thing } from '../../shared/backend';
+import { ThingService, Thing, TTNConnectivity } from '../../shared/backend';
 import { AssetNewComponent } from '../../modals/asset-new/asset-new.component';
 import { ConnectivityNewComponent } from '../../modals/connectivity-new/connectivity-new.component';
 
@@ -21,7 +21,7 @@ export class ThingDetailComponent implements OnInit {
   /**
    * each asset has a type, this map set its widget background color with asset's type.
    */
-  public bgToTypeMap = {
+  public bgToAssetTypeMap = {
     'boolean': 'bg-cyan',
     'number': 'bg-orange',
     'string': '',
@@ -103,5 +103,11 @@ export class ThingDetailComponent implements OnInit {
         this.thing = thing;
       }
     );
+  }
+
+  public bgToConnectivityType(connectivity: any) {
+    if (connectivity instanceof TTNConnectivity) {
+      return 'bg-blue';
+    }
   }
 }
