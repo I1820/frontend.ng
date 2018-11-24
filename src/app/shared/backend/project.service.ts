@@ -32,7 +32,7 @@ export class ProjectService {
   public create(name: string, env: Object = {}): Observable<Project> {
     return this.http.post('/api/v1/projects', { name, env }).pipe(map(
       (p: any) => {
-        return new Project(p.name, p.id);
+        return new Project(p);
       }), tap(() => {}, () => {}, // token refreshing when observer completes
         () => {
           this.authService.refreshToken().subscribe((u) => {});
@@ -50,7 +50,7 @@ export class ProjectService {
       (ps: any[]) => {
         const projects: Project[] = [];
         for (const p of ps) {
-          projects.push(new Project(p.name, p.id));
+          projects.push(new Project(p));
         }
         return projects;
       })
@@ -64,11 +64,21 @@ export class ProjectService {
   public show(id: string): Observable<Project> {
     return this.http.get(`/api/v1/projects/${id}`).pipe(map(
       (p: any) => {
-        const project: Project = new Project(p.name, p.id);
+        const project: Project = new Project(p);
         return project;
       }
     ));
   }
 
-
+  /**
+   * remove removes given project.
+   */
+  @BackendAPI.api('Project', 'Remove')
+  public remove(id: string): Observable<boolean> {
+    return this.http.delete(`/api/v1/projects/${id}`).pipe(map(
+      (b: any) => {
+        return b === true;
+      }
+    ));
+  }
 }
