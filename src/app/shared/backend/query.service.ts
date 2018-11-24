@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { BackendModule } from './backend.module';
 import { BackendAPI } from './backend';
-import { State } from './query.model';
+import { State, Partial } from './query.model';
 
 /**
  * QueryService handles data queries.
@@ -44,4 +44,33 @@ export class QueryService {
       })
     );
   }
+
+  /**
+   * pfetch partialy fetches data since given date until given date. This function only fetches one asset.
+   */
+  @BackendAPI.api('Query', 'PFetch')
+  public pfetch(id: string, tid: string, type: string, asset: string, since: Date, until: Date, ws: number): Observable<Partial[]> {
+    return this.http.post(`/api/v1/projects/${id}/things/${tid}/queries/pfetch`,
+      {
+        range: {
+          from: since.toISOString(),
+          to: until.toISOString(),
+        },
+        type: type,
+        target: asset,
+        window: {
+          size: ws,
+        }
+      }
+    ).pipe(map(
+      (ps: any[]) => {
+        const partials: Partial[] = [];
+        for (const p of ps) {
+          partials.push(new Partial(p));
+        }
+        return partials;
+      })
+    );
+  }
+
 }

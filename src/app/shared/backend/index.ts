@@ -7,4 +7,4 @@ export { QueryService } from './query.service';
 export { Darksky } from './darksky.model';
 export { Project } from './project.model';
 export { Thing, ConnectivityType } from './thing.model';
-export { State } from './query.model';
+export { State, Partial } from './query.model';

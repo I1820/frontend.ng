@@ -13,3 +13,16 @@ export class State {
     this.asset = input.asset;
   }
 }
+
+export class Partial {
+  public count: number;
+  public value: number;
+  public since: Date;
+  public until: Date;
+
+  constructor(input: any) {
+    this.value = input.data;
+    this.since = new Date(input.since);
+    this.until = new Date(input.until);
+  }
+}
