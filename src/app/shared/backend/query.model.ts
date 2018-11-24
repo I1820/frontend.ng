@@ -24,5 +24,6 @@ export class Partial {
     this.value = input.data;
     this.since = new Date(input.since);
     this.until = new Date(input.until);
+    this.count = input.count;
   }
 }
