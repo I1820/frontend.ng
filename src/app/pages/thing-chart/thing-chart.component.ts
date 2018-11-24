@@ -17,6 +17,7 @@ import { ThingService, Thing, QueryService, State } from '../../shared/backend';
 export class ThingChartComponent implements OnInit {
   public loading: boolean;
   public chart: Chart;
+  public chartType: string = 'area';
 
   public thing: Thing;
   public states: State[];
@@ -41,7 +42,7 @@ export class ThingChartComponent implements OnInit {
   private initChart(): void {
     this.chart = new Chart({
       chart: {
-        type: 'area',
+        type: this.chartType,
         zoomType: 'x',
       },
       title: {

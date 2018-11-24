@@ -60,6 +60,20 @@
     </div>
   </div>
   <!-- end period-information-form -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Chart Information</h4>
+      </div>
+      <div class="panel-body">
+        <select [(ngModel)]="chartType">
+          <option value="area">Area</option>
+          <option value="line">Line</option>
+          <option value="column">Column</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
   <!-- begin chart -->
