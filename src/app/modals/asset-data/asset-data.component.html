@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title">Recent Data</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Value</th>
+          <th>At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let state of states; let idx = index">
+          <td>{{idx + 1}}</td>
+          <td>{{state.value}}</td>
+          <td placement="right" [ngbTooltip]="state.at.toString()">{{state.at | timeago}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <p>Response Time: {{responseTime}}</p>
+</div>
