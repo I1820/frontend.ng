@@ -18,6 +18,7 @@ export class ThingChartComponent implements OnInit {
   public loading: boolean;
   public chart: Chart;
   public chartType = 'area';
+  public responseTime = 'N/A';
 
   public thing: Thing;
   public states: State[];
@@ -92,6 +93,7 @@ export class ThingChartComponent implements OnInit {
 
     this.initChart();
     const obs: Observable<State[]>[] = [];
+    const start = Date.now();
 
     for (const asset of f.value.assets) {
       const ob = this.qService.fetch(this.thing.project, this.thing.id, 'number', asset, since, until).pipe(
@@ -114,6 +116,9 @@ export class ThingChartComponent implements OnInit {
       });
     }
 
-    merge(...obs).subscribe(() => this.loading = false);
+    merge(...obs).subscribe(() => {
+      this.loading = false;
+      this.responseTime = `${Date.now() - start} ms`;
+    });
   }
 }
