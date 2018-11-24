@@ -2,51 +2,55 @@
 <app-breadcrumb></app-breadcrumb>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Project <small>{{(project$ | async)?.name}}</small></h1>
+<h1 class="page-header">Project <small>{{project?.name}}</small></h1>
 <!-- end page-header -->
-<!-- begin things-table -->
-<div class="panel panel-inverse">
-  <div class="panel-heading">
-    <div class="panel-heading-btn">
-      <a class="btn btn-xs btn-icon btn-circle btn-success" (click)="refresh()"><i class="fa fa-redo"></i></a>
-    </div>
-    <h4 class="panel-title">Things List</h4>
-  </div>
-  <div class="panel-body">
-    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>ID</th>
-            <th>Model</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let thing of things$ | async; let idx = index">
-            <td>{{idx + 1}}</td>
-            <td>{{thing.name}}</td>
-            <td>{{thing.id}}</td>
-            <td>{{thing.model}}</td>
-            <td class="with-btn">
-              <a (confirm)="thingRemove(thing.project, thing.id)" class="btn btn-sm btn-icon btn-circle" [swal]="thingRemoveSwal"><i class="fa fa-trash"></i></a>
-              <a [routerLink]="['things', thing.id]" class="btn btn-sm btn-icon btn-circle"><i class="fa fa-info"></i></a>
-            </td>
-            <!-- begin thing-remove-swal -->
-            <swal #thingRemoveSwal
-              title="Remove {{thing.name}}"
-              text="This cannot be undone"
-              type="question"
-              confirmButtonText="Remove"
-              showCancelButton="true"
-              cancelButtonText="Let it Live"
-              focusConfirm="false">
-            </swal>
-            <!-- end thing-remove-swal -->
-          </tr>
-        </tbody>
-      </table>
+<div class="row">
+  <!-- begin things-table -->
+  <div class="col-12">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <div class="panel-heading-btn">
+          <a class="btn btn-xs btn-icon btn-circle btn-success" (click)="refresh()"><i class="fa fa-redo"></i></a>
+        </div>
+        <h4 class="panel-title">Things List</h4>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Model</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let thing of things$ | async; let idx = index">
+                <td>{{idx + 1}}</td>
+                <td>{{thing.name}}</td>
+                <td>{{thing.id}}</td>
+                <td>{{thing.model}}</td>
+                <td class="with-btn">
+                  <a (confirm)="thingRemove(thing.project, thing.id)" class="btn btn-sm btn-icon btn-circle" [swal]="thingRemoveSwal"><i class="fa fa-trash"></i></a>
+                  <a [routerLink]="['things', thing.id]" class="btn btn-sm btn-icon btn-circle"><i class="fa fa-info"></i></a>
+                </td>
+                <!-- begin thing-remove-swal -->
+                <swal #thingRemoveSwal
+                  title="Remove {{thing.name}}"
+                  text="This cannot be undone"
+                  type="question"
+                  confirmButtonText="Remove"
+                  showCancelButton="true"
+                  cancelButtonText="Let it Live"
+                  focusConfirm="false">
+                </swal>
+                <!-- end thing-remove-swal -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -56,4 +60,36 @@
   <i class="fas fa-plus"></i>
   New Thing
 </button>
+<hr>
 <!-- end new-thing-button -->
+<div class="row">
+  <!-- begin things-table -->
+  <div class="col-4">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Docker details</h4>
+      </div>
+      <div class="panel-body">
+        <ng-container *ngIf="project?.inspects?.length == 2; else noDocker">
+          <h4>Runner</h4>
+          <dl>
+            <dt>Labels: </dt>
+            <dd><pre>{{project.inspects[0].Config.Labels | json}}</pre></dd>
+            <dt>Created: </dt>
+            <dd>{{project.inspects[0].Created | date:'medium':'UTC' }}</dd>
+            <dt>State: <dt>
+            <dd>{{project.inspects[0].State.Status}}</dd>
+          </dl>
+          <h4>Redis</h4>
+          <dl>
+            <dt>State: <dt>
+            <dd>{{project.inspects[0].State.Status}}</dd>
+          </dl>
+        </ng-container>
+        <ng-template #noDocker>
+          <p>There is a problem with project's dockers please contact us</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

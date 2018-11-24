@@ -12,7 +12,7 @@ import { Project, Thing, ProjectService, ThingService } from '../../shared/backe
 })
 export class ProjectDetailComponent implements OnInit {
 
-  private project$: Observable<Project>;
+  private project: Project;
   private things$: Observable<Thing[]>;
 
   constructor(
@@ -22,8 +22,10 @@ export class ProjectDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.project$ = this.route.paramMap.pipe(
+    this.route.paramMap.pipe(
       switchMap((params: ParamMap) => this.pService.show(params.get('id')))
+    ).subscribe(
+      (p: Project) => this.project = p
     );
     this.refresh();
   }
