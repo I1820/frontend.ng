@@ -73,4 +73,16 @@ export class QueryService {
     );
   }
 
+  public recently(id: string, tid: string, asset: string, n: number): Observable<State[]> {
+    return this.http.get(`/api/v1/projects/${id}/things/${tid}/assets/${asset}?limit=${n}`).pipe(map(
+      (ss: any[]) => {
+        const states: State[] = [];
+        for (const s of ss) {
+          states.push(new State(s));
+        }
+        return states;
+      })
+    );
+  }
+
 }
