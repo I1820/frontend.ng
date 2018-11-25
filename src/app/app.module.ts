@@ -12,7 +12,9 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { ChartModule } from 'angular-highcharts';
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+import stock from 'highcharts/modules/stock.src';
+import more from 'highcharts/highcharts-more.src';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 // Global Configurations
@@ -46,6 +48,11 @@ import { ConnectivityNewComponent } from './modals/connectivity-new/connectivity
 import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
 import { AssetDataComponent } from './modals/asset-data/asset-data.component';
 import { WidgetNewComponent } from './modals/widget-new/widget-new.component';
+
+export function highchartsModules() {
+  // apply Highcharts Modules to this array
+  return [stock, more];
+}
 
 @NgModule({
   declarations: [
@@ -110,6 +117,7 @@ import { WidgetNewComponent } from './modals/widget-new/widget-new.component';
   ],
   providers: [
     Title,
+    { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules },
   ],
   bootstrap: [ AppComponent ]
 })
