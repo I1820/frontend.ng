@@ -110,7 +110,6 @@ import { WidgetNewComponent } from './modals/widget-new/widget-new.component';
   ],
   providers: [
     Title,
-    { provide: 'MAPBOX_KEY', useValue: 'pk.eyJ1IjoiMTk5NXBhcmhhbSIsImEiOiJjam55NWZlNTQwMDR3M3FscmpkdDBtaHBuIn0.V5NpoZd79sLCj2M_9Rccrg' },
   ],
   bootstrap: [ AppComponent ]
 })
