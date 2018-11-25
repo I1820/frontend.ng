@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Chart } from 'angular-highcharts';
+import { StockChart } from 'angular-highcharts';
 import { Observable, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { randomColor } from 'randomcolor';
@@ -16,8 +16,8 @@ import { ThingService, Thing, QueryService, State, Partial } from '../../shared/
 })
 export class ThingChartComponent implements OnInit {
   public loading: boolean;
-  public chart: Chart;
-  public chartType = 'area';
+  public chart: StockChart;
+  public chartType = 'areaspline';
   public responseTime = 'N/A';
 
   public thing: Thing;
@@ -41,7 +41,7 @@ export class ThingChartComponent implements OnInit {
   }
 
   private initChart(): void {
-    this.chart = new Chart({
+    this.chart = new StockChart({
       chart: {
         type: this.chartType,
         zoomType: 'x',
@@ -56,14 +56,22 @@ export class ThingChartComponent implements OnInit {
         enabled: true,
       },
       yAxis: {
-        type: 'linear',
         minorTickInterval: 'auto'
       },
-      xAxis: {
-        type: 'datetime',
-        tickPixelInterval: 1000,
-      },
       series: []
+    });
+  }
+
+  /**
+   * addSeries calls addseries API of highcharts stockchart to add given series.
+   */
+  private addSeries(
+    series: Highcharts.SeriesOptions,
+    redraw = true,
+    animation: boolean | Highcharts.Animation = false
+  ): void {
+    this.chart.ref$.subscribe(chart => {
+      chart.addSeries(series, redraw, animation);
     });
   }
 
@@ -122,7 +130,7 @@ export class ThingChartComponent implements OnInit {
       );
       obs.push(ob); // adds newly created observable to list of created observable
       ob.subscribe((points: any[]) => { // adds new series to the chart
-        this.chart.addSeries({
+        this.addSeries({
           name: asset,
           description: '',
           data: points,
@@ -160,7 +168,7 @@ export class ThingChartComponent implements OnInit {
       );
       obs.push(ob); // adds newly created observable to list of created observable
       ob.subscribe((points: any[]) => { // adds new series to the chart
-        this.chart.addSeries({
+        this.addSeries({
           name: asset,
           description: '',
           data: points,
