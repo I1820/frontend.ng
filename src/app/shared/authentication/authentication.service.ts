@@ -72,6 +72,7 @@ export class AuthenticationService implements AuthService {
           u.lastname,
           u.username,
           u.email,
+          u.projects,
           u.access_token,
           u.refresh_token,
         );
@@ -130,6 +131,7 @@ export class AuthenticationService implements AuthService {
           u.lastname,
           u.username,
           u.email,
+          u.projects,
           u.access_token,
           u.refresh_token,
         );
