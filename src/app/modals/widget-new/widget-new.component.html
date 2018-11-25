@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <h4 class="modal-title">Widget Creation</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+    <label class="control-label">Title <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <input name="title" #title="ngModel" ngModel type="text" [class.is-invalid]="isValid(title)" class="form-control" placeholder="Title" required />
+        <div *ngIf="title.hasError('required')" class="invalid-feedback">
+          Title is required.
+        </div>
+      </div>
+    </div>
+    <label class="control-label">Project <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <ng-select
+          ngModel
+          name="project"
+
+          [items]="projects$ | async"
+          bindLabel="name"
+          bindValue="id"
+          [clearable]="false"
+          (change)="onProjectChange($event); f.controls.thing.reset(); f.controls.asset.reset()"
+          >
+        </ng-select>
+      </div>
+    </div>
+    <label class="control-label">Thing <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <ng-select
+          ngModel
+          name="thing"
+
+          [items]="things$ | async"
+          bindLabel="name"
+          bindValue="id"
+          [clearable]="false"
+          (change)="onThingChange($event); f.controls.asset.reset()"
+          >
+        </ng-select>
+      </div>
+    </div>
+    <label class="control-label">Asset <span class="text-danger">*</span></label>
+    <div class="row m-b-15">
+      <div class="col-md-12">
+        <ng-select
+          ngModel
+          name="asset"
+
+          [items]="thing?.assets"
+          bindLabel="title"
+          bindValue="name"
+          [clearable]="false"
+          >
+        </ng-select>
+      </div>
+    </div>
+    <div class="register-buttons">
+      <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+</div>
