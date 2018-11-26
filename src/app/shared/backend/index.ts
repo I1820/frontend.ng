@@ -3,6 +3,7 @@ export { ProjectService } from './project.service';
 export { ThingService } from './thing.service';
 export { HealthService } from './health.service';
 export { WeatherService } from './weather.service';
+export { WidgetService } from './widget.service';
 export { QueryService } from './query.service';
 export { Darksky } from './darksky.model';
 export { Project } from './project.model';
