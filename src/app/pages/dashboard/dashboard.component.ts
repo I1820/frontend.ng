@@ -1,17 +1,21 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { icon, latLng, tileLayer, Map, LatLng } from 'leaflet';
 import 'leaflet-measure';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import * as global from '../../globals';
+import { WidgetNewComponent } from '../../modals/widget-new/widget-new.component';
+import { AuthenticationService } from '../../shared/authentication';
+import { Widget, WidgetService } from '../../shared/backend';
 
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 
 export class DashboardComponent implements OnInit {
+  public widgets: Widget[] = [];
+
   /**
    * Map center latitude.
    */
@@ -23,23 +27,12 @@ export class DashboardComponent implements OnInit {
   private centerLng = 51.398408;
 
   /**
-   * Mapbox map
-   */
-  private id = 'satellite-streets-v9';
-
-  /**
    * leatlet map options
    */
   private options = {
     layers: [
-      tileLayer(`https://api.mapbox.com/styles/v1/mapbox/${this.id}/tiles/{z}/{x}/{y}?access_token=${this.accessToken}`,
-        {
-          attribution: `
-          <a href="https://www.mapbox.com/about/maps/">© Mapbox | </a>
-          <a href="http://www.openstreetmap.org/copyright">© OpenStreetMap | </a>
-          <a href="https://www.mapbox.com/map-feedback/" target="_blank"><strong>Improve this map</strong></a>
-          `,
-        })
+      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { attribution: '&copy; OpenStreetMap contributors' })
     ],
     zoom: 15,
     center: latLng(this.centerLat, this.centerLng),
@@ -47,9 +40,20 @@ export class DashboardComponent implements OnInit {
   };
 
   constructor(
-    @Inject('MAPBOX_KEY') private accessToken: string,
+    private modalService: NgbModal,
+    public authService: AuthenticationService,
+    public wService: WidgetService,
   ) { }
 
   ngOnInit() {
+    this.wService.retrieve().subscribe((widgets: Widget[]) => this.widgets = widgets);
+  }
+
+  public createWidget(): void {
+    const modalRef = this.modalService.open(WidgetNewComponent);
+    modalRef.result.then((w: Widget) => {
+      this.widgets.push(w)
+      this.wService.store(this.widgets).subscribe();
+    });
   }
 }

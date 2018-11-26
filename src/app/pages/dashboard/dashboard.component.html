@@ -5,7 +5,69 @@
 <h1 class="page-header">Dashboard <small>Everything at a glance</small></h1>
 <!-- end page-header -->
 <div class="row">
-  <!-- begin thing-creation-map -->
+  <!-- begin projects-number -->
+  <div class="col-lg-3 col-md-6">
+    <div class="widget widget-stats bg-gradient-orange">
+      <div class="stats-icon stats-icon-lg"><i class="fa fa-smile fa-fw"></i></div>
+      <div class="stats-content">
+        <div class="stats-title">TOTAL PROJECTS</div>
+        <div class="stats-number">{{authService.getUser()?.projects.length}}</div>
+        <div class="stats-progress progress">
+          <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        <div class="stats-desc">Currently, there is no limit on the number of projects</div>
+      </div>
+    </div>
+  </div>
+  <!-- end projects-number -->
+  <!-- begin col-3 -->
+  <div class="col-lg-3 col-md-6">
+    <div class="widget widget-stats bg-gradient-blue">
+      <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+      <div class="stats-content">
+        <div class="stats-title">TODAY'S PROFIT</div>
+        <div class="stats-number">180,200</div>
+        <div class="stats-progress progress">
+          <div class="progress-bar" style="width: 40.5%;"></div>
+        </div>
+        <div class="stats-desc">Better than last week (40.5%)</div>
+      </div>
+    </div>
+  </div>
+  <!-- end col-3 -->
+  <!-- begin col-3 -->
+  <div class="col-lg-3 col-md-6">
+    <div class="widget widget-stats bg-gradient-purple">
+      <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
+      <div class="stats-content">
+        <div class="stats-title">NEW ORDERS</div>
+        <div class="stats-number">38,900</div>
+        <div class="stats-progress progress">
+          <div class="progress-bar" style="width: 76.3%;"></div>
+        </div>
+        <div class="stats-desc">Better than last week (76.3%)</div>
+      </div>
+    </div>
+  </div>
+  <!-- end col-3 -->
+  <!-- begin col-3 -->
+  <div class="col-lg-3 col-md-6">
+    <div class="widget widget-stats bg-gradient-black">
+      <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+      <div class="stats-content">
+        <div class="stats-title">NEW COMMENTS</div>
+        <div class="stats-number">3,988</div>
+        <div class="stats-progress progress">
+          <div class="progress-bar" style="width: 54.9%;"></div>
+        </div>
+        <div class="stats-desc">Better than last week (54.9%)</div>
+      </div>
+    </div>
+  </div>
+  <!-- end col-3 -->
+</div>
+<div class="row">
+  <!-- begin dashboard-map -->
   <div class="col-12">
     <div class="panel panel-inverse">
       <div class="panel-heading">
@@ -15,10 +77,30 @@
         <div leaflet class="map"
                      [leafletOptions]="options"
                      [leafletCenter]="{ lat: centerLat, lng: centerLng }"
-          >
+                     >
         </div>
       </div>
     </div>
   </div>
-  <!-- end thing-creation-map -->
+  <!-- end dashboard-map -->
 </div>
+<!-- begin new-widget-button -->
+<button type="button" class="btn btn-primary" (click)="createWidget()">
+  <i class="fas fa-plus"></i>
+  New Widget
+</button>
+<!-- end new-widget-button -->
+<hr>
+<!-- begin widgets-with-love -->
+<div class="row">
+  <div *ngFor="let widget of widgets" class="col-{{widget.size}}">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">{{ widget.title }}</h4>
+      </div>
+      <div class="panel-body">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end widgets-with-love -->
