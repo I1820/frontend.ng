@@ -45,6 +45,8 @@ import { ConnectivityNewComponent } from './modals/connectivity-new/connectivity
 import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
 import { AssetDataComponent } from './modals/asset-data/asset-data.component';
 import { WidgetNewComponent } from './modals/widget-new/widget-new.component';
+import { WidgetComponent } from './widgets/widget/widget.component';
+import { GaugeComponent } from './widgets/gauge/gauge.component';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -79,6 +81,8 @@ export function highchartsModules() {
     ProjectNewComponent,
     ThingDetailComponent,
     ThingChartComponent,
+    WidgetComponent,
+    GaugeComponent,
   ],
   entryComponents: [
     // modals
