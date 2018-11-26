@@ -56,4 +56,9 @@ export class DashboardComponent implements OnInit {
       this.wService.store(this.widgets).subscribe();
     });
   }
+
+  public removeWidget(i: number): void {
+      this.widgets.splice(i, 1);
+      this.wService.store(this.widgets).subscribe();
+  }
 }

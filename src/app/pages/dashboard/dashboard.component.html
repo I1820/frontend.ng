@@ -93,14 +93,8 @@
 <hr>
 <!-- begin widgets-with-love -->
 <div class="row">
-  <div *ngFor="let widget of widgets" class="col-{{widget.size}}">
-    <div class="panel panel-inverse">
-      <div class="panel-heading">
-        <h4 class="panel-title">{{ widget.title }}</h4>
-      </div>
-      <div class="panel-body">
-      </div>
-    </div>
+  <div *ngFor="let widget of widgets; let idx = index" class="col-{{widget.size}}">
+    <app-widget [widget]="widget" (remove)="removeWidget(idx)"></app-widget>
   </div>
 </div>
 <!-- end widgets-with-love -->
