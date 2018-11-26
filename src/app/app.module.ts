@@ -17,9 +17,6 @@ import stock from 'highcharts/modules/stock.src';
 import more from 'highcharts/highcharts-more.src';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 
-// Global Configurations
-import * as global from './globals';
-
 // Main Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
