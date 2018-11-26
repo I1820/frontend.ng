@@ -47,7 +47,7 @@ export class WidgetService {
           return widgets;
         for (const i of Object.keys(ws)) {
           const w = ws[i];
-          widgets.push(new Widget(w.title, w.type, w.pid, w.tid, w.asset, w.size));
+          widgets.push(new Widget(w.title, w.type, w.pid, w.tid, w.asset, w.size, w.params));
         }
         return widgets;
       })

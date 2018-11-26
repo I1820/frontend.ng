@@ -6,6 +6,7 @@ export class Widget {
     public tid: string,
     public asset: string,
     public size: number,
+    public params: any,
   ) {
   }
 }
