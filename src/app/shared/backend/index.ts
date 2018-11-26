@@ -8,3 +8,4 @@ export { Darksky } from './darksky.model';
 export { Project } from './project.model';
 export { Thing, ConnectivityType, TTNConnectivity, Asset } from './thing.model';
 export { State, Partial } from './query.model';
+export { Widget } from './widget.model';
