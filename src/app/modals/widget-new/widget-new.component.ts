@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 
-import { ThingService, Thing, ProjectService, Project } from '../../shared/backend';
+import { ThingService, Thing, ProjectService, Project, Widget } from '../../shared/backend';
 
 @Component({
   selector: 'app-widget-new',
@@ -18,6 +18,8 @@ export class WidgetNewComponent implements OnInit {
   public things$: Observable<Thing[]>;
 
   public thing: Thing;
+  public type = 'gauge';
+  public size = 6;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -63,5 +65,7 @@ export class WidgetNewComponent implements OnInit {
    * formSubmits calls when user submits the widget creation form.
    */
   public formSubmit(f: FormGroup): void {
+    const widget = new Widget(f.value.title, this.type, f.value.project, f.value.thing, f.value.asset, this.size);
+    this.activeModal.close(widget);
   }
 }

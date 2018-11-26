@@ -21,6 +21,7 @@
         <ng-select
           ngModel
           name="project"
+          required
 
           [items]="projects$ | async"
           bindLabel="name"
@@ -37,6 +38,7 @@
         <ng-select
           ngModel
           name="thing"
+          required
 
           [items]="things$ | async"
           bindLabel="name"
@@ -53,6 +55,7 @@
         <ng-select
           ngModel
           name="asset"
+          required
 
           [items]="thing?.assets"
           bindLabel="title"
@@ -66,6 +69,25 @@
       <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
     </div>
   </form>
+  <hr>
+  <label class="control-label">Widget Type: </label>
+  <div class="row m-b-15">
+    <div class="col-md-12">
+      <select [(ngModel)]="type" class="form-control">
+        <option value="gauge">Gauge</option>
+      </select>
+    </div>
+  </div>
+  <label class="control-label">Widget Size: </label>
+  <div class="row m-b-15">
+    <div class="col-md-12">
+      <select [(ngModel)]="size" class="form-control">
+        <option value="12">Full</option>
+        <option value="6">Half</option>
+        <option value="3">Quarter</option>
+      </select>
+    </div>
+  </div>
 </div>
 <div class="modal-footer">
 </div>
