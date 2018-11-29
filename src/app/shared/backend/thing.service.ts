@@ -123,6 +123,7 @@ export class ThingService {
   /**
    * connectivityCreate creates new connectivity of given type for given thing identification
    */
+  @BackendAPI.api('Thing:Connectivity', 'Create')
   public connectivityCreate(id: string, tid: string, name: string, info: any): Observable<Thing> {
     return this.http.post(`/api/v1/projects/${id}/things/${tid}/connectivities`, {name, info}).pipe(map(
       (t: any) => {
