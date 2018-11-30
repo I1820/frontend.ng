@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
     modalRef.result.then((w: Widget) => {
       this.widgets.push(w)
       this.wService.store(this.widgets).subscribe();
-    });
+    }, (reason) => reason);
   }
 
   public removeWidget(i: number): void {
