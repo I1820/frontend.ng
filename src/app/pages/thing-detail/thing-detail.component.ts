@@ -115,6 +115,6 @@ export class ThingDetailComponent implements OnInit {
     if (connectivity instanceof TTNConnectivity) {
       return 'bg-blue';
     }
-    return 'bg-primary'
+    return 'bg-primary';
   }
 }
