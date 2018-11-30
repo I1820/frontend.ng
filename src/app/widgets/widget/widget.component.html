@@ -7,7 +7,10 @@
   </div>
   <div class="panel-body">
     <div *ngIf="widget.type === 'gauge'">
-      <app-gauge-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" ></app-gauge-widget>
+      <app-gauge-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-gauge-widget>
+    </div>
+    <div *ngIf="widget.type === 'chart'">
+      <app-chart-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-chart-widget>
     </div>
   </div>
 </div>
