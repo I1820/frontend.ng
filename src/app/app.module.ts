@@ -47,6 +47,7 @@ import { AssetDataComponent } from './modals/asset-data/asset-data.component';
 import { WidgetNewComponent } from './modals/widget-new/widget-new.component';
 import { WidgetComponent } from './widgets/widget/widget.component';
 import { GaugeComponent } from './widgets/gauge/gauge.component';
+import { ChartComponent } from './widgets/chart/chart.component';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -83,6 +84,7 @@ export function highchartsModules() {
     ThingChartComponent,
     WidgetComponent,
     GaugeComponent,
+    ChartComponent,
   ],
   entryComponents: [
     // modals
