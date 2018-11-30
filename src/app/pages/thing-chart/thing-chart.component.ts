@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { StockChart } from 'angular-highcharts';
 import { Observable, merge } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { randomColor } from 'randomcolor';
 
 import { ThingService, Thing, QueryService, State, Partial } from '../../shared/backend';
