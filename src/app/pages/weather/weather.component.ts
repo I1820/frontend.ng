@@ -10,7 +10,7 @@ import { WeatherService, Darksky } from '../../shared/backend';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-  private darksky: Darksky;
+  public darksky: Darksky;
 
   constructor(
     private wService: WeatherService,

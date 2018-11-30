@@ -38,8 +38,8 @@ export class AppComponent implements OnInit {
   /**
    * Current page settings
    */
-  private pageSettings: PageSettings;
-  private pageHasScroll: boolean;
+  public pageSettings: PageSettings;
+  public pageHasScroll: boolean;
 
   ngOnInit() {
     console.log('18.20 at Sep 07 2016 7:20 IR721'); // The time when everything was changed to the worst form.

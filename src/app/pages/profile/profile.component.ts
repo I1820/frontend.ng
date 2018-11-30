@@ -14,25 +14,25 @@ interface Tab {
   styleUrls: ['./profile.component.less']
 })
 export class ProfileComponent {
-  private tabs: Tab[] = [
+  public tabs: Tab[] = [
     {
       name: 'about',
       isSelected: true,
     }
   ];
 
-  private user: User;
+  public user: User;
 
   /**
    * controls input element visibility status for profile fields.
    * by making them visibe user can change his/her profile fields.
    */
-  private editFirstname: boolean;
+  public editFirstname: boolean;
 
   /**
    * showTab changes given tab status to true and other tabs to false.
    */
-  private showTab(key: number): void {
+  public showTab(key: number): void {
     for (let i = 0; i < this.tabs.length; i++) {
       if (i === key) {
         this.tabs[i].isSelected = true;

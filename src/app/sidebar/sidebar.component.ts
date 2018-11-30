@@ -15,13 +15,12 @@ import { Component, Input, Output, EventEmitter, ElementRef, HostListener } from
     ])
   ]
 })
-
 export class SidebarComponent {
   @Output() toggleSidebarMinified = new EventEmitter<boolean>();
   @Output() hideMobileSidebar = new EventEmitter<boolean>();
   @Input() pageSidebarTransparent;
 
-  menus = [
+  public menus = [
     {
       'icon': 'fa fa-th-large',
       'title': 'Dashboard',
@@ -40,11 +39,11 @@ export class SidebarComponent {
     }
   ];
 
-  toggleMinified() {
+  public toggleMinified() {
     this.toggleSidebarMinified.emit(true);
   }
 
-  expandCollapseSubmenu(currentMenu, allMenu, active) {
+  public expandCollapseSubmenu(currentMenu, allMenu, active) {
     for (const menu of allMenu) {
       if (menu !== currentMenu) {
         menu.state = 'collapse';

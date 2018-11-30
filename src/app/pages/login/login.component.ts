@@ -16,12 +16,12 @@ export class LoginComponent {
   /**
    * loading is true when client tries to communicate with server in login process otherwise false
    */
-  private loading: boolean;
+  public loading: boolean;
 
   /**
    * Platform creation date
    */
-  private creationDate: Date = new Date('2015');
+  public creationDate: Date = new Date('2015');
 
   constructor(
     private app: AppComponent,
@@ -41,7 +41,7 @@ export class LoginComponent {
    * when someone click on submit button form status changes to loading
    * and submit button will shows a spinner.
    */
-  private get submitButtonText(): string {
+  public get submitButtonText(): string {
     if (this.loading) {
       return `<i class="fas fa-spinner fa-spin"></i>`;
     } else {
@@ -53,14 +53,14 @@ export class LoginComponent {
    * When input is invalid in the input box, input box must truns to red this function
    * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
    */
-  private isValid(m: FormControl): boolean {
+  public isValid(m: FormControl): boolean {
     return m.invalid && (m.dirty || m.touched);
   }
 
   /**
    * formSubmits calls when user submits the login form.
    */
-  private formSubmit(f: FormGroup): void {
+  public formSubmit(f: FormGroup): void {
     this.loading = true;
     this.authService.login(f.value.username, f.value.password, f.value.remember === true ? true : false).subscribe(() => {
       this.loading = false;

@@ -16,22 +16,22 @@ export class ThingNewComponent implements OnInit {
   /**
    * Parent project identification
    */
-  private projectID: string;
+  public projectID: string;
 
   /**
    * Map center latitude. Map marker is also placed in this coordinates.
    */
-  private centerLat = 35.807657;
+  public centerLat = 35.807657;
 
   /**
    * Map center longitude. Map marker is also placed in this coordinates.
    */
-  private centerLng = 51.398408;
+  public centerLng = 51.398408;
 
   /**
    * leatlet map options
    */
-  private options = {
+  public options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { attribution: '&copy; OpenStreetMap contributors' })
@@ -43,7 +43,7 @@ export class ThingNewComponent implements OnInit {
   /**
    * leaflet map layer that is used here just for marker management
    */
-  private layer = marker([this.centerLat, this.centerLng], {
+  public layer = marker([this.centerLat, this.centerLng], {
     draggable: true,
     icon: icon({
       iconSize: [ 25, 41 ],

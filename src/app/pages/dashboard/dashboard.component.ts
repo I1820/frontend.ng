@@ -19,17 +19,17 @@ export class DashboardComponent implements OnInit {
   /**
    * Map center latitude.
    */
-  private centerLat = 35.807657;
+  public centerLat = 35.807657;
 
   /**
    * Map center longitude.
    */
-  private centerLng = 51.398408;
+  public centerLng = 51.398408;
 
   /**
    * leatlet map options
    */
-  private options = {
+  public options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { attribution: '&copy; OpenStreetMap contributors' })

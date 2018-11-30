@@ -79,7 +79,7 @@ export class ThingChartComponent implements OnInit {
    * when someone click on submit button form status changes to loading
    * and submit button will shows a spinner.
    */
-  private get submitButtonText(): string {
+  public get submitButtonText(): string {
     if (this.loading) {
       return `<i class="fas fa-spinner fa-spin"></i>`;
     } else {

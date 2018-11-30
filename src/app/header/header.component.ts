@@ -10,13 +10,12 @@ import { AuthenticationService } from '../shared';
 export class HeaderComponent {
   @Output() toggleMobileSidebar = new EventEmitter<boolean>();
 
-  private mobileSidebarToggle(): void {
+  public mobileSidebarToggle(): void {
     this.toggleMobileSidebar.emit(true);
   }
 
   constructor(
-    private renderer: Renderer2,
-    private authService: AuthenticationService,
+    public authService: AuthenticationService,
   ) {
   }
 }

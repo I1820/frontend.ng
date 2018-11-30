@@ -12,12 +12,12 @@ import { ProjectService } from '../../shared/backend';
 })
 export class ProjectNewComponent implements OnInit {
 
-  private loading: boolean;
+  public loading: boolean;
   @ViewChild('completeSwal') private completeSwal: SwalComponent;
 
   constructor(
     private pService: ProjectService,
-    private router: Router,
+    public router: Router,
   ) {
     this.loading = false;
   }
@@ -30,7 +30,7 @@ export class ProjectNewComponent implements OnInit {
    * when someone click on submit button form status changes to loading
    * and submit button will shows a spinner.
    */
-  private get submitButtonText(): string {
+  public get submitButtonText(): string {
     if (this.loading) {
       return `<i class="fas fa-spinner fa-spin"></i>`;
     } else {
@@ -42,7 +42,7 @@ export class ProjectNewComponent implements OnInit {
    * When input is invalid in the input box, input box must truns to red this function
    * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
    */
-  private isValid(m: FormControl): boolean {
+  public isValid(m: FormControl): boolean {
     return m.invalid && (m.dirty || m.touched);
   }
 
@@ -50,7 +50,7 @@ export class ProjectNewComponent implements OnInit {
    * formSubmits calls when user submits the project creation form.
    * Please consider that after project creation there must be an waiting time to refresh the user token.
    */
-  private formSubmit(f: FormGroup): void {
+  public formSubmit(f: FormGroup): void {
     this.loading = true;
     this.pService.create(f.value.name).subscribe(() => {
       this.loading = false;

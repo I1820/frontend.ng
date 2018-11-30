@@ -33,7 +33,7 @@ export class ThingDetailComponent implements OnInit {
   /**
    * leatlet map options
    */
-  private options = {
+  public options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { attribution: '&copy; OpenStreetMap contributors' })

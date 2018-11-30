@@ -14,7 +14,7 @@ export class RegisterComponent {
   /**
    * loading is true when client tries to communicate with server in registration process otherwise false
    */
-  private loading: boolean;
+  public loading: boolean;
 
   constructor(private app: AppComponent, private router: Router, private authService: AuthenticationService) {
     this.loading = false;
@@ -29,7 +29,7 @@ export class RegisterComponent {
    * when someone click on submit button form status changes to loading
    * and submit button will shows a spinner.
    */
-  private get submitButtonText(): string {
+  public get submitButtonText(): string {
     if (this.loading) {
       return `<i class="fas fa-spinner fa-spin"></i>`;
     } else {
@@ -41,14 +41,14 @@ export class RegisterComponent {
    * When input is invalid in the input box, input box must truns to red this function
    * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
    */
-  private isValid(m: FormControl): boolean {
+  public isValid(m: FormControl): boolean {
     return m.invalid && (m.dirty || m.touched);
   }
 
   /**
    * formSubmits calls when user submits the registration form.
    */
-  private formSubmit(f: FormGroup): void {
+  public formSubmit(f: FormGroup): void {
     this.loading = true;
     this.authService.signup(f.value).subscribe(() => {
       this.loading = false;

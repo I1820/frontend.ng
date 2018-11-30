@@ -10,7 +10,7 @@ import { ProjectService, Project } from '../../shared/backend';
 })
 export class ProjectsComponent implements OnInit {
 
-  private projects$: Observable<Project[]>;
+  public projects$: Observable<Project[]>;
 
   constructor(
     private pService: ProjectService,
