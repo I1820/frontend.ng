@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
@@ -20,6 +20,20 @@ export class WidgetNewComponent implements OnInit {
   public thing: Thing;
   public type = 'gauge';
   public size = 6;
+
+  @ViewChild('wf') widgetOptionsForm: FormGroup;
+  // please note that these options are string even if their type is number
+  public widgetOptions = {
+    gauge: [
+      { name: 'min', type: 'number' },
+      { name: 'max', type: 'number' }
+    ],
+    chart: [
+      { name: 'type', type: 'option', options: ['line', 'area', 'column'] },
+      { name: 'n', type: 'number' }
+    ],
+  };
+  public widgetTypes = Object.keys(this.widgetOptions);
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -65,7 +79,7 @@ export class WidgetNewComponent implements OnInit {
    * formSubmits calls when user submits the widget creation form.
    */
   public formSubmit(f: FormGroup): void {
-    const widget = new Widget(f.value.title, this.type, f.value.project, f.value.thing, f.value.asset, this.size);
+    const widget = new Widget(f.value.title, this.type, f.value.project, f.value.thing, f.value.asset, this.size, this.widgetOptionsForm.value);
     this.activeModal.close(widget);
   }
 }

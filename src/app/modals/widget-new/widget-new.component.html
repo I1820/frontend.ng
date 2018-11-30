@@ -74,10 +74,20 @@
   <div class="row m-b-15">
     <div class="col-md-12">
       <select [(ngModel)]="type" class="form-control">
-        <option value="gauge">Gauge</option>
+        <option *ngFor="let type of widgetTypes" value="{{ type }}">{{ type | titlecase }}</option>
       </select>
     </div>
   </div>
+  <label class="control-label">Widget Fields: </label>
+  <form #wf="ngForm">
+    <div *ngFor="let option of widgetOptions[this.type]" class="row m-b-15">
+      <label class="offset-sm-1 col-sm-1 col-form-label">{{ option.name | titlecase }}</label>
+      <div class="col-sm-10">
+        <ng-select *ngIf="option.type === 'option'" name="{{ option.name }}" ngModel [items]="option.options"></ng-select>
+        <input *ngIf="option.type !== 'option'" name="{{ option.name }}" ngModel type="{{ option.type }}" class="form-control" placeholder="{{ option.name | titlecase }}" />
+      </div>
+    </div>
+  </form>
   <label class="control-label">Widget Size: </label>
   <div class="row m-b-15">
     <div class="col-md-12">
