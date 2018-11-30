@@ -1,4 +1,4 @@
-import { group, animate, query, style, trigger, transition, state } from '@angular/animations';
+import { animate, style, trigger, transition, state } from '@angular/animations';
 import { Component, Input, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
 
 @Component({

@@ -54,7 +54,7 @@ export class BackendAPI {
    * api decorates api calls to add logging and error handling
    */
   public static api(service: string, api: string) {
-    return function (target: any, propertyName: string, descriptor: TypedPropertyDescriptor<(...any) => Observable<any>>) {
+    return function (_target: any, _propertyName: string, descriptor: TypedPropertyDescriptor<(...any) => Observable<any>>) {
       const method = descriptor.value;
       descriptor.value = function () {
         BackendAPI.logger.debug(`${service} Service:`, `${api} API is being called`);

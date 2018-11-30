@@ -115,7 +115,7 @@ export class ThingNewComponent implements OnInit {
   public formSubmit(f: FormGroup): void {
     this.tService.create(this.projectID, f.value.name, this.centerLat, this.centerLng).subscribe(() => {
       this.router.navigate(['/projects', this.projectID]);
-    }, (err) => {
+    }, () => {
     });
   }
 

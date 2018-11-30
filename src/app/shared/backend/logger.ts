@@ -19,7 +19,7 @@ export class LoggerInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap(
         event => ok = event instanceof HttpResponse ? 'succeeded' : '',
-        error => ok = 'failed',
+        error => ok = `failed (${error})`,
       ),
       finalize(() => {
           const elapsed = Date.now() - started;

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 import { AuthenticationService } from '../shared';
 

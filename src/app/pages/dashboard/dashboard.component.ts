@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
-import { icon, latLng, tileLayer, Map, LatLng } from 'leaflet';
+import { Component, OnInit } from '@angular/core';
+import { latLng, tileLayer } from 'leaflet';
 import 'leaflet-measure';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
   public createWidget(): void {
     const modalRef = this.modalService.open(WidgetNewComponent);
     modalRef.result.then((w: Widget) => {
-      this.widgets.push(w)
+      this.widgets.push(w);
       this.wService.store(this.widgets).subscribe();
     }, (reason) => reason);
   }

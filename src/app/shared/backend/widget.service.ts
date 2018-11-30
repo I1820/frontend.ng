@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { BackendModule } from './backend.module';
 import { Widget } from './widget.model';
-import { AuthenticationService } from '../authentication';
 import { BackendAPI } from './backend';
 
 
@@ -19,8 +18,7 @@ import { BackendAPI } from './backend';
 export class WidgetService {
   constructor(
     private http: HttpClient,
-    private authService: AuthenticationService,
-    private bAPI: BackendAPI,
+    _bAPI: BackendAPI,
   ) {}
 
   /**
@@ -43,8 +41,9 @@ export class WidgetService {
     return this.http.get('/api/v1/info/widgets').pipe(map(
       (ws: any) => {
         const widgets: Widget[] = [];
-        if (!ws)
+        if (!ws) {
           return widgets;
+        }
         for (const i of Object.keys(ws)) {
           const w = ws[i];
           widgets.push(new Widget(w.title, w.type, w.pid, w.tid, w.asset, w.size, w.params));

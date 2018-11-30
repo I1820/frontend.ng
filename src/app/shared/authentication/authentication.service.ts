@@ -7,11 +7,6 @@ import { AuthService } from 'ngx-auth';
 import { TokenStorage } from './token-storage.service';
 import { User } from './user.model';
 
-interface AccessData {
-  accessToken: string;
-  refreshToken: string;
-}
-
 interface RegisterData {
   firstName: string;
   lastName: string;

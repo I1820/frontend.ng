@@ -38,7 +38,7 @@ export class BreadcrumbComponent implements OnInit {
     this.breadcrumbs = [];
 
     // subscribe to the NavigationEnd event
-    router.events.subscribe((e) => {
+    this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         // set breadcrumbs based on activated route
         const root: ActivatedRoute = this.activatedRoute.root;
@@ -100,5 +100,7 @@ export class BreadcrumbComponent implements OnInit {
       // recursive
       return this.getBreadcrumbs(child, url, breadcrumbs);
     }
+
+    return [];
   }
 }

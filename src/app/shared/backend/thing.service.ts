@@ -17,7 +17,7 @@ export class ThingService {
 
   constructor(
     private http: HttpClient,
-    private bAPI: BackendAPI,
+    _bAPI: BackendAPI,
   ) {}
 
   /**

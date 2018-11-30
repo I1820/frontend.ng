@@ -55,7 +55,7 @@ export class ProjectNewComponent implements OnInit {
     this.pService.create(f.value.name).subscribe(() => {
       this.loading = false;
       this.completeSwal.show();
-    }, (err) => {
+    }, () => {
       this.loading = false;
     });
   }

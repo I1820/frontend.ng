@@ -1,6 +1,5 @@
 import { Component, HostListener, Renderer2, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
-import * as global from './globals';
+import { Router, NavigationStart } from '@angular/router';
 
 /**
  * PageSettings contains page configuration.
@@ -70,7 +69,7 @@ export class AppComponent implements OnInit {
    * The scroll event is fired when the document view or an element has been scrolled.
    */
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll($event) {
+  onWindowScroll(_$event) {
     const doc = document.documentElement;
     const top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
     if (top > 0) {
@@ -118,7 +117,7 @@ export class AppComponent implements OnInit {
   }
 
   // set page minified
-  public onToggleSidebarMinified(val: boolean): void {
+  public onToggleSidebarMinified(_val: boolean): void {
     if (this.pageSettings.pageSidebarMinified) {
       this.pageSettings.pageSidebarMinified = false;
     } else {
@@ -127,7 +126,7 @@ export class AppComponent implements OnInit {
   }
 
   // hide mobile sidebar
-  public onHideMobileSidebar(val: boolean): void {
+  public onHideMobileSidebar(_val: boolean): void {
     if (this.pageSettings.pageMobileSidebarToggled) {
       if (this.pageSettings.pageMobileSidebarFirstClicked) {
         this.pageSettings.pageMobileSidebarFirstClicked = false;
@@ -138,7 +137,7 @@ export class AppComponent implements OnInit {
   }
 
   // toggle mobile sidebar
-  onToggleMobileSidebar(val: boolean): void {
+  onToggleMobileSidebar(_val: boolean): void {
     if (this.pageSettings.pageMobileSidebarToggled) {
       this.pageSettings.pageMobileSidebarToggled = false;
     } else {
@@ -149,7 +148,7 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router, private renderer: Renderer2) {
     // clear settings when routing is happend.
-    router.events.subscribe((e) => {
+    this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
         this.clearSettings();
       }

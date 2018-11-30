@@ -18,7 +18,7 @@ export class RegisterComponent {
 
   constructor(private app: AppComponent, private router: Router, private authService: AuthenticationService) {
     this.loading = false;
-    app.setPageSettings({
+    this.app.setPageSettings({
       pageEmpty: true,
       pageBodyWhite: true
     });

@@ -46,9 +46,9 @@ export class ProfileComponent {
     private app: AppComponent,
     private authService: AuthenticationService,
   ) {
-    app.setPageSettings({
+    this.app.setPageSettings({
       pageContentFullWidth: true
     });
-    this.user = authService.getUser();
+    this.user = this.authService.getUser();
   }
 }

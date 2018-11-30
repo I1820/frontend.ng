@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
+import { icon, latLng, tileLayer, marker } from 'leaflet';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ThingService, Thing, TTNConnectivity } from '../../shared/backend';
@@ -112,9 +111,10 @@ export class ThingDetailComponent implements OnInit {
     );
   }
 
-  public bgToConnectivityType(connectivity: any) {
+  public bgToConnectivityType(connectivity: any): string {
     if (connectivity instanceof TTNConnectivity) {
       return 'bg-blue';
     }
+    return 'bg-primary'
   }
 }

@@ -79,7 +79,12 @@ export class WidgetNewComponent implements OnInit {
    * formSubmits calls when user submits the widget creation form.
    */
   public formSubmit(f: FormGroup): void {
-    const widget = new Widget(f.value.title, this.type, f.value.project, f.value.thing, f.value.asset, this.size, this.widgetOptionsForm.value);
+    const widget = new Widget(
+      f.value.title, this.type,
+      f.value.project, f.value.thing,
+      f.value.asset, this.size,
+      this.widgetOptionsForm.value
+    );
     this.activeModal.close(widget);
   }
 }

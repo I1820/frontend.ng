@@ -51,7 +51,7 @@ export class ChartComponent implements OnInit {
   }
 
   public fetch(): void {
-    const n = this.params.n ? parseInt(this.params.n) : 10;
+    const n = this.params.n ? parseInt(this.params.n, 10) : 10;
 
     this.qService.recently(this.pid, this.tid, this.asset, n).pipe(
       map((states: State[]) => {
@@ -68,6 +68,6 @@ export class ChartComponent implements OnInit {
         data: points,
         color: randomColor({ hue: 'random', luminosity: 'light' }),
       });
-    })
+    });
   }
 }

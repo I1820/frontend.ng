@@ -30,7 +30,7 @@ export class LoginComponent {
     private notifService: NotificationsService,
   ) {
     this.loading = false;
-    app.setPageSettings({
+    this.app.setPageSettings({
       pageEmpty: true,
       pageBodyWhite: true
     });

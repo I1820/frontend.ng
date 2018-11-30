@@ -36,8 +36,8 @@ export class GaugeComponent implements OnInit {
         enabled: false
       },
       yAxis: {
-        min: this.params.min ? parseInt(this.params.min) : 0,
-        max: this.params.max ? parseInt(this.params.max) : 200,
+        min: this.params.min ? parseInt(this.params.min, 10) : 0,
+        max: this.params.max ? parseInt(this.params.max, 10) : 200,
         lineColor: '#ffa500',
         tickColor: '#adadad',
         minorTickColor: '#adadad',
@@ -53,7 +53,9 @@ export class GaugeComponent implements OnInit {
   }
 
   public fetch(): void {
-    this.qService.recently(this.pid, this.tid, this.asset, 1).subscribe((states: State[]) => this.chart.addSeries({ name: this.asset, data: [{y: states[0].value}] }));
+    this.qService.recently(this.pid, this.tid, this.asset, 1).subscribe(
+      (states: State[]) => this.chart.addSeries({ name: this.asset, data: [{y: states[0].value}] })
+    );
   }
 
 }

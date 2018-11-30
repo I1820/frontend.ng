@@ -20,7 +20,7 @@ export class ProjectService {
   constructor(
     private http: HttpClient,
     private authService: AuthenticationService,
-    private bAPI: BackendAPI,
+    _bAPI: BackendAPI,
   ) {}
 
   /**
@@ -35,7 +35,7 @@ export class ProjectService {
         return new Project(p);
       }), tap(() => {}, () => {}, // token refreshing when observer completes
         () => {
-          this.authService.refreshToken().subscribe((u) => {});
+          this.authService.refreshToken().subscribe((u) => u);
         }
       ),
     );
