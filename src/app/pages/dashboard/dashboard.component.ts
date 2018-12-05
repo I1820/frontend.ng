@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
    */
   public options = {
     layers: [
-      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { attribution: '&copy; OpenStreetMap contributors' })
     ],
     zoom: 15,
