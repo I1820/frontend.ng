@@ -4,7 +4,8 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import '~leaflet/dist/leaflet.css';
 @import '~leaflet-measure/dist/leaflet-measure.css';
-@import "~@ng-select/ng-select/themes/default.theme.css";
+@import '~leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
+@import '~@ng-select/ng-select/themes/default.theme.css';
 
 /* Styling for the Slim Loading Progress Bar container */
 
