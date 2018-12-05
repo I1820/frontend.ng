@@ -47,6 +47,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.wService.retrieve().subscribe((widgets: Widget[]) => this.widgets = widgets);
+    if (navigator.geolocation) { // ask current location from the browser
+      navigator.geolocation.getCurrentPosition(
+        /**
+         * Callback function that is called when user provides its location
+         */
+        (position): void => {
+          this.centerLng = position.coords.longitude;
+          this.centerLat = position.coords.latitude;
+        }
+      );
+    }
   }
 
   public createWidget(): void {

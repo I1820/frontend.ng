@@ -68,7 +68,16 @@ export class ThingNewComponent implements OnInit {
     );
 
     if (navigator.geolocation) { // ask current location from the browser
-      navigator.geolocation.getCurrentPosition(this.getLocationInfo);
+      navigator.geolocation.getCurrentPosition(
+        /**
+         * Callback function that is called when user provides its location
+         */
+        (position): void => {
+          this.centerLng = position.coords.longitude;
+          this.centerLat = position.coords.latitude;
+          this.layer.setLatLng(latLng(this.centerLat, this.centerLng));
+        }
+      );
     }
 
     // handles marker dragging to update form latitude and lognitude, and
@@ -78,14 +87,6 @@ export class ThingNewComponent implements OnInit {
       this.centerLat = coords.lat;
       this.centerLng = coords.lng;
     });
-  }
-
-  /**
-   * Callback function that is called when user provides its location
-   */
-  public getLocationInfo(position): void {
-    this.centerLng = position.coords.longitude;
-    this.centerLat = position.coords.latitude;
   }
 
   /**
