@@ -62,7 +62,7 @@ export class BreadcrumbComponent implements OnInit {
       // set active link
       breadcrumbs[breadcrumbs.length - 1].active = true;
       // set page title
-      const title = 'I1820 | ' + breadcrumbs[breadcrumbs.length - 1].label;
+      const title = 'FANIoT | ' + breadcrumbs[breadcrumbs.length - 1].label;
       this.titleService.setTitle(title);
       return breadcrumbs;
     }
