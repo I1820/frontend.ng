@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { latLng, tileLayer } from 'leaflet';
 import 'leaflet-measure';
+import 'leaflet-gesture-handling';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { WidgetNewComponent } from '../../modals/widget-new/widget-new.component';
@@ -37,6 +38,8 @@ export class DashboardComponent implements OnInit {
     zoom: 15,
     center: latLng(this.centerLat, this.centerLng),
     measureControl: true,
+    gestureHandling: true,
+    scrollWheelZoom: false,
   };
 
   constructor(
