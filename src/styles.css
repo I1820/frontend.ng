@@ -1,9 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'http://fonts.googleapis.com/css?family=Roboto:300,400,600,700';
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,600,700';
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import '~leaflet/dist/leaflet.css';
-@import 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css';
 @import '~leaflet-measure/dist/leaflet-measure.css';
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
