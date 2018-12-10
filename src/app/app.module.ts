@@ -47,6 +47,8 @@ import { WidgetNewComponent } from './modals/widget-new/widget-new.component';
 import { WidgetComponent } from './widgets/widget/widget.component';
 import { GaugeComponent } from './widgets/gauge/gauge.component';
 import { ChartComponent } from './widgets/chart/chart.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -116,6 +118,7 @@ export function highchartsModules() {
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     Title,
