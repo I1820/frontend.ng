@@ -56,12 +56,18 @@
 </div>
 <!-- end things-table -->
 <!-- begin new-thing-button -->
-<button type="button" class="btn btn-primary" [routerLink]="['things/new']" >
+<button type="button" class="btn btn-primary m-1" [routerLink]="['things/new']" >
   <i class="fas fa-plus"></i>
   New Thing
 </button>
-<hr>
 <!-- end new-thing-button -->
+<!-- begin to-chart-button -->
+<button [routerLink]="['chart']" class="btn btn-success m-1">
+  <i class="fas fa-chart-area"></i>
+  Chart
+</button>
+<!-- end to-chart-button -->
+<hr>
 <div class="row">
   <!-- begin docker-details -->
   <div class="col-4">
