@@ -49,6 +49,7 @@ import { GaugeComponent } from './widgets/gauge/gauge.component';
 import { ChartComponent } from './widgets/chart/chart.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ProjectChartComponent } from './pages/project-chart/project-chart.component';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -86,6 +87,7 @@ export function highchartsModules() {
     WidgetComponent,
     GaugeComponent,
     ChartComponent,
+    ProjectChartComponent,
   ],
   entryComponents: [
     // modals

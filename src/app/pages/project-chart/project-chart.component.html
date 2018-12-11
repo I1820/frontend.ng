@@ -1,0 +1,127 @@
+<!-- begin breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Project Chart <small>All of your data is in your hand</small></h1>
+<!-- end page-header -->
+<div class="row">
+  <!-- begin period-information-form -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Period Information</h4>
+      </div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
+            <ng-select
+              [items]="things"
+              bindLabel="name"
+              [multiple]="true"
+              [(ngModel)]="selectedThings"
+              name="selectedThings"
+              placeholder="Things"
+              >
+            </ng-select>
+          <ng-container *ngFor="let thing of selectedThings">
+            <label class="control-label">{{ thing.name }}</label>
+            <ng-select
+              [items]="thing.assets"
+              bindValue="name"
+              bindLabel="title"
+              [multiple]="true"
+              ngModel
+              name="assets-{{thing.id}}"
+              placeholder="Assets"
+              >
+            </ng-select>
+          </ng-container>
+          <label class="control-label">Since <span class="text-danger">*</span></label>
+          <div class="row row-space-10">
+            <div class="col-md-6 m-b-15">
+              <ngb-datepicker ngModel #sinceDate="ngModel" name="sinceDate" required></ngb-datepicker>
+              <div *ngIf="sinceDate.hasError('required')" class="small form-text text-danger">
+                Date of Since is required.
+              </div>
+            </div>
+            <div class="col-md-6 m-b-15">
+              <ngb-timepicker ngModel #sinceTime="ngModel" name="sinceTime" required></ngb-timepicker>
+              <div *ngIf="sinceTime.hasError('required')" class="small form-text text-danger">
+                Time of Since is required.
+              </div>
+            </div>
+          </div>
+          <label class="control-label">Until <span class="text-danger">*</span></label>
+          <div class="row row-space-10">
+            <div class="col-md-6 m-b-15">
+              <ngb-datepicker ngModel #untilDate="ngModel" name="untilDate" required></ngb-datepicker>
+              <div *ngIf="untilDate.hasError('required')" class="small form-text text-danger">
+                Date of Until is required.
+              </div>
+            </div>
+            <div class="col-md-6 m-b-15">
+              <ngb-timepicker ngModel #untilTime="ngModel" name="untilTime" required></ngb-timepicker>
+              <div *ngIf="untilTime.hasError('required')" class="small form-text text-danger">
+                Time of Until is required.
+              </div>
+            </div>
+          </div>
+          <label class="control-label">Window Size</label>
+          <div class="row m-b-15">
+            <div class="col-md-12">
+              <input name="ws" ngModel type="number" class="form-control" placeholder="Window Size"/>
+            </div>
+          </div>
+          <div class="register-buttons">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- end period-information-form -->
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Chart Information</h4>
+      </div>
+      <div class="panel-body">
+        <div class="row m-b-15">
+          <div class="col-md-12">
+            <label class="control-label">Chart Type</label>
+            <select class="form-control" [(ngModel)]="chartType">
+              <option value="areaspline">Area</option>
+              <option value="line">Line</option>
+              <option value="column">Column</option>
+            </select>
+          </div>
+        </div>
+        <div class="row m-b-15">
+          <div class="col-md-12">
+            <p>Response Time: {{responseTime}}</p>
+            <p>Notes:</p>
+            <ul>
+              <li>You must select chart type before drawing the chart.</li>
+              <li>
+                When you choose value for window size, your range is divided into at most
+                window size sub-ranges then the average is caculated in each of them.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!-- begin chart -->
+  <div class="col-md-12">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Chart</h4>
+      </div>
+      <div class="panel-body">
+        <div [chart]="chart"></div>
+      </div>
+    </div>
+    <!-- end chart -->
+  </div>
