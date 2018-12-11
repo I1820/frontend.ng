@@ -9,7 +9,7 @@ import { randomColor } from 'randomcolor';
 import { ThingService, Thing, QueryService, State, Partial } from '../../shared/backend';
 
 @Component({
-  selector: 'app-project-chart',
+  selector: 'app-project-chart-page',
   templateUrl: './project-chart.component.html',
   styleUrls: ['./project-chart.component.css']
 })
