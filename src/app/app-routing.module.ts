@@ -13,6 +13,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { ThingNewComponent } from './pages/thing-new/thing-new.component';
 import { ProjectNewComponent } from './pages/project-new/project-new.component';
+import { ProjectChartComponent } from './pages/project-chart/project-chart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { ThingDetailComponent } from './pages/thing-detail/thing-detail.component';
@@ -77,6 +78,11 @@ const routes: Routes = [
             path: '',
             component: ProjectDetailComponent,
             data: { title: '' }, // override parent title
+          },
+          {
+            path: 'chart',
+            component: ProjectChartComponent,
+            data: { title: 'Project Chart' },
           },
           {
             path: 'things',
