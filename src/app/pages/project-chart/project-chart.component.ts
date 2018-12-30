@@ -21,6 +21,7 @@ export class ProjectChartComponent implements OnInit {
   public responseTime = 'N/A';
 
   public things: Thing[];
+  public selectedThings: Thing[];
   public states: State[];
   private pid: string;
 
