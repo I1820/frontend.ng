@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { latLng, tileLayer } from 'leaflet';
+import { latLng, tileLayer, Map, control } from 'leaflet';
 import 'leaflet-measure';
 import 'leaflet-gesture-handling';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -37,7 +37,6 @@ export class DashboardComponent implements OnInit {
     ],
     zoom: 15,
     center: latLng(this.centerLat, this.centerLng),
-    measureControl: true,
     gestureHandling: true,
     scrollWheelZoom: false,
   };
@@ -72,7 +71,20 @@ export class DashboardComponent implements OnInit {
   }
 
   public removeWidget(i: number): void {
-      this.widgets.splice(i, 1);
-      this.wService.store(this.widgets).subscribe();
+    this.widgets.splice(i, 1);
+    this.wService.store(this.widgets).subscribe();
+  }
+
+  // onMapReady is called with map component reference when it is ready.
+  public onMapReady(map: Map) {
+    // casts the control to any because of the leaflet awkward plugin model.
+    map.addControl((<any> control).measure(
+      {
+        primaryLengthUnit: 'meters',
+        secondaryLengthUnit: 'kilometers',
+        primaryAreaUnit: 'sqmeters',
+        secondaryAreaUnit: 'hectares',
+      }
+    ));
   }
 }

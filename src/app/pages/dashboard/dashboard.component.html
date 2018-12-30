@@ -75,6 +75,7 @@
       </div>
       <div class="panel-body">
         <div leaflet class="map"
+                     (leafletMapReady)="onMapReady($event)"
                      [leafletOptions]="options"
                      [leafletCenter]="{ lat: centerLat, lng: centerLng }"
                      >
