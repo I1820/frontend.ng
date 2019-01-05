@@ -10,6 +10,10 @@ import { AuthenticationModule } from './authentication';
     CommonModule,
     AuthenticationModule,
     BackendModule,
+  ],
+  exports: [
+    AuthenticationModule,
+    BackendModule,
   ]
 })
 export class SharedModule { }
