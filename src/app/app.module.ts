@@ -48,13 +48,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ProjectChartComponent } from './pages/project-chart/project-chart.component';
 
-// SharedModule
+// Shared Module
 import { SharedModule } from './shared/shared.module';
 
-// Materials
-import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule } from '@angular/material/form-field';
+// Material Module
+import { MaterialModule } from './material.module';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -125,10 +123,7 @@ export function highchartsModules() {
       cancelButtonClass: 'btn'
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    // materials
-    MatInputModule,
-    MatFormFieldModule,
-    MatCheckboxModule,
+    MaterialModule,
   ],
   providers: [
     Title,
