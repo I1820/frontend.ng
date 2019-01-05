@@ -14,7 +14,7 @@ interface IBreadcrumb {
   selector: 'app-breadcrumb',
   template: `
     <ol class="breadcrumb pull-right">
-      <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink=""><i class="fa fa-home"></i></a></li>
       <ng-container *ngFor="let breadcrumb of breadcrumbs">
         <li class="breadcrumb-item" [ngClass]="{'active': breadcrumb.active}">
           <a *ngIf="!breadcrumb.active else label" [routerLink]="[breadcrumb.url]">{{ breadcrumb.label }}</a>
