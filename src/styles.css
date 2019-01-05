@@ -6,7 +6,7 @@
 @import '~leaflet-measure/dist/leaflet-measure.css';
 @import '~leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 @import '~@ng-select/ng-select/themes/default.theme.css';
-@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* Styling for the Slim Loading Progress Bar container */
 
