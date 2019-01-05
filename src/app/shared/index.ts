@@ -1,2 +1,1 @@
-export { AuthenticationModule, AuthenticationService, User } from './authentication';
-export { BackendModule } from './backend';
+export { AuthenticationService, User } from './authentication';
