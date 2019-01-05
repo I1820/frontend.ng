@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
 
@@ -35,14 +35,6 @@ export class RegisterComponent {
     } else {
       return 'Sign Up';
     }
-  }
-
-  /**
-   * When input is invalid in the input box, input box must truns to red this function
-   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
-   */
-  public isValid(m: FormControl): boolean {
-    return m.invalid && (m.dirty || m.touched);
   }
 
   /**

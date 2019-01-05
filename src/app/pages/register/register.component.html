@@ -6,10 +6,10 @@
     <div class="news-caption">
       <h4 class="caption-title"><b>Things</b> Are In Your Hands</h4>
       <p>
-        As an IoT Developer, you use the FANIoT Admin to manage your things, projects, scenarios and more.
+        As an IoT Developer, you use the I1820 Admin to manage your things, projects, scenarios and more.
       </p>
       <p><!-- give credit to the photographer on unsplash -->
-        <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@hussainimw?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Hussaini Moiwala"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Hussaini Moiwala</span></a>
+        <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@mehrshadr?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Mehrshad Rajabi"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Mehrshad Rajabi</span></a>
       </p>
     </div>
   </div>
@@ -19,68 +19,62 @@
     <!-- begin register-header -->
     <h1 class="register-header">
       Sign Up
-      <small>Create your FANIoT Admin Account. It’s free and always will be.</small>
+      <small>Create your I1820 Admin Account. It’s free and always will be.</small>
     </h1>
     <!-- end register-header -->
     <!-- begin register-content -->
     <div class="register-content">
       <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
-        <label class="control-label">Name <span class="text-danger">*</span></label>
         <div class="row row-space-10">
-          <div class="col-md-6 m-b-15">
-            <input name="firstName" #firstName="ngModel" ngModel type="text" [class.is-invalid]="isValid(firstName)" class="form-control" placeholder="First name" required />
-            <div *ngIf="firstName.hasError('required')" class="invalid-feedback">
+          <mat-form-field class="col-md-6 m-b-15">
+            <input matInput name="firstName" #firstName="ngModel" ngModel type="text" placeholder="First name" required />
+            <mat-error *ngIf="firstName.hasError('required')">
               First name is required.
-            </div>
-          </div>
-          <div class="col-md-6 m-b-15">
-            <input name="lastName" #lastName="ngModel" ngModel type="text" [class.is-invalid]="isValid(lastName)" class="form-control" placeholder="Last name" required />
-            <div *ngIf="lastName.hasError('required')" class="invalid-feedback">
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-6 m-b-15">
+            <input matInput name="lastName" #lastName="ngModel" ngModel type="text" placeholder="Last name" required />
+            <mat-error *ngIf="lastName.hasError('required')">
               Last name is required.
-            </div>
-          </div>
+            </mat-error>
+          </mat-form-field>
         </div>
-        <label class="control-label">Username <span class="text-danger">*</span></label>
         <div class="row m-b-15">
-          <div class="col-md-12">
-            <input name="username" #username="ngModel" ngModel type="text" [class.is-invalid]="isValid(username)" class="form-control" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
-            <div *ngIf="username.hasError('required')" class="invalid-feedback">
+          <mat-form-field class="col-md-12">
+            <input matInput name="username" #username="ngModel" ngModel type="text" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
+            <mat-error *ngIf="username.hasError('required')">
               Username is required.
-            </div>
-            <div *ngIf="username.hasError('pattern')" class="invalid-feedback">
+            </mat-error>
+            <mat-error *ngIf="username.hasError('pattern')">
               Username must contains only alphanumeric characters.
-            </div>
-          </div>
+            </mat-error>
+          </mat-form-field>
         </div>
-        <label class="control-label">Email <span class="text-danger">*</span></label>
         <div class="row m-b-15">
-          <div class="col-md-12">
-            <input name="email" #email="ngModel" ngModel type="text" [class.is-invalid]="isValid(email)" class="form-control" placeholder="Email address" required email/>
-            <div *ngIf="email.hasError('required')" class="invalid-feedback">
+          <mat-form-field class="col-md-12">
+            <input matInput name="email" #email="ngModel" ngModel type="text" placeholder="Email address" required email/>
+            <mat-error *ngIf="email.hasError('required')">
               Email is required.
-            </div>
-            <div *ngIf="email.hasError('email')" class="invalid-feedback">
+            </mat-error>
+            <mat-error *ngIf="email.hasError('email')">
               Please enter valid email address.
-            </div>
-
-          </div>
+            </mat-error>
+          </mat-form-field>
         </div>
-        <label class="control-label">Password <span class="text-danger">*</span></label>
         <div class="row m-b-15">
-          <div class="col-md-12">
-            <input name="password" #password="ngModel" ngModel type="password" [class.is-invalid]="isValid(password)" class="form-control" placeholder="Password" required/>
-            <div *ngIf="password.hasError('required')" class="invalid-feedback">
+          <mat-form-field class="col-md-12">
+            <input matInput name="password" #password="ngModel" ngModel type="password" placeholder="Password" required/>
+            <mat-error *ngIf="password.hasError('required')">
               Password is required.
-            </div>
-          </div>
+            </mat-error>
+          </mat-form-field>
         </div>
-        <div class="checkbox checkbox-css m-b-30">
-          <div class="checkbox checkbox-css m-b-30">
-            <input type="checkbox" id="agreement_checkbox" value="">
-            <label for="agreement_checkbox">
-              By clicking Sign Up, you agree to our <a href="javascript:;">Terms</a> and that you have read our <a href="javascript:;">Data Policy</a>, including our <a href="javascript:;">Cookie Use</a>.
-            </label>
-          </div>
+        <div class="m-b-30">
+            <mat-checkbox>
+              By clicking Sign Up, you agree to our <a href="javascript:;">Terms</a>
+              <br> and that you have read our <a href="javascript:;">Data Policy</a>,
+              <br> including our <a href="javascript:;">Cookie Use</a>.
+            </mat-checkbox>
         </div>
         <div class="register-buttons">
           <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
