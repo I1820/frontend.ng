@@ -31,7 +31,7 @@
     <!-- begin login-content -->
     <div class="login-content">
       <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
-        <mat-form-field class="m-b-15">
+        <mat-form-field class="m-b-15 col-12">
           <input matInput name="username" #username="ngModel" ngModel type="text" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
           <mat-error *ngIf="username.hasError('required')">
             Username is required.
@@ -40,7 +40,7 @@
             Username must contains only alphanumeric characters.
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="m-b-15">
+        <mat-form-field class="m-b-15 col-12">
           <input matInput name="password" #password="ngModel" ngModel type="password" placeholder="Password" required />
           <mat-error *ngIf="password.hasError('required')">
             Password is required.
