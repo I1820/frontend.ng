@@ -24,9 +24,6 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// Modules
-import { AuthenticationModule, BackendModule } from './shared';
-
 // Page and Modal Components
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -50,6 +47,14 @@ import { ChartComponent } from './widgets/chart/chart.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ProjectChartComponent } from './pages/project-chart/project-chart.component';
+
+// SharedModule
+import { SharedModule } from './shared/shared.module';
+
+// Materials
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -100,9 +105,8 @@ export function highchartsModules() {
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    SharedModule,
     FormsModule,
-    AuthenticationModule,
-    BackendModule,
     NgbModule,
     GravatarModule,
     LeafletModule.forRoot(),
@@ -121,6 +125,10 @@ export function highchartsModules() {
       cancelButtonClass: 'btn'
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    // materials
+    MatInputModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
   ],
   providers: [
     Title,
