@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
 import { NotificationsService} from 'angular2-notifications';
