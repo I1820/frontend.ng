@@ -20,7 +20,7 @@
     <div class="login-header">
       <div class="brand">
         <img src="assets/img/logo/logo-1.png" class="logo" />
-        <b>FANIoT</b> Admin
+        <b>I1820</b> Admin
         <small>Welcome to your future</small>
       </div>
       <div class="icon">
@@ -31,26 +31,25 @@
     <!-- begin login-content -->
     <div class="login-content">
       <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
-        <div class="form-group m-b-15">
-          <input name="username" #username="ngModel" ngModel type="text" [class.is-invalid]="isValid(username)" class="form-control form-control-lg" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
-          <div *ngIf="username.hasError('required')" class="invalid-feedback">
+        <mat-form-field class="m-b-15">
+          <input matInput name="username" #username="ngModel" ngModel type="text" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
+          <mat-error *ngIf="username.hasError('required')">
             Username is required.
-          </div>
-          <div *ngIf="username.errors?.pattern" class="invalid-feedback">
+          </mat-error>
+          <mat-error *ngIf="username.hasError('pattern')">
             Username must contains only alphanumeric characters.
-          </div>
-        </div>
-        <div class="form-group m-b-15">
-          <input name="password" #password="ngModel" ngModel type="password" [class.is-invalid]="isValid(password)" class="form-control form-control-lg" placeholder="Password" required />
-          <div *ngIf="password.hasError('required')" class="invalid-feedback">
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="m-b-15">
+          <input matInput name="password" #password="ngModel" ngModel type="password" placeholder="Password" required />
+          <mat-error *ngIf="password.hasError('required')">
             Password is required.
-          </div>
-        </div>
-        <div class="checkbox checkbox-css m-b-30">
-          <input name="remember" ngModel type="checkbox" id="remember_me_checkbox" />
-          <label for="remember_me_checkbox">
+          </mat-error>
+        </mat-form-field>
+        <div class="m-b-30">
+          <mat-checkbox name="remember" ngModel>
             Remember Me
-          </label>
+          </mat-checkbox>
         </div>
         <div class="login-buttons">
           <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
@@ -60,7 +59,7 @@
         </div>
         <hr />
         <p class="text-center text-grey-darker">
-          &copy; Avid Net Technology All Right Reserved 2018
+          &copy; I1820 Open-Souce Organization All Right Reserved {{ today | date:'yyyy' }}
         </p>
       </form>
     </div>

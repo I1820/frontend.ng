@@ -23,6 +23,11 @@ export class LoginComponent {
    */
   public creationDate: Date = new Date('2015');
 
+  /**
+   * Today
+   */
+  public today: Date = new Date();
+
   constructor(
     private app: AppComponent,
     private router: Router,
@@ -47,14 +52,6 @@ export class LoginComponent {
     } else {
       return 'Sign me in';
     }
-  }
-
-  /**
-   * When input is invalid in the input box, input box must truns to red this function
-   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
-   */
-  public isValid(m: FormControl): boolean {
-    return m.invalid && (m.dirty || m.touched);
   }
 
   /**
