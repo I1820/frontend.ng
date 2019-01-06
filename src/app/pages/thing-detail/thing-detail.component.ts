@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { icon, latLng, tileLayer, marker } from 'leaflet';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog } from '@angular/material';
 
 import { ThingService, Thing, TTNConnectivity } from '../../shared/backend';
 import { AssetNewComponent } from '../../modals/asset-new/asset-new.component';
@@ -55,7 +55,7 @@ export class ThingDetailComponent implements OnInit {
   constructor(
     private tService: ThingService,
     private route: ActivatedRoute,
-    private modalService: NgbModal,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -70,21 +70,39 @@ export class ThingDetailComponent implements OnInit {
   }
 
   public recentData(asset: string): void {
-    const modalRef = this.modalService.open(AssetDataComponent);
-    modalRef.componentInstance.thing = this.thing;
-    modalRef.componentInstance.asset = asset;
+    this.dialog.open(AssetDataComponent,{
+      width: '500px',
+      data: {
+        thing: this.thing,
+        asset: asset,
+      }
+    });
   }
 
   public createConnectivity(): void {
-    const modalRef = this.modalService.open(ConnectivityNewComponent);
-    modalRef.componentInstance.thing = this.thing;
-    modalRef.result.then((thing) => this.thing = thing, (reason) => reason);
+    const modalRef = this.dialog.open(ConnectivityNewComponent,{
+      width: '500px',
+      data: this.thing,
+    });
+    modalRef.afterClosed().subscribe(
+      (thing: Thing) => {
+        if (thing) {
+          this.thing = thing;
+        }
+      });
   }
 
   public createAsset(): void {
-    const modalRef = this.modalService.open(AssetNewComponent);
-    modalRef.componentInstance.thing = this.thing;
-    modalRef.result.then((thing) => this.thing = thing, (reason) => reason);
+    const modalRef = this.dialog.open(AssetNewComponent,{
+      width: '500px',
+      data: this.thing,
+    });
+    modalRef.afterClosed().subscribe(
+      (thing: Thing) => {
+        if (thing) {
+          this.thing = thing;
+        }
+      });
   }
 
   public removeAsset(name: string): void {
