@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ThingService, Thing } from '../../shared/backend';
 
@@ -12,10 +12,10 @@ import { ThingService, Thing } from '../../shared/backend';
 export class AssetNewComponent implements OnInit {
 
   public loading: boolean;
-  @Input() thing: Thing;
 
   constructor(
-    public activeModal: NgbActiveModal,
+    public dialogRef: MatDialogRef<AssetNewComponent>,
+    @Inject(MAT_DIALOG_DATA) public thing: Thing,
     public tService: ThingService,
   ) {}
 
@@ -36,20 +36,12 @@ export class AssetNewComponent implements OnInit {
   }
 
   /**
-   * When input is invalid in the input box, input box must truns to red this function
-   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
-   */
-  public isValid(m: FormControl): boolean {
-    return m.invalid && (m.dirty || m.touched);
-  }
-
-  /**
    * formSubmits calls when user submits the asset creation form.
    */
   public formSubmit(f: FormGroup): void {
     this.tService.assetCreate(this.thing.project, this.thing.id, f.value.name, f.value.title, f.value.kind, f.value.type).subscribe(
       (thing: Thing) => {
-        this.activeModal.close(thing);
+        this.dialogRef.close(thing);
       }
     );
   }
