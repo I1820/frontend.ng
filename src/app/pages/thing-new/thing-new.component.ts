@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { icon, latLng, tileLayer, marker, LatLng } from 'leaflet';
 import { map } from 'rxjs/operators';
 
@@ -100,14 +100,6 @@ export class ThingNewComponent implements OnInit {
   public onCenterLngChange(v: number): void {
     this.centerLng = v;
     this.layer.setLatLng(latLng(this.centerLat, this.centerLng));
-  }
-
-  /**
-   * When input is invalid in the input box, input box must truns to red this function
-   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
-   */
-  public isValid(m: FormControl): boolean {
-    return m.invalid && (m.dirty || m.touched);
   }
 
   /**

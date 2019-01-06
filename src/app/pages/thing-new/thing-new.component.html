@@ -2,7 +2,7 @@
 <app-breadcrumb></app-breadcrumb>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Thing Creation of {{projectID}} <small>Build your thing</small></h1>
+<h1 class="page-header">Thing Creation for Project {{ projectID }} <small>Build your thing</small></h1>
 <!-- end page-header -->
 <div class="row">
   <!-- begin thing-creation-form -->
@@ -13,37 +13,33 @@
       </div>
       <div class="panel-body">
         <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
-          <label class="control-label">Name <span class="text-danger">*</span></label>
           <div class="row m-b-15">
-            <div class="col-md-12">
-              <input name="name" #name="ngModel" ngModel type="text" [class.is-invalid]="isValid(name)" class="form-control" placeholder="Name" required />
-              <div *ngIf="name.hasError('required')" class="invalid-feedback">
+            <mat-form-field class="col-md-12">
+              <input matInput name="name" #name="ngModel" ngModel type="text" placeholder="Name" required />
+              <mat-error *ngIf="name.hasError('required')">
                 Name is required.
-              </div>
-            </div>
+              </mat-error>
+            </mat-form-field>
           </div>
-          <label class="control-label">GeoLocation <span class="text-danger">*</span></label>
           <div class="row row-space-10">
-            <div class="col-md-6 m-b-15">
-              <input name="latt" #latt="ngModel" [ngModel]="centerLat" (ngModelChange)="onCenterLatChange($event)" ngModel type="number" [class.is-invalid]="isValid(latt)" class="form-control" placeholder="Latitude" required
-                                                                                                                                                       max="90" min="-90" />
-              <div *ngIf="latt.hasError('required')" class="invalid-feedback">
+            <mat-form-field class="col-md-6 m-b-15">
+              <input matInput name="latt" #latt="ngModel" [ngModel]="centerLat" (ngModelChange)="onCenterLatChange($event)" ngModel type="number" placeholder="Latitude" required max="90" min="-90" />
+              <mat-error *ngIf="latt.hasError('required')">
                 Latitude is required.
-              </div>
-              <div *ngIf="latt.hasError('min') || latt.hasError('max')" class="invalid-feedback">
+              </mat-error>
+              <mat-error *ngIf="latt.hasError('min') || latt.hasError('max')">
                 Please enter a valid latitude.
-              </div>
-            </div>
-            <div class="col-md-6 m-b-15">
-              <input name="long" #long="ngModel" [ngModel]="centerLng" (ngModelChange)="onCenterLngChange($event)"  ngModel type="number" [class.is-invalid]="isValid(long)" class="form-control" placeholder="Longitude" required
-                                                                                                                                                       max="180" min="-180" />
-              <div *ngIf="long.hasError('required')" class="invalid-feedback">
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-md-6 m-b-15">
+              <input matInput name="long" #long="ngModel" [ngModel]="centerLng" (ngModelChange)="onCenterLngChange($event)"  ngModel type="number" placeholder="Longitude" required max="180" min="-180" />
+              <mat-error *ngIf="long.hasError('required')">
                 Longitude is required.
-              </div>
-              <div *ngIf="long.hasError('min') || long.hasError('max')" class="invalid-feedback">
+              </mat-error>
+              <mat-error *ngIf="long.hasError('min') || long.hasError('max')">
                 Please enter a valid longitude.
-              </div>
-            </div>
+              </mat-error>
+            </mat-form-field>
           </div>
           <div class="register-buttons">
             <button type="submit" class="btn btn-primary btn-block btn-lg">Build</button>
