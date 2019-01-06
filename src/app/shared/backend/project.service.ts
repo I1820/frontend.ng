@@ -74,11 +74,15 @@ export class ProjectService {
    * remove removes given project.
    */
   @BackendAPI.api('Project', 'Remove')
-  public remove(id: string): Observable<boolean> {
+  public remove(id: string): Observable<Project> {
     return this.http.delete(`/api/v1/projects/${id}`).pipe(map(
-      (b: any) => {
-        return b === true;
-      }
-    ));
+      (p: any) => {
+        return new Project(p);
+      }), tap(() => {}, () => {}, // token refreshing when observer completes
+        () => {
+          this.authService.refreshToken().subscribe((u) => u);
+        }
+      ),
+    );
   }
 }
