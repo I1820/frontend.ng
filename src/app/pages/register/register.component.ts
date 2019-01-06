@@ -16,7 +16,16 @@ export class RegisterComponent {
    */
   public loading: boolean;
 
-  constructor(private app: AppComponent, private router: Router, private authService: AuthenticationService) {
+  /**
+   * Today
+   */
+  public today: Date = new Date();
+
+  constructor(
+    private app: AppComponent,
+    private router: Router,
+    private authService: AuthenticationService
+  ) {
     this.loading = false;
     this.app.setPageSettings({
       pageEmpty: true,
