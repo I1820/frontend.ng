@@ -93,9 +93,20 @@
 <!-- end new-widget-button -->
 <hr>
 <!-- begin widgets-with-love -->
-<div class="row">
-  <div *ngFor="let widget of widgets; let idx = index" class="col-{{widget.size}}">
-    <app-widget [widget]="widget" (remove)="removeWidget(idx)"></app-widget>
+<div cdkDropList (cdkDropListDropped)="drop($event)" class="widgets">
+  <div *ngFor="let widget of widgets; let idx = index" class="col-{{widget.size}}" cdkDrag>
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <div class="panel-heading-btn">
+          <a class="btn btn-xs btn-icon btn-circle btn-danger" (click)="removeWidget(idx)"><i class="fa fa-times"></i></a>
+          <a class="btn btn-xs btn-icon btn-circle btn-warning" cdkDragHandler><i class="fa fa-hand-rock"></i></a>
+        </div>
+        <h4 class="panel-title">{{ widget.title }}</h4>
+      </div>
+      <div class="panel-body">
+        <app-widget [widget]="widget"></app-widget>
+      </div>
+    </div>
   </div>
 </div>
 <!-- end widgets-with-love -->

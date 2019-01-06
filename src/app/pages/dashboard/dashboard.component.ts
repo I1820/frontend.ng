@@ -3,6 +3,7 @@ import { latLng, tileLayer, Map, control } from 'leaflet';
 import 'leaflet-measure';
 import 'leaflet-gesture-handling';
 import { MatDialog } from '@angular/material';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 import { WidgetNewComponent } from '../../modals/widget-new/widget-new.component';
 import { AuthenticationService } from '../../shared/authentication';
@@ -68,6 +69,7 @@ export class DashboardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((w: Widget) => {
       if (w) {
+        // creates new widget and stores it in backend database
         this.widgets.push(w);
         this.wService.store(this.widgets).subscribe();
       }
@@ -75,8 +77,13 @@ export class DashboardComponent implements OnInit {
   }
 
   public removeWidget(i: number): void {
+    // removes given widget and stores new widget array in backend database
     this.widgets.splice(i, 1);
     this.wService.store(this.widgets).subscribe();
+  }
+
+  public drop(event: CdkDragDrop<Widget[]>) {
+    moveItemInArray(this.widgets, event.previousIndex, event.currentIndex);
   }
 
   // onMapReady is called with map component reference when it is ready.
