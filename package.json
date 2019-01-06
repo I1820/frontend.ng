@@ -36,6 +36,7 @@
     "angular2-notifications": "^1.0.4",
     "bootstrap": "^4.2.1",
     "core-js": "^2.6.1",
+    "country-list": "^2.1.0",
     "h2o2": "^8.1.2",
     "hammerjs": "^2.0.8",
     "hapi": "^17.8.1",
