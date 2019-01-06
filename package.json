@@ -45,7 +45,7 @@
     "leaflet": "^1.4.0",
     "leaflet-gesture-handling": "^1.1.8",
     "leaflet-measure": "^3.1.0",
-    "ngx-auth": "^4.1.0",
+    "ngx-auth": "^5.0.0",
     "ngx-gravatar": "^3.0.5",
     "ngx-logger": "^3.3.8",
     "ngx-monaco-editor": "^6.0.0",
