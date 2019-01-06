@@ -9,6 +9,8 @@ import {
   MatDialogModule,
   MatTooltipModule,
   MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from '@angular/material';
 
 import {
@@ -28,6 +30,8 @@ import {
     DragDropModule,
     MatTooltipModule,
     MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     MatInputModule,
@@ -38,6 +42,8 @@ import {
     DragDropModule,
     MatTooltipModule,
     MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class MaterialModule { }
