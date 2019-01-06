@@ -12,7 +12,7 @@ import { Widget, WidgetService } from '../../shared/backend';
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.less'],
 })
 
 export class DashboardComponent implements OnInit {
