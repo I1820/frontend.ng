@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title">Connectivity Creation</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <button type="button" class="close" aria-label="Close" (click)="dialogRef.close()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -14,23 +14,21 @@
   <ng-container *ngIf="ctype === connectivityType.TTN">
     <p>The Things Network connectivity setup, check <a href="http://thethingsnetwork.org">here</a> for more information</p>
     <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
-      <label class="control-label">Application ID <span class="text-danger">*</span></label>
       <div class="row m-b-15">
-        <div class="col-md-12">
-          <input name="application_id" #application_id="ngModel" ngModel type="text" [class.is-invalid]="isValid(application_id)" class="form-control" placeholder="Application ID" required />
-          <div *ngIf="application_id.hasError('required')" class="invalid-feedback">
+        <mat-form-field class="col-md-12">
+          <input matInput name="application_id" #application_id="ngModel" ngModel type="text" placeholder="Application ID" required />
+          <mat-error *ngIf="application_id.hasError('required')">
             Application ID is required.
-          </div>
-        </div>
+          </mat-error>
+        </mat-form-field>
       </div>
-      <label class="control-label">Device EUI <span class="text-danger">*</span></label>
       <div class="row m-b-15">
-        <div class="col-md-12">
-          <input name="device_eui" #device_eui="ngModel" ngModel type="text" [class.is-invalid]="isValid(device_eui)" class="form-control" placeholder="Device EUI" required />
-          <div *ngIf="device_eui.hasError('required')" class="invalid-feedback">
+        <mat-form-field class="col-md-12">
+          <input matInput name="device_eui" #device_eui="ngModel" ngModel type="text" placeholder="Device EUI" required />
+          <mat-error *ngIf="device_eui.hasError('required')">
             Device EUI is required.
-          </div>
-        </div>
+          </mat-error>
+        </mat-form-field>
       </div>
       <div class="register-buttons">
         <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>

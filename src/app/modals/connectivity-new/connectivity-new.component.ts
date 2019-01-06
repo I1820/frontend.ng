@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { NgOption } from '@ng-select/ng-select';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ThingService, Thing, ConnectivityType } from '../../shared/backend';
 
@@ -14,7 +14,6 @@ export class ConnectivityNewComponent implements OnInit {
   public loading: boolean;
   public ctype: ConnectivityType;
   public connectivityType = ConnectivityType; // it used in html template
-  @Input() thing: Thing;
 
   public connectivities: NgOption[] = [
     {
@@ -35,7 +34,8 @@ export class ConnectivityNewComponent implements OnInit {
   }
 
   constructor(
-    public activeModal: NgbActiveModal,
+    public dialogRef: MatDialogRef<ConnectivityNewComponent>,
+    @Inject(MAT_DIALOG_DATA) public thing: Thing,
     public tService: ThingService,
   ) {}
 
@@ -56,20 +56,12 @@ export class ConnectivityNewComponent implements OnInit {
   }
 
   /**
-   * When input is invalid in the input box, input box must truns to red this function
-   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
-   */
-  public isValid(m: FormControl): boolean {
-    return m.invalid && (m.dirty || m.touched);
-  }
-
-  /**
    * formSubmits calls when user submits the connectivity creation form.
    */
   public formSubmit(f: FormGroup): void {
     this.tService.connectivityCreate(this.thing.project, this.thing.id, this.ctype, f.value).subscribe(
       (thing: Thing) => {
-        this.activeModal.close(thing);
+        this.dialogRef.close(thing);
       }
     );
   }
