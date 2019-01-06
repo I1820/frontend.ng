@@ -70,7 +70,7 @@ export class ThingDetailComponent implements OnInit {
   }
 
   public recentData(asset: string): void {
-    this.dialog.open(AssetDataComponent,{
+    this.dialog.open(AssetDataComponent, {
       width: '500px',
       data: {
         thing: this.thing,
@@ -80,7 +80,7 @@ export class ThingDetailComponent implements OnInit {
   }
 
   public createConnectivity(): void {
-    const modalRef = this.dialog.open(ConnectivityNewComponent,{
+    const modalRef = this.dialog.open(ConnectivityNewComponent, {
       width: '500px',
       data: this.thing,
     });
@@ -93,7 +93,7 @@ export class ThingDetailComponent implements OnInit {
   }
 
   public createAsset(): void {
-    const modalRef = this.dialog.open(AssetNewComponent,{
+    const modalRef = this.dialog.open(AssetNewComponent, {
       width: '500px',
       data: this.thing,
     });
