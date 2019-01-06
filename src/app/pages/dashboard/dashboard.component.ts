@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { latLng, tileLayer, Map, control } from 'leaflet';
 import 'leaflet-measure';
 import 'leaflet-gesture-handling';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog } from '@angular/material';
 
 import { WidgetNewComponent } from '../../modals/widget-new/widget-new.component';
 import { AuthenticationService } from '../../shared/authentication';
@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   };
 
   constructor(
-    private modalService: NgbModal,
+    private dialog: MatDialog,
     public authService: AuthenticationService,
     public wService: WidgetService,
   ) { }
@@ -63,11 +63,15 @@ export class DashboardComponent implements OnInit {
   }
 
   public createWidget(): void {
-    const modalRef = this.modalService.open(WidgetNewComponent);
-    modalRef.result.then((w: Widget) => {
-      this.widgets.push(w);
-      this.wService.store(this.widgets).subscribe();
-    }, (reason) => reason);
+    const dialogRef = this.dialog.open(WidgetNewComponent, {
+      width: '350px',
+    });
+    dialogRef.afterClosed().subscribe((w: Widget) => {
+      if (w) {
+        this.widgets.push(w);
+        this.wService.store(this.widgets).subscribe();
+      }
+    });
   }
 
   public removeWidget(i: number): void {
