@@ -33,7 +33,7 @@
     "@toverux/ngx-sweetalert2": "^4.0.0",
     "@types/leaflet": "^1.2.14",
     "angular-highcharts": "^7.0.2",
-    "angular2-notifications": "^1.0.4",
+    "angular2-notifications": "^2.0.0",
     "bootstrap": "^4.2.1",
     "core-js": "^2.6.1",
     "country-list": "^2.1.0",
