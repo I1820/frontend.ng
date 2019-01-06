@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
 import { ProjectService, Project } from '../../shared/backend';
 
@@ -11,6 +12,7 @@ import { ProjectService, Project } from '../../shared/backend';
 export class ProjectsComponent implements OnInit {
 
   public projects$: Observable<Project[]>;
+  @ViewChild('completeSwal') private completeSwal: SwalComponent;
 
   constructor(
     private pService: ProjectService,
@@ -22,5 +24,11 @@ export class ProjectsComponent implements OnInit {
 
   public refresh(): void {
     this.projects$ = this.pService.list();
+  }
+
+  public projectRemove(pid: string) {
+    this.pService.remove(pid).subscribe(() => {
+      this.completeSwal.show();
+    });
   }
 }

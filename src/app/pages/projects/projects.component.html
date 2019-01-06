@@ -25,13 +25,24 @@
         </thead>
         <tbody>
           <tr *ngFor="let project of projects$ | async; let idx = index">
-            <td>{{idx + 1}}</td>
-            <td>{{project.name}}</td>
-            <td>{{project.id}}</td>
+            <td>{{ idx + 1 }}</td>
+            <td>{{ project.name }}</td>
+            <td>{{ project.id }}</td>
             <td class="with-btn">
-              <a class="btn btn-sm btn-icon btn-circle"><i class="fa fa-trash"></i></a>
+              <a (confirm)="projectRemove(project.id)" class="btn btn-sm btn-icon btn-circle" [swal]="projectRemoveSwal"><i class="fa fa-trash"></i></a>
               <a [routerLink]="['/projects', project.id]" class="btn btn-sm btn-icon btn-circle"><i class="fa fa-info"></i></a>
             </td>
+            <!-- begin project-remove-swal -->
+            <swal #projectRemoveSwal
+              title="Remove {{ project.name }}"
+              text="This cannot be undone"
+              type="question"
+              confirmButtonText="Remove"
+              showCancelButton="true"
+              cancelButtonText="Let it Live"
+              focusConfirm="false">
+            </swal>
+            <!-- end project-remove-swal -->
           </tr>
         </tbody>
       </table>
@@ -39,6 +50,15 @@
   </div>
 </div>
 <!-- end projects-table -->
+<!-- begin project-remove-message-swal -->
+<swal
+  #completeSwal
+  title="Project is removed successfully"
+  text="There is no going back for your project..."
+  type="success"
+  (confirm)="refresh()">
+</swal>
+<!-- end project-remove-message-swal -->
 <!-- begin new-project-button -->
 <button type="button" class="btn btn-primary" [routerLink]="['new']" >
   <i class="fas fa-plus"></i>
