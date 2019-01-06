@@ -1,21 +1,19 @@
 <div class="modal-header">
   <h4 class="modal-title">Widget Creation</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <button type="button" class="close" aria-label="Close" (click)="dialogRef.close()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
   <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
-    <label class="control-label">Title <span class="text-danger">*</span></label>
     <div class="row m-b-15">
-      <div class="col-md-12">
-        <input name="title" #title="ngModel" ngModel type="text" [class.is-invalid]="isValid(title)" class="form-control" placeholder="Title" required />
-        <div *ngIf="title.hasError('required')" class="invalid-feedback">
+      <mat-form-field class="col-md-12">
+        <input matInput name="title" #title="ngModel" ngModel type="text" placeholder="Title" required />
+        <mat-error *ngIf="title.hasError('required')">
           Title is required.
-        </div>
-      </div>
+        </mat-error>
+      </mat-form-field>
     </div>
-    <label class="control-label">Project <span class="text-danger">*</span></label>
     <div class="row m-b-15">
       <div class="col-md-12">
         <ng-select
@@ -23,6 +21,7 @@
           name="project"
           required
 
+          placeholder="Project"
           [items]="projects$ | async"
           bindLabel="name"
           bindValue="id"
@@ -32,7 +31,6 @@
         </ng-select>
       </div>
     </div>
-    <label class="control-label">Thing <span class="text-danger">*</span></label>
     <div class="row m-b-15">
       <div class="col-md-12">
         <ng-select
@@ -40,6 +38,7 @@
           name="thing"
           required
 
+          placeholder="Thing"
           [items]="things$ | async"
           bindLabel="name"
           bindValue="id"
@@ -49,7 +48,6 @@
         </ng-select>
       </div>
     </div>
-    <label class="control-label">Asset <span class="text-danger">*</span></label>
     <div class="row m-b-15">
       <div class="col-md-12">
         <ng-select
@@ -57,6 +55,7 @@
           name="asset"
           required
 
+          placeholder="Asset"
           [items]="thing?.assets"
           bindLabel="title"
           bindValue="name"
@@ -72,31 +71,39 @@
   <hr>
   <label class="control-label">Widget Type: </label>
   <div class="row m-b-15">
-    <div class="col-md-12">
-      <select [(ngModel)]="type" class="form-control">
-        <option *ngFor="let type of widgetTypes" value="{{ type }}">{{ type | titlecase }}</option>
-      </select>
-    </div>
+    <mat-form-field class="col-md-12">
+      <mat-select [(ngModel)]="type">
+        <mat-option *ngFor="let type of widgetTypes" [value]="type">
+          {{ type | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <label class="control-label">Widget Fields: </label>
+  <!-- begin widget options -->
+  <!-- widget options is generated dynamically -->
+  <label class="control-label">Widget Options: </label>
   <form #wf="ngForm">
     <div *ngFor="let option of widgetOptions[this.type]" class="row m-b-15">
-      <label class="offset-sm-1 col-sm-1 col-form-label">{{ option.name | titlecase }}</label>
-      <div class="col-sm-10">
-        <ng-select *ngIf="option.type === 'option'" name="{{ option.name }}" ngModel [items]="option.options"></ng-select>
-        <input *ngIf="option.type !== 'option'" name="{{ option.name }}" ngModel type="{{ option.type }}" class="form-control" placeholder="{{ option.name | titlecase }}" />
-      </div>
+      <mat-form-field class="col-md-10">
+        <mat-select *ngIf="option.type === 'option'" name="{{ option.name }}" ngModel placeholder="{{ option.name | titlecase }}">
+          <mat-option *ngFor="let option of option.options" value="option">
+            {{ option | titlecase }}
+          </mat-option>
+        </mat-select>
+        <input matInput *ngIf="option.type !== 'option'" name="{{ option.name }}" ngModel type="{{ option.type }}" placeholder="{{ option.name | titlecase }}" />
+      </mat-form-field>
     </div>
   </form>
+  <!-- end widget-options -->
   <label class="control-label">Widget Size: </label>
   <div class="row m-b-15">
-    <div class="col-md-12">
-      <select [(ngModel)]="size" class="form-control">
-        <option value="12">Full</option>
-        <option value="6">Half</option>
-        <option value="3">Quarter</option>
-      </select>
-    </div>
+    <mat-form-field class="col-md-12">
+      <mat-select [(ngModel)]="size">
+        <mat-option [value]="12">Full</mat-option>
+        <mat-option [value]="6">Half</mat-option>
+        <mat-option [value]="3">Quarter</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>
 <div class="modal-footer">

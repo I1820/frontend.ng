@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';
 
 import { ThingService, Thing, ProjectService, Project, Widget } from '../../shared/backend';
@@ -36,7 +36,7 @@ export class WidgetNewComponent implements OnInit {
   public widgetTypes = Object.keys(this.widgetOptions);
 
   constructor(
-    public activeModal: NgbActiveModal,
+    public dialogRef: MatDialogRef<WidgetNewComponent>,
     public pService: ProjectService,
     public tService: ThingService,
   ) {}
@@ -85,6 +85,6 @@ export class WidgetNewComponent implements OnInit {
       f.value.asset, this.size,
       this.widgetOptionsForm.value
     );
-    this.activeModal.close(widget);
+    this.dialogRef.close(widget);
   }
 }
