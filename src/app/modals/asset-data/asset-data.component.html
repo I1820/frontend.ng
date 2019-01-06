@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title">Recent Data</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <button type="button" class="close" aria-label="Close" (click)="modalRef.close()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -18,12 +18,19 @@
         <tr *ngFor="let state of states; let idx = index">
           <td>{{idx + 1}}</td>
           <td>{{state.value}}</td>
-          <td placement="right" [ngbTooltip]="state.at.toString()">{{state.at | timeago}}</td>
+          <td placement="right" [matTooltip]="state.at.toString()">{{state.at | timeago}}</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <mat-form-field>
+    <mat-select [value]="10" (selectionChange)="refresh($event.value)">
+      <mat-option [value]="10">10</mat-option>
+      <mat-option [value]="15">15</mat-option>
+      <mat-option [value]="20">20</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
 <div class="modal-footer">
-  <p>Response Time: {{responseTime}}</p>
+  <p class="row">Response Time: {{ responseTime }}</p>
 </div>
