@@ -93,13 +93,9 @@ export class ThingChartComponent implements OnInit {
   public formSubmit(f: FormGroup): void {
     this.loading = true;
 
-    const sinceDate = f.value.sinceDate;
-    const sinceTime = f.value.sinceTime;
-    const since: Date = new Date(sinceDate.year, sinceDate.month - 1, sinceDate.day, sinceTime.hour, sinceTime.minute);
+    const since = f.value.sinceDate;
 
-    const untilDate = f.value.untilDate;
-    const untilTime = f.value.untilTime;
-    const until: Date = new Date(untilDate.year, untilDate.month - 1, untilDate.day, untilTime.hour, untilTime.minute);
+    const until = f.value.untilDate;
 
     this.initChart();
 
