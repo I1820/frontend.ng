@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { getData } from 'country-list';
+
 import { AppComponent } from '../../app.component';
 import { AuthenticationService } from '../../shared';
 import { User } from '../../shared';
@@ -22,12 +24,10 @@ export class ProfileComponent {
   ];
 
   public user: User;
-
-  /**
-   * controls input element visibility status for profile fields.
-   * by making them visibe user can change his/her profile fields.
-   */
-  public editFirstname: boolean;
+  public countries: {
+    name: string;
+    code: string;
+  }[] = getData();
 
   /**
    * showTab changes given tab status to true and other tabs to false.

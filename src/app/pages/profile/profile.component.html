@@ -13,9 +13,9 @@
       <!-- END profile-header-img -->
       <!-- BEGIN profile-header-info -->
       <div class="profile-header-info">
-        <h4 class="m-t-10 m-b-5">{{user.firstname}} {{user.lastname}}</h4>
-        <p class="m-b-10">UXUI + Frontend Developer</p>
-        <a href="#" class="btn btn-xs btn-yellow">Edit Profile</a>
+        <h4 class="m-t-10 m-b-5">{{ user.firstname }} {{ user.lastname }}</h4>
+        <p class="m-b-10">@{{ user.username }}</p>
+        <p class="btn btn-xs btn-yellow disabled">Edit Profile</p>
       </div>
       <!-- END profile-header-info -->
     </div>
@@ -50,37 +50,41 @@
           <tbody>
             <tr class="highlight">
               <td class="field">Username</td>
-              <td> {{user.username}} </td>
+              <td>
+                <mat-form-field>
+                  <input matInput [value]="user.username" disabled>
+                </mat-form-field>
+              </td>
             </tr>
             <tr class="divider">
               <td colspan="2"></td>
             </tr>
             <tr>
               <td class="field">First Name</td>
-              <td *ngIf="!editFirstname"> {{user.firstname}} <a href="javascript:;" (click)="editFirstname = !editFirstname" class="m-l-5">Edit</a></td>
-              <td *ngIf="editFirstname">
-                <input class="form-control input-inline input-xs" name="firstname" [value]="this.user.firstname">
-                <a href="javascript:;" (click)="editFirstname = !editFirstname" class="m-l-5">Ignore</a>
+              <td>
+                <mat-form-field>
+                  <input matInput [value]="user.firstname">
+                </mat-form-field>
               </td>
             </tr>
             <tr>
               <td class="field">Last Name</td>
-              <td> {{user.lastname}} <a href="javascript:;" class="m-l-5">Edit</a></td>
+              <td>
+                <mat-form-field>
+                  <input matInput [value]="user.lastname">
+                </mat-form-field>
+              </td>
             </tr>
             <tr class="divider">
               <td colspan="2"></td>
             </tr>
             <tr>
-              <td class="field">Mobile</td>
-              <td><i class="fa fa-mobile fa-lg m-r-5"></i> +1-(847)- 367-8924 <a href="javascript:;" class="m-l-5">Edit</a></td>
-            </tr>
-            <tr>
-              <td class="field">Home</td>
-              <td><a href="javascript:;">Add Number</a></td>
-            </tr>
-            <tr>
-              <td class="field">Office</td>
-              <td><a href="javascript:;">Add Number</a></td>
+              <td class="field">Mobile <i class="fa fa-mobile fa-lg m-r-5"></i></td>
+              <td>
+                  <mat-form-field>
+                    <input matInput value="+98 (939) 09 09 540">
+                  </mat-form-field>
+              </td>
             </tr>
             <tr class="divider">
               <td colspan="2"></td>
@@ -94,53 +98,23 @@
             </tr>
             <tr>
               <td class="field">Country</td>
-              <td>Iran</td>
-            </tr>
-            <tr>
-              <td class="field">Province</td>
               <td>
-                <select class="form-control input-inline input-xs" name="region">
-                </select>
+                <mat-form-field>
+                  <mat-select value="IR">
+                    <mat-option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </td>
-            </tr>
-            <tr>
-              <td class="field">City</td>
-              <td>
-                <select class="form-control input-inline input-xs" name="region">
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="field">State</td>
-              <td><a href="javascript:;">Add State</a></td>
-            </tr>
-            <tr>
-              <td class="field">Website</td>
-              <td><a href="javascript:;">Add Webpage</a></td>
             </tr>
             <tr>
               <td class="field">Gender</td>
               <td>
-                <select class="form-control input-inline input-xs" name="gender">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="field">Birthdate</td>
-              <td>
-                <select class="form-control input-inline input-xs" name="day">
-                  <option value="04" selected>04</option>
-                </select>
-                -
-                <select class="form-control input-inline input-xs" name="month">
-                  <option value="11" selected>11</option>
-                </select>
-                -
-                <select class="form-control input-inline input-xs" name="year">
-                  <option value="1989" selected>1989</option>
-                </select>
+                <mat-form-field>
+                  <mat-select>
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </td>
             </tr>
             <tr class="divider">
