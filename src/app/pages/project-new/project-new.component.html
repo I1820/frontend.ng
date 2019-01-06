@@ -13,14 +13,13 @@
       </div>
       <div class="panel-body">
         <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="margin-bottom-0">
-          <label class="control-label">Name <span class="text-danger">*</span></label>
           <div class="row m-b-15">
-            <div class="col-md-12">
-              <input name="name" #name="ngModel" ngModel type="text" [class.is-invalid]="isValid(name)" class="form-control" placeholder="Name" required />
-              <div *ngIf="name.hasError('required')" class="invalid-feedback">
+            <mat-form-field class="col-md-12">
+              <input matInput name="name" #name="ngModel" ngModel type="text" placeholder="Name" required />
+              <mat-error *ngIf="name.hasError('required')">
                 Name is required.
-              </div>
-            </div>
+              </mat-error>
+            </mat-form-field>
           </div>
           <div class="register-buttons">
             <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>

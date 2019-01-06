@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
@@ -36,14 +36,6 @@ export class ProjectNewComponent implements OnInit {
     } else {
       return 'Build';
     }
-  }
-
-  /**
-   * When input is invalid in the input box, input box must truns to red this function
-   * returns true to trigger invalid class when input is invalid. use this with [class.is-invalid].
-   */
-  public isValid(m: FormControl): boolean {
-    return m.invalid && (m.dirty || m.touched);
   }
 
   /**
