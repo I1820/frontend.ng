@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Widget } from '../../shared/backend';
 
 @Component({
@@ -8,7 +8,6 @@ import { Widget } from '../../shared/backend';
 })
 export class WidgetComponent implements OnInit {
   @Input() widget: Widget;
-  @Output() remove = new EventEmitter();
 
   constructor() { }
 

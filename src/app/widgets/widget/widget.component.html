@@ -1,16 +1,6 @@
-<div class="panel panel-inverse">
-  <div class="panel-heading">
-    <div class="panel-heading-btn">
-      <a class="btn btn-xs btn-icon btn-circle btn-danger" (click)="remove.emit()"><i class="fa fa-times"></i></a>
-    </div>
-    <h4 class="panel-title">{{ widget.title }}</h4>
-  </div>
-  <div class="panel-body">
-    <div *ngIf="widget.type === 'gauge'">
-      <app-gauge-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-gauge-widget>
-    </div>
-    <div *ngIf="widget.type === 'chart'">
-      <app-chart-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-chart-widget>
-    </div>
-  </div>
+<div *ngIf="widget.type === 'gauge'">
+  <app-gauge-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-gauge-widget>
+</div>
+<div *ngIf="widget.type === 'chart'">
+  <app-chart-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-chart-widget>
 </div>
