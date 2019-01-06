@@ -22,10 +22,9 @@
             placeholder="Assets"
             required>
           </ng-select>
-          <label class="control-label">Since <span class="text-danger">*</span></label>
           <div class="row row-space-10">
             <mat-form-field class="col-md-6 m-b-15">
-              <input matInput [matDatepicker]="sincePicker" ngModel #sinceDate="ngModel" name="sinceDate" required />
+              <input matInput [matDatepicker]="sincePicker" ngModel #sinceDate="ngModel" name="sinceDate" placeholder="Since" required />
               <mat-datepicker-toggle matSuffix [for]="sincePicker"></mat-datepicker-toggle>
               <mat-datepicker #sincePicker></mat-datepicker>
 
@@ -34,10 +33,9 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <label class="control-label">Until <span class="text-danger">*</span></label>
           <div class="row row-space-10">
             <mat-form-field class="col-md-6 m-b-15">
-              <input matInput [matDatepicker]="untilPicker" ngModel #untilDate="ngModel" name="untilDate" required />
+              <input matInput [matDatepicker]="untilPicker" ngModel #untilDate="ngModel" name="untilDate" placeholder="Until" required />
               <mat-datepicker-toggle matSuffix [for]="untilPicker"></mat-datepicker-toggle>
               <mat-datepicker #untilPicker></mat-datepicker>
 
@@ -66,14 +64,14 @@
       </div>
       <div class="panel-body">
         <div class="row m-b-15">
-          <div class="col-md-12">
-            <label class="control-label">Chart Type</label>
-            <select class="form-control" [(ngModel)]="chartType">
-              <option value="areaspline">Area</option>
-              <option value="line">Line</option>
-              <option value="column">Column</option>
-            </select>
-          </div>
+          <mat-form-field class="col-md-12">
+            <mat-label>Chart Type</mat-label>
+            <mat-select [(ngModel)]="chartType">
+              <mat-option value="areaspline">Area</mat-option>
+              <mat-option value="line">Line</mat-option>
+              <mat-option value="column">Column</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="row m-b-15">
           <div class="col-md-12">
