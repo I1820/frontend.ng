@@ -3,7 +3,7 @@ import { latLng, tileLayer, Map, control } from 'leaflet';
 import 'leaflet-measure';
 import 'leaflet-gesture-handling';
 import { MatDialog } from '@angular/material';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { WidgetNewComponent } from '../../modals/widget-new/widget-new.component';
 import { AuthenticationService } from '../../shared/authentication';
@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
   public createWidget(): void {
     const dialogRef = this.dialog.open(WidgetNewComponent, {
-      width: '350px',
+      width: '500px',
     });
     dialogRef.afterClosed().subscribe((w: Widget) => {
       if (w) {
