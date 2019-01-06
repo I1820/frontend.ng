@@ -5,10 +5,9 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatFormFieldModule,
-  MatTableModule,
-  MatSortModule,
   MatSelectModule,
   MatDialogModule,
+  MatTooltipModule,
 } from '@angular/material';
 
 import {
@@ -23,21 +22,19 @@ import {
     MatInputModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatTableModule,
-    MatSortModule,
     MatSelectModule,
     MatDialogModule,
     DragDropModule,
+    MatTooltipModule,
   ],
   exports: [
     MatInputModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatTableModule,
-    MatSortModule,
     MatSelectModule,
     MatDialogModule,
     DragDropModule,
+    MatTooltipModule,
   ]
 })
 export class MaterialModule { }
