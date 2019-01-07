@@ -7,7 +7,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { WidgetNewComponent } from '../../modals/widget-new/widget-new.component';
 import { AuthenticationService } from '../../shared/authentication';
-import { Widget, WidgetService } from '../../shared/backend';
+import { Widget, MapView, WidgetService } from '../../shared/backend';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -29,6 +29,16 @@ export class DashboardComponent implements OnInit {
   public centerLng = 51.398408;
 
   /**
+   * Map zoom
+   */
+  public zoom = 15;
+
+  /**
+   * Map instance that is used for reading user current view
+   */
+  public map: Map;
+
+  /**
    * leatlet map options
    */
   public options = {
@@ -36,7 +46,7 @@ export class DashboardComponent implements OnInit {
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { attribution: '&copy; OpenStreetMap contributors' })
     ],
-    zoom: 15,
+    zoom: this.zoom,
     center: latLng(this.centerLat, this.centerLng),
     gestureHandling: true,
     scrollWheelZoom: false,
@@ -50,6 +60,19 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.wService.retrieve().subscribe((widgets: Widget[]) => this.widgets = widgets);
+    this.wService.retrieveMap().subscribe((view: MapView) => {
+      if (view) {
+        this.zoom = view.zoom;
+        this.centerLat = view.latitude;
+        this.centerLng = view.longitude;
+      }
+    });
+  }
+
+  public saveMapView(): void {
+    const latlng = this.map.getCenter();
+    const zoom = this.map.getZoom();
+    this.wService.storeMap(new MapView(latlng.lat, latlng.lng, zoom)).subscribe();
   }
 
   public createWidget(): void {
@@ -77,6 +100,7 @@ export class DashboardComponent implements OnInit {
 
   // onMapReady is called with map component reference when it is ready.
   public onMapReady(map: Map) {
+    this.map = map;
     // casts the control to any because of the leaflet awkward plugin model.
     map.addControl((<any> control).measure(
       {
