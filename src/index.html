@@ -26,14 +26,18 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1976d2">
 </head>
-<body detect-scroll="" (onscroll)="handleScroll($event)">
+<body>
   <app-root>
     <!-- begin #page-loader -->
-    <div id="page-loader" class="fade show">
-      <div class="material-loader">
-        <img class="circular" src="assets/img/logo/logo-spinning.png"></img>
-      </div>
-    </div>
+<style>
+app-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>
+    <img src="assets/img/logo/logo-spinning.gif"></img>
     <!-- end #page-loader -->
   </app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
