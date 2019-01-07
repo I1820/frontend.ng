@@ -10,3 +10,12 @@ export class Widget {
   ) {
   }
 }
+
+export class MapView {
+  constructor (
+    public latitude: number,
+    public longitude: number,
+    public zoom: number,
+  ) {
+  }
+}
