@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BackendModule } from './backend.module';
-import { Widget } from './widget.model';
+import { Widget, MapView } from './widget.model';
 import { BackendAPI } from './backend';
 
 
@@ -20,6 +20,36 @@ export class WidgetService {
     private http: HttpClient,
     _bAPI: BackendAPI,
   ) {}
+
+
+  /**
+   * storeMap stores user map view in user's additional info
+   */
+  @BackendAPI.api('Widget', 'Store Map')
+  public storeMap(view: MapView): Observable<boolean> {
+    return this.http.post('/api/v1/info/map', view).pipe(map(
+      (t: any) => {
+        return t === true;
+      })
+    );
+  }
+
+  /**
+   * retrieveMap retrieves user map view
+   */
+  @BackendAPI.api('Widget', 'Retrieve Map')
+  public retrieveMap(): Observable<MapView> {
+    return this.http.get('/api/v1/info/map').pipe(map(
+      (mv: any) => {
+        if (mv) {
+          return new MapView(mv.latitude, mv.longitude, mv.zoom);
+        } else {
+          return null;
+        }
+      })
+    );
+
+  }
 
   /**
    * store stores user widgets in user's additional info
@@ -51,6 +81,5 @@ export class WidgetService {
         return widgets;
       })
     );
-
   }
 }
