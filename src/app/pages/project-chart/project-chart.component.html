@@ -35,41 +35,32 @@
               >
             </ng-select>
           </ng-container>
-          <label class="control-label">Since <span class="text-danger">*</span></label>
           <div class="row row-space-10">
-            <div class="col-md-6 m-b-15">
-              <ngb-datepicker ngModel #sinceDate="ngModel" name="sinceDate" required></ngb-datepicker>
-              <div *ngIf="sinceDate.hasError('required')" class="small form-text text-danger">
+            <mat-form-field class="col-md-6 m-b-15">
+              <input matInput [matDatepicker]="sincePicker" ngModel #sinceDate="ngModel" name="sinceDate" placeholder="Since" required />
+              <mat-datepicker-toggle matSuffix [for]="sincePicker"></mat-datepicker-toggle>
+              <mat-datepicker #sincePicker></mat-datepicker>
+
+              <mat-error *ngIf="sinceDate.hasError('required')">
                 Date of Since is required.
-              </div>
-            </div>
-            <div class="col-md-6 m-b-15">
-              <ngb-timepicker ngModel #sinceTime="ngModel" name="sinceTime" required></ngb-timepicker>
-              <div *ngIf="sinceTime.hasError('required')" class="small form-text text-danger">
-                Time of Since is required.
-              </div>
-            </div>
+              </mat-error>
+            </mat-form-field>
           </div>
-          <label class="control-label">Until <span class="text-danger">*</span></label>
           <div class="row row-space-10">
-            <div class="col-md-6 m-b-15">
-              <ngb-datepicker ngModel #untilDate="ngModel" name="untilDate" required></ngb-datepicker>
-              <div *ngIf="untilDate.hasError('required')" class="small form-text text-danger">
+            <mat-form-field class="col-md-6 m-b-15">
+              <input matInput [matDatepicker]="untilPicker" ngModel #untilDate="ngModel" name="untilDate" placeholder="Until" required />
+              <mat-datepicker-toggle matSuffix [for]="untilPicker"></mat-datepicker-toggle>
+              <mat-datepicker #untilPicker></mat-datepicker>
+
+              <mat-error *ngIf="untilDate.hasError('required')">
                 Date of Until is required.
-              </div>
-            </div>
-            <div class="col-md-6 m-b-15">
-              <ngb-timepicker ngModel #untilTime="ngModel" name="untilTime" required></ngb-timepicker>
-              <div *ngIf="untilTime.hasError('required')" class="small form-text text-danger">
-                Time of Until is required.
-              </div>
-            </div>
+              </mat-error>
+            </mat-form-field>
           </div>
-          <label class="control-label">Window Size</label>
           <div class="row m-b-15">
-            <div class="col-md-12">
-              <input name="ws" ngModel type="number" class="form-control" placeholder="Window Size"/>
-            </div>
+            <mat-form-field class="col-md-12">
+              <input matInput name="ws" ngModel type="number" class="form-control" placeholder="Window Size"/>
+            </mat-form-field>
           </div>
           <div class="register-buttons">
             <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading || f.invalid" [innerHTML]="submitButtonText"></button>
