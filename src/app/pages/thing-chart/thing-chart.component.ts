@@ -48,8 +48,12 @@ export class ThingChartComponent implements OnInit {
       time: {
         useUTC: false,
       },
+      legend: {
+        enabled: true,
+      },
       title: {
-        text: 'Chart with Love',
+        text: 'Chart with <i class="fas fa-heart text-red"></i>',
+        useHTML: true,
       },
       credits: {
         enabled: true,
