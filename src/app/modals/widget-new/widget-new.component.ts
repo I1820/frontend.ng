@@ -32,6 +32,9 @@ export class WidgetNewComponent implements OnInit {
       { name: 'type', type: 'option', options: ['line', 'area', 'column'] },
       { name: 'n', type: 'number' }
     ],
+    table: [
+      { name: 'n', type: 'number' }
+    ],
   };
   public widgetTypes = Object.keys(this.widgetOptions);
 
