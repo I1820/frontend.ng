@@ -15,6 +15,8 @@ import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import stock from 'highcharts/modules/stock.src';
 import more from 'highcharts/highcharts-more.src';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // Main Components
 import { AppComponent } from './app.component';
@@ -41,12 +43,13 @@ import { ConnectivityNewComponent } from './modals/connectivity-new/connectivity
 import { ThingChartComponent } from './pages/thing-chart/thing-chart.component';
 import { AssetDataComponent } from './modals/asset-data/asset-data.component';
 import { WidgetNewComponent } from './modals/widget-new/widget-new.component';
+import { ProjectChartComponent } from './pages/project-chart/project-chart.component';
+
+// Widget components
 import { WidgetComponent } from './widgets/widget/widget.component';
 import { GaugeComponent } from './widgets/gauge/gauge.component';
 import { ChartComponent } from './widgets/chart/chart.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { ProjectChartComponent } from './pages/project-chart/project-chart.component';
+import { TableComponent } from './widgets/table/table.component';
 
 // Shared Module
 import { SharedModule } from './shared/shared.module';
@@ -87,10 +90,13 @@ export function highchartsModules() {
     ProjectNewComponent,
     ThingDetailComponent,
     ThingChartComponent,
+    ProjectChartComponent,
+
+    // widgets
     WidgetComponent,
     GaugeComponent,
     ChartComponent,
-    ProjectChartComponent,
+    TableComponent,
   ],
   entryComponents: [
     // modals
