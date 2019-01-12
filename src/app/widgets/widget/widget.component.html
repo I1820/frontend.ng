@@ -4,3 +4,6 @@
 <div *ngIf="widget.type === 'chart'">
   <app-chart-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-chart-widget>
 </div>
+<div *ngIf="widget.type === 'table'">
+  <app-table-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-table-widget>
+</div>
