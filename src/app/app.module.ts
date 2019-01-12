@@ -56,6 +56,7 @@ import { SharedModule } from './shared/shared.module';
 
 // Material Module
 import { MaterialModule } from './material.module';
+import { OnlineStatusComponent } from './online-status/online-status.component';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -97,6 +98,7 @@ export function highchartsModules() {
     GaugeComponent,
     ChartComponent,
     TableComponent,
+    OnlineStatusComponent,
   ],
   entryComponents: [
     // modals
