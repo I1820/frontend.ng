@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/projects', widget.pid]">Project: {{ widget.pid }}</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/projects', widget.pid, 'things', widget.tid]">Thing: {{ widget.tid }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ widget.asset | titlecase }}</li>
+  </ol>
+</nav>
 <div *ngIf="widget.type === 'gauge'">
   <app-gauge-widget [pid]="widget.pid" [tid]="widget.tid" [asset]="widget.asset" [params]="widget.params"></app-gauge-widget>
 </div>
