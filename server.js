@@ -53,7 +53,7 @@ const init = async () => {
 
           if (res.statusCode !== 200) {
             const payload  = await Wreck.read(res, { json: true });
-            throw new Boom(payload.error, { statusCode: payload.code });
+            throw new Boom(payload.error, { statusCode: payload.code > 400 ? payload.code : 500 });
           }
           return res;
         }
